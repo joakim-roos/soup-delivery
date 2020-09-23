@@ -7,6 +7,10 @@ html {
   font-size: 16px;
 }
 
+html, body {
+  background-color: ${props => props.theme.color.background};
+}
+
 *, *:before, *:after {
   box-sizing: inherit;
 }

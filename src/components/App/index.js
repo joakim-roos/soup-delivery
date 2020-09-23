@@ -8,13 +8,16 @@ import CheckoutPage from '../Checkout'
 import SignInPage from '../SignIn'
 import SignUpPage from '../SignUp'
 
+import Onboard from '../Onboard'
+
 import * as ROUTES from '../../constants/routes'
 
 function App() {
   return (
     <>
-      <GlobalStyle />
       <ThemeProvider theme={theme}>
+        <GlobalStyle />
+        <Onboard />
         <Router>
           <main>
             <Route exact path={ROUTES.MENU} component={MenuPage} />
