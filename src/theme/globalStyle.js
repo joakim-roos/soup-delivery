@@ -7,6 +7,13 @@ html {
   font-size: 16px;
 }
 
+*{
+  box-sizing: border-box;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+
 html, body {
   background-color: ${props => props.theme.color.background};
 }
