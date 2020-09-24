@@ -1,12 +1,12 @@
-import React from 'react'
+import React, { useEffect, useState } from 'react'
 import styled from 'styled-components'
 import SVG from 'react-inlinesvg'
-import { Link, useHistory } from 'react-router-dom'
+import { Link, useHistory, useLocation } from 'react-router-dom'
 import { Arrow_Icon, Profile_Icon } from '../../images'
 
-console.log(window.location.pathname)
 const Wrapper = styled.div`
 width: 100vw;
+overflow: hidden;
 border-bottom: 1px solid ${props => props.theme.color.font_Secondary};
 
 & > div {
@@ -14,35 +14,51 @@ border-bottom: 1px solid ${props => props.theme.color.font_Secondary};
   justify-content: space-between;
   align-items: center;
 }
+
 & h2 {
   text-align: center;
   font-size: ${props => props.theme.text.size_lg};
 }
-& > div > a {
+
+& > div > button {
   display: flex;
-  padding: 0.8rem;
-}
-`;
+  padding: 1rem;
+  border: none;
+  background-color: ${props => props.theme.color.background}
+}`;
 
 const Icon = (props) => (
   <SVG src={props.icon} />
 )
-const Navigation = ({ children }) => {
+
+const Navigation = () => {
+  const [path, setPath] = useState('')
   const history = useHistory()
-  children = 'Menu'
+  const location = useLocation()
+
+  useEffect(() => {
+    let path = location.pathname.replace('/', '')
+
+    if (path === '') path = 'menu'
+    path = path.charAt(0).toUpperCase() + path.slice(1)
+
+    setPath(path)
+
+  }, [location])
+
 
   return (
     <Wrapper>
       <div>
-        <Link onClick={() => history.goBack()}>
+        <button onClick={() => history.goBack()}>
           <Icon icon={Arrow_Icon} />
-        </Link>
+        </button>
 
-        <h2>{children}</h2>
+        <h2>{path}</h2>
 
-        <Link to='/profile'>
+        <button onClick={() => console.log('button clicked')}>
           <Icon icon={Profile_Icon} />
-        </Link>
+        </button>
 
       </div>
     </Wrapper >
