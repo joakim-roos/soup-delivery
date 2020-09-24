@@ -9,6 +9,7 @@ export const theme = {
   },
 
   text: {
+    size_lg: '20px',
     spacing_Primary: '0.5px',
     spacing_Button: '0.3px'
   }

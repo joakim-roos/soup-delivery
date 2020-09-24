@@ -6,7 +6,7 @@ import { BackgroundImage } from '../Background'
 
 const Overlay = styled.div`
   position: relative;
-  display: ${props => props.isHidden ? 'none' : 'block'};
+  display: ${props => props.isHidden ? 'none' : 'none'};
   width: 100vw; /* Full width (cover the whole page) */
   height: 100vh; /* Full height (cover the whole page) */
   top: 0;
