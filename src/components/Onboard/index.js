@@ -1,6 +1,6 @@
 import React, { useState } from 'react'
 import styled from 'styled-components'
-import { BG_Yellow, BG_Mobile, Background, Logo_Onboard } from '../../images';
+import { Logo_Onboard } from '../../images';
 
 import { BackgroundImage } from '../Background'
 

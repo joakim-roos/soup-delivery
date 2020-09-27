@@ -1,7 +1,7 @@
 import React, { useEffect, useState, useContext } from 'react'
 import styled from 'styled-components'
 import SVG from 'react-inlinesvg'
-import { Link, useHistory, useLocation } from 'react-router-dom'
+import { useHistory, useLocation } from 'react-router-dom'
 import { Arrow_Icon, Profile_Icon } from '../../images'
 
 import NavigationContext from './Navigation.Context'
@@ -49,14 +49,13 @@ const Navigation = () => {
     const { toggleProfileNavigation } = useContext(NavigationContext)
 
     useEffect(() => {
-
-    })
-    useEffect(() => {
         let path = location.pathname
 
-        if (path === '/') {
+        path === '/'
+            ?
             setIsButtonDisabled(true)
-        } else setIsButtonDisabled(false)
+            :
+            setIsButtonDisabled(false)
 
         switch (path) {
             case '/':
