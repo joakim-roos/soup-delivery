@@ -7,32 +7,36 @@ import CartPage from '../Cart'
 import CheckoutPage from '../Checkout'
 import SignInPage from '../SignIn'
 import SignUpPage from '../SignUp'
-
+import ProfilePage from '../Profile'
 import Onboard from '../Onboard'
 import Navigation from '../Navigation'
+import NavigationModal from '../Profile/Profile'
 
 import * as ROUTES from '../../constants/routes'
 
 function App() {
 
-  return (
-    <>
-      <ThemeProvider theme={theme}>
-        <GlobalStyle />
-        <Onboard />
-        <Router>
-          <Navigation />
-          <main>
-            <Route exact path={ROUTES.MENU} component={MenuPage} />
-            <Route path={ROUTES.CART} component={CartPage} />
-            <Route path={ROUTES.CHECKOUT} component={CheckoutPage} />
-            <Route path={ROUTES.SIGN_IN} component={SignInPage} />
-            <Route path={ROUTES.SIGN_UP} component={SignUpPage} />
-          </main>
-        </Router>
-      </ThemeProvider>
-    </>
-  )
+    return (
+        <>
+            <ThemeProvider theme={theme}>
+                <GlobalStyle />
+                <Onboard />
+                <Router>
+                    <Navigation />
+
+                    <main>
+                        <Route exact path={ROUTES.MENU} component={MenuPage} />
+                        <Route path={ROUTES.CART} component={CartPage} />
+                        <Route path={ROUTES.CHECKOUT} component={CheckoutPage} />
+                        <Route path={ROUTES.SIGN_IN} component={SignInPage} />
+                        <Route path={ROUTES.SIGN_UP} component={SignUpPage} />
+                        <Route path={ROUTES.PROFILE} component={ProfilePage} />
+                    </main>
+
+                </Router>
+            </ThemeProvider>
+        </>
+    )
 }
 
 export default App

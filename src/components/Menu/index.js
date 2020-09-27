@@ -3,11 +3,11 @@ import styled from 'styled-components'
 
 
 const MenuPage = () => {
-  return (
-    <div>
-      Menu Page
-    </div>
-  )
+    return (
+        <div>
+            Menu Page
+        </div>
+    )
 }
 
 export default MenuPage
