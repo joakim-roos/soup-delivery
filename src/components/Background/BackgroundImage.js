@@ -11,7 +11,7 @@ const Wrapper = styled.div`
     bottom: 0;
     left: 0;
     width: 100%;
-    z-index: 200;
+    z-index: -200;
 
     & svg {
         display: block;

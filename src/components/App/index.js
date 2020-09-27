@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react'
+import React, { useEffect, useState } from 'react'
 import { BrowserRouter as Router, Route, useLocation } from 'react-router-dom'
 import { ThemeProvider } from 'styled-components'
 import { theme, GlobalStyle } from '../../theme'
@@ -10,30 +10,39 @@ import SignUpPage from '../SignUp'
 import ProfilePage from '../Profile'
 import Onboard from '../Onboard'
 import Navigation from '../Navigation'
-import NavigationModal from '../Profile/Profile'
+import ProfileNavigation from '../Profile/Profile'
 
+import NavigationContext from '../Navigation/Navigation.Context'
 import * as ROUTES from '../../constants/routes'
 
+import { BackgroundImage } from '../Background'
+
+
 function App() {
+    const [isHidden, setIsHidden] = useState(true)
+    const toggleProfileNavigation = () => setIsHidden(!isHidden)
 
     return (
         <>
             <ThemeProvider theme={theme}>
-                <GlobalStyle />
-                <Onboard />
-                <Router>
-                    <Navigation />
+                <NavigationContext.Provider value={{ isHidden, toggleProfileNavigation }}>
+                    <GlobalStyle />
+                    <Onboard />
+                    <BackgroundImage />
+                    <Router>
+                        <Navigation />
+                        <main style={{ position: 'relative' }}>
+                            <ProfileNavigation />
+                            <Route exact path={ROUTES.MENU} component={MenuPage} />
+                            <Route path={ROUTES.CART} component={CartPage} />
+                            <Route path={ROUTES.CHECKOUT} component={CheckoutPage} />
+                            <Route path={ROUTES.SIGN_IN} component={SignInPage} />
+                            <Route path={ROUTES.SIGN_UP} component={SignUpPage} />
+                            <Route path={ROUTES.PROFILE} component={ProfilePage} />
+                        </main>
 
-                    <main>
-                        <Route exact path={ROUTES.MENU} component={MenuPage} />
-                        <Route path={ROUTES.CART} component={CartPage} />
-                        <Route path={ROUTES.CHECKOUT} component={CheckoutPage} />
-                        <Route path={ROUTES.SIGN_IN} component={SignInPage} />
-                        <Route path={ROUTES.SIGN_UP} component={SignUpPage} />
-                        <Route path={ROUTES.PROFILE} component={ProfilePage} />
-                    </main>
-
-                </Router>
+                    </Router>
+                </NavigationContext.Provider>
             </ThemeProvider>
         </>
     )
