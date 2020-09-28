@@ -1,7 +1,7 @@
 import React, { useEffect, useState, useContext } from 'react'
 import styled from 'styled-components'
 import SVG from 'react-inlinesvg'
-import { useHistory, useLocation } from 'react-router-dom'
+import { useHistory, useLocation, useRouteMatch } from 'react-router-dom'
 import { Arrow_Icon, Profile_Icon, Close_Icon } from '../../images'
 
 import NavigationContext from './Navigation.Context'
@@ -34,11 +34,10 @@ const Wrapper = styled.header`
 & > div > button:first-child > svg {
     opacity: ${props => props.isButtonDisabled ? 0 : 1};
 }
-
 `;
 
 const Icon = (props) => (
-    <SVG src={props.icon} />
+    <SVG src={props.src} />
 )
 
 const Navigation = () => {
@@ -60,9 +59,6 @@ const Navigation = () => {
 
 
         switch (path) {
-            case '/':
-                path = 'Menu'
-                break;
             case '/signin':
                 path = 'Sign In'
                 break;
@@ -79,7 +75,7 @@ const Navigation = () => {
                 path = 'Checkout'
                 break;
             default:
-                path = 'Error'
+                path = 'Menu'
         }
         setPath(path)
 
@@ -97,13 +93,13 @@ const Navigation = () => {
             <div>
 
                 <button disabled={isButtonDisabled} onClick={(e) => onGoBack(e)}>
-                    <Icon icon={Arrow_Icon} />
+                    <Icon src={Arrow_Icon} />
                 </button>
 
                 <h2>{path}</h2>
 
                 <button onClick={(e) => toggleProfileNavigation(e)}>
-                    <Icon icon=
+                    <Icon src=
                         {isHidden ?
                             Profile_Icon :
                             Close_Icon

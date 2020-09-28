@@ -14,7 +14,7 @@ const Modal = styled.div`
     left: 0;
     right: 0;
     bottom: 0;
-    z-index: 900; /* Specify a stack order in case you're using a different order for other elements */
+    z-index: 1; /* Specify a stack order in case you're using a different order for other elements */
     cursor: pointer; /* Add a pointer on hover */
   
     & img {
@@ -24,11 +24,11 @@ const Modal = styled.div`
         transform: translateY(-50%);
         left: 50%;
         transform: translateX(-50%);
-        z-index: 1000;
+        z-index: 2;
     }
 
     & h1 {
-        z-index: 1000;
+        z-index: 2;
     }
 `;
 

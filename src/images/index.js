@@ -9,6 +9,7 @@ import Arrow_Icon from './Arrow_Icon.svg'
 import Profile_Icon from './Profile_Icon.svg'
 import Close_Icon from './Close_Icon.svg'
 import Tomato_Soup from './Tomato_Soup.jpg'
+import Right_Arrow from './Right_Arrow.svg'
 
 export {
   BG_Yellow,
@@ -18,5 +19,6 @@ export {
   Arrow_Icon,
   Profile_Icon,
   Close_Icon,
-  Tomato_Soup
+  Tomato_Soup,
+  Right_Arrow
 };
