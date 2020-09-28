@@ -16,8 +16,12 @@ html {
 }
 
 
-html, body {
+body {
   background-color: ${props => props.theme.color.background};
+}
+
+html {
+  color: ${props => props.theme.color.font_Primary}
 }
 
 *, *:before, *:after {

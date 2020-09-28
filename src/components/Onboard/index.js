@@ -47,10 +47,15 @@ const OnBoard = () => {
     }
 
     return (
-        <Modal isHidden={isHidden} onClick={() => onClick()} >
-            <Logo />
-            <BackgroundImage />
-        </Modal>
+        <>
+            {isHidden ?
+                null :
+                <Modal isHidden={isHidden} onClick={() => onClick()} >
+                    <Logo />
+                    <BackgroundImage />
+                </Modal>
+            }
+        </>
     )
 }
 

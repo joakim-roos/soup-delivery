@@ -31,7 +31,7 @@ function App() {
                     <BackgroundImage />
                     <Router>
                         <Navigation />
-                        <main style={{ position: 'relative' }}>
+                        <main style={{ position: 'relative', background: 'transparent', maxHeight: 'calc(100vh - 57px)', overflow: 'scroll' }}>
                             <ProfileNavigation />
                             <Route exact path={ROUTES.MENU} component={MenuPage} />
                             <Route path={ROUTES.CART} component={CartPage} />

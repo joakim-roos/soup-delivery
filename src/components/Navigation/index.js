@@ -2,7 +2,7 @@ import React, { useEffect, useState, useContext } from 'react'
 import styled from 'styled-components'
 import SVG from 'react-inlinesvg'
 import { useHistory, useLocation } from 'react-router-dom'
-import { Arrow_Icon, Profile_Icon } from '../../images'
+import { Arrow_Icon, Profile_Icon, Close_Icon } from '../../images'
 
 import NavigationContext from './Navigation.Context'
 
@@ -46,9 +46,10 @@ const Navigation = () => {
     const [isButtonDisabled, setIsButtonDisabled] = useState(false)
     const history = useHistory()
     const location = useLocation()
-    const { toggleProfileNavigation } = useContext(NavigationContext)
+    const { isHidden, toggleProfileNavigation } = useContext(NavigationContext)
 
     useEffect(() => {
+
         let path = location.pathname
 
         path === '/'
@@ -56,6 +57,7 @@ const Navigation = () => {
             setIsButtonDisabled(true)
             :
             setIsButtonDisabled(false)
+
 
         switch (path) {
             case '/':
@@ -84,24 +86,29 @@ const Navigation = () => {
 
     }, [location])
 
-    const onGoBack = () => {
-        if (history.length === 0) return console.log('its 0');
+    const onGoBack = (e) => {
+        if (history.length === 0) return
         history.goBack()
+        e.preventDefault()
     }
-
 
     return (
         <Wrapper isButtonDisabled={isButtonDisabled}>
             <div>
 
-                <button disabled={isButtonDisabled} onClick={() => onGoBack()}>
+                <button disabled={isButtonDisabled} onClick={(e) => onGoBack(e)}>
                     <Icon icon={Arrow_Icon} />
                 </button>
 
                 <h2>{path}</h2>
 
-                <button onClick={() => toggleProfileNavigation()}>
-                    <Icon icon={Profile_Icon} />
+                <button onClick={(e) => toggleProfileNavigation(e)}>
+                    <Icon icon=
+                        {isHidden ?
+                            Profile_Icon :
+                            Close_Icon
+                        }
+                    />
                 </button>
 
             </div>

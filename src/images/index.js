@@ -8,10 +8,15 @@ import Logo_Onboard from './Logo_Onboard.svg'
 import Arrow_Icon from './Arrow_Icon.svg'
 import Profile_Icon from './Profile_Icon.svg'
 import Close_Icon from './Close_Icon.svg'
+import Tomato_Soup from './Tomato_Soup.jpg'
 
-
-export const Icon = (props) => (
-  <SVG src={props.src}></SVG>
-)
-
-export { BG_Yellow, BG_Mobile, Background, Logo_Onboard, Arrow_Icon, Profile_Icon, Close_Icon };
+export {
+  BG_Yellow,
+  BG_Mobile,
+  Background,
+  Logo_Onboard,
+  Arrow_Icon,
+  Profile_Icon,
+  Close_Icon,
+  Tomato_Soup
+};
