@@ -10,7 +10,7 @@ import Profile_Icon from './Profile_Icon.svg'
 import Close_Icon from './Close_Icon.svg'
 import Tomato_Soup from './Tomato_Soup.jpg'
 import Right_Arrow from './Right_Arrow.svg'
-
+import Tomato_Soup_Info from './Tomato_Soup_Info.jpg'
 export {
   BG_Yellow,
   BG_Mobile,
@@ -20,5 +20,6 @@ export {
   Profile_Icon,
   Close_Icon,
   Tomato_Soup,
-  Right_Arrow
+  Right_Arrow,
+  Tomato_Soup_Info
 };

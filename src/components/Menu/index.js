@@ -1,33 +1,22 @@
 import React, { useState, useEffect } from 'react'
-import { Link, useRouteMatch } from 'react-router-dom'
+import { Link } from 'react-router-dom'
 import menu from './menu.json'
 import styled from 'styled-components'
 import SVG from 'react-inlinesvg'
 import { Tomato_Soup, Right_Arrow } from '../../images'
-
+import { baseBackgroundOpacity, baseCardWrapper } from '../../theme'
 
 const Article = styled.article`
-    border-radius: ${props => props.theme.border.radius_card};
+    ${baseCardWrapper}
     display: flex;
-    position: relative;
-    margin: 10px;
-    padding: 10px;
 `;
 
 const BackgroundOpacity = styled.div`
-    background-color: ${props => props.theme.color.background};
-    border-radius: ${props => props.theme.border.radius_card};
-    opacity: 0.8;
-    position: absolute; 
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    z-index: -100;
+    ${baseBackgroundOpacity}
 `;
 
 const Img = styled.img`
-    border-radius: ${props => props.theme.border.radius_card};
+    border-radius: var(--border-rounded-card);
 `;
 
 
@@ -49,16 +38,16 @@ const CourseInfo = styled.div`
 
 & h3 {
     font-weight: 500;
-    font-size: ${props => props.theme.text.size_md};
+    font-size: var(--size-md);
 }
 & p:first-of-type {
-    font-size: ${props => props.theme.text.size_sm};
-    color: ${props => props.theme.color.font_Grey_Secondary};
+    font-size: var(--size-sm);
+    color: var(--color-gray-light);
     margin-bottom: 2rem;
 }
 & p:last-of-type {
-    font-size: ${props => props.theme.text.size_md};
-    color: ${props => props.theme.color.font_Grey_Primary};
+    font-size: var(--size-md);
+    color: var(--font-color-secondary);
 }
 `;
 

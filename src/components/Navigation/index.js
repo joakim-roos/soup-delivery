@@ -1,7 +1,7 @@
 import React, { useEffect, useState, useContext } from 'react'
 import styled from 'styled-components'
 import SVG from 'react-inlinesvg'
-import { useHistory, useLocation, useRouteMatch, useParams } from 'react-router-dom'
+import { useHistory, useLocation } from 'react-router-dom'
 import { Arrow_Icon, Profile_Icon, Close_Icon } from '../../images'
 
 import NavigationContext from './Navigation.Context'
@@ -12,28 +12,28 @@ const Wrapper = styled.header`
     height: 57px;
     width: 100vw;
     overflow: hidden;
-    border-bottom: 1px solid ${props => props.theme.color.font_Secondary};
+    border-bottom: 1px solid var(--font-color-secondary);
 
-& > div {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-}
+    & > div {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+    }
  
-& h2 {
-    text-align: center;
-    font-size: ${props => props.theme.text.size_lg};
-}
+    & h2 {
+        text-align: center;
+        font-size: var(--size-lg);
+    }
 
-& > div > button {
-    display: flex;
-    padding: 1rem;
-    border: none;
-    background-color: ${props => props.theme.color.background}
-}
+    & > div > button {
+        display: flex;
+        padding: 1rem;
+        border: none;
+        background-color: var(--background);
+    }
 
-& > div > button:first-child > svg {
-    opacity: ${props => props.isButtonDisabled ? 0 : 1};
+    & > div > button:first-child > svg {
+        opacity: ${props => props.isButtonDisabled ? 0 : 1};
 }
 `;
 
@@ -41,12 +41,15 @@ const Icon = (props) => (
     <SVG src={props.src} />
 )
 
+
 const Navigation = () => {
     const [path, setPath] = useState('')
     const [isButtonDisabled, setIsButtonDisabled] = useState(false)
     const history = useHistory()
     const location = useLocation()
     const { isHidden, toggleProfileNavigation } = useContext(NavigationContext)
+
+
 
     useEffect(() => {
 

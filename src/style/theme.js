@@ -9,7 +9,8 @@ export const theme = {
   },
 
   text: {
-    size_sm: '10px',
+    size_xs: '10px',
+    size_sm: '12px',
     size_md: '16px',
     size_lg: '20px',
     spacing_wider: '0.5px',
@@ -18,6 +19,7 @@ export const theme = {
 
   border: {
     radius_card: '8px',
+    radius_sm: '4px'
   }
 
 }
