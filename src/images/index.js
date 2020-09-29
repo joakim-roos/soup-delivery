@@ -11,6 +11,11 @@ import Close_Icon from './Close_Icon.svg'
 import Tomato_Soup from './Tomato_Soup.jpg'
 import Right_Arrow from './Right_Arrow.svg'
 import Tomato_Soup_Info from './Tomato_Soup_Info.jpg'
+import Minus from './Minus.svg'
+import Plus from './Plus.svg'
+import Added from './Added.svg'
+
+
 export {
   BG_Yellow,
   BG_Mobile,
@@ -21,5 +26,8 @@ export {
   Close_Icon,
   Tomato_Soup,
   Right_Arrow,
-  Tomato_Soup_Info
+  Tomato_Soup_Info,
+  Minus,
+  Plus,
+  Added
 };

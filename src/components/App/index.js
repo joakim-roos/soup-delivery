@@ -1,7 +1,7 @@
 import React, { useState } from 'react'
 import { BrowserRouter as Router, Route, Switch } from 'react-router-dom'
 import { ThemeProvider } from 'styled-components'
-import { theme, GlobalStyle } from '../../theme'
+import { theme, GlobalStyle } from '../../style'
 import MenuPage from '../Menu'
 import CartPage from '../Cart'
 import CheckoutPage from '../Checkout'

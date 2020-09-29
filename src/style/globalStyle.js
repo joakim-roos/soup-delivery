@@ -12,11 +12,13 @@ const GlobalStyle = createGlobalStyle`
   --size-sm: 12px;
   --size-md: 16px;
   --size-lg: 20px;
+  --size-xl: 22px;
   --spacing-wide: 0.3px;
   --spacing-wider: 0.5px;
   --border-rounded-card: 8px;
   --border-rounded: 4px;
   --color-yellow: #FFCB40;
+  --color-yellow-secondary: #FFE59F;
   --color-gray-light: #949494;
   --letter-spacing-wide: 0.3px;
   --letter-spacing-wider: 0.5px;

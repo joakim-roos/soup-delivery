@@ -1,5 +1,5 @@
 import { theme } from './theme'
-import { baseBackgroundOpacity, baseCardWrapper } from './baseStyles'
+import { baseBackgroundOpacity, baseCardWrapper, baseButton } from './baseStyles'
 import GlobalStyle from './globalStyle'
 
-export { GlobalStyle, theme, baseBackgroundOpacity, baseCardWrapper }
+export { GlobalStyle, theme, baseBackgroundOpacity, baseCardWrapper, baseButton }

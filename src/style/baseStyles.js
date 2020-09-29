@@ -18,3 +18,16 @@ export const baseCardWrapper = css`
     padding: 10px;
     position: relative;
 `;
+
+export const baseButton = css`
+    display: block;
+    padding: .7rem;
+    border: none;
+    box-shadow: 0 1px 1.5px 0 rgba(0,0,0,.12), 0 1px 1px 0 rgba(0,0,0,.24);
+    outline: none;
+    background-color: ${props => props.added || props.primary ? 'var(--color-yellow)' : 'var(--color-yellow-secondary)'};
+
+    &:active {
+        box-shadow: inset 0 1px 1.5px 0 rgba(0,0,0,.12), inset 0 1px 1px 0 rgba(0,0,0,.24);
+    }
+`;
