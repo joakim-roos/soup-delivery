@@ -25,7 +25,7 @@ function App() {
     const authUser = useAuthentication();
     const [isHidden, setIsHidden] = useState(true)
     const toggleProfileNavigation = () => setIsHidden(!isHidden)
-    console.log(authUser)
+
     return (
         <>
             <AuthUserContext.Provider value={authUser}>

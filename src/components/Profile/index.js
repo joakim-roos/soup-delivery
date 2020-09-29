@@ -2,10 +2,11 @@ import React, { useContext } from 'react'
 import styled from 'styled-components'
 import { BackgroundImage } from '../Background'
 import NavigationContext from '../Navigation/Navigation.Context'
+import { AuthUserContext } from '../Session'
 
 const Modal = styled.div`
     position: absolute;
-    background-color: ${props => props.theme.color.background};
+    background-color: var(--background);
     display: ${props => props.isHidden ? 'none' : 'block'};
     margin-top: 57px;
     width: 100vw; 
@@ -26,39 +27,63 @@ const Wrapper = styled.div`
 
 & ul li {
     font-weight: 700;
-    font-size: ${props => props.theme.text.size_lg};
-    letter-spacing: ${props => props.theme.text.spacing_wider};
+    font-size: var(--size-lg);
+    letter-spacing: var(--spacing-wider);
     margin-bottom: 1rem;
 }
 `;
 
+const ProfileNonAuth = () => {
+
+    return (
+        <Wrapper>
+            <ul>
+                <li>
+                    Sign in
+                </li>
+            </ul>
+        </Wrapper>
+    )
+}
+
+const ProfileAuth = () => {
+
+    return (
+        <Wrapper>
+            <ul>
+                <li>
+                    My Orders
+                    </li>
+                <li>
+                    My Adresses
+                    </li>
+                <li>
+                    Wallet
+                    </li>
+                <li>
+                    Need Help?
+                    </li>
+                <br />
+                <li>
+                    Log out
+                    </li>
+            </ul>
+        </Wrapper>
+    )
+}
+
 const ProfileNavigation = () => {
     const { isHidden } = useContext(NavigationContext)
+    const authUser = useContext(AuthUserContext)
 
     return (
         <Modal isHidden={isHidden}>
             <BackgroundImage />
-            <Wrapper>
-                <ul>
-                    <li>
-                        My Orders
-                    </li>
-                    <li>
-                        My Adresses
-                    </li>
-                    <li>
-                        Wallet
-                    </li>
-                    <li>
-                        Need Help?
-                    </li>
-                    <br />
-                    <li>
-                        Log out
-                    </li>
-                </ul>
-            </Wrapper >
-        </Modal >
+            {authUser ?
+                <ProfileAuth /> :
+                <ProfileNonAuth />
+            }
+        </Modal>
     )
 }
 
