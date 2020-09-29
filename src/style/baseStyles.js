@@ -25,6 +25,9 @@ export const baseButton = css`
     border: none;
     box-shadow: 0 1px 1.5px 0 rgba(0,0,0,.12), 0 1px 1px 0 rgba(0,0,0,.24);
     outline: none;
+    color: var(--font-color-secondary);
+    font-weight: 500;
+    font-family: 'Poppins';
     background-color: ${props => props.added || props.primary ? 'var(--color-yellow)' : 'var(--color-yellow-secondary)'};
 
     &:active {

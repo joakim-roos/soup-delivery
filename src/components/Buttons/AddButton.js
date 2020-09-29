@@ -10,11 +10,8 @@ const Icon = styled(SVG)`
 
 const StyledAddButton = styled.button`
     ${baseButton}
-    border-radius: 12px;
-    font-family: 'Poppins';
-    font-weight: 500;
+    border-radius: var(--border-rounded-button);
     font-size: var(--size-sm);
-    color: var(--font-color-secondary);
     width: 88px;
     /* padding-top: 0.5rem;
     padding-bottom: 0.5rem; */

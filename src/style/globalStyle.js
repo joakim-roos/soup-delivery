@@ -15,6 +15,7 @@ const GlobalStyle = createGlobalStyle`
   --size-xl: 22px;
   --spacing-wide: 0.3px;
   --spacing-wider: 0.5px;
+  --border-rounded-button: 12px;
   --border-rounded-card: 8px;
   --border-rounded: 4px;
   --color-yellow: #FFCB40;

@@ -1,5 +1,3 @@
-import React from 'react';
-import SVG from 'react-inlinesvg'
 
 import BG_Yellow from './Background_Mobile.svg';
 import BG_Mobile from './BG_Mobile.svg';
@@ -14,6 +12,7 @@ import Tomato_Soup_Info from './Tomato_Soup_Info.jpg'
 import Minus from './Minus.svg'
 import Plus from './Plus.svg'
 import Added from './Added.svg'
+import Lemon_Juice from './lemon_juice.jpg'
 
 
 export {
@@ -29,5 +28,6 @@ export {
   Tomato_Soup_Info,
   Minus,
   Plus,
-  Added
+  Added,
+  Lemon_Juice
 };
