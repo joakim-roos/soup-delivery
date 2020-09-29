@@ -1,11 +1,12 @@
 import React, { useEffect, useState, useContext } from 'react'
 import styled from 'styled-components'
 import SVG from 'react-inlinesvg'
-import { useHistory, useLocation, useRouteMatch } from 'react-router-dom'
+import { useHistory, useLocation, useRouteMatch, useParams } from 'react-router-dom'
 import { Arrow_Icon, Profile_Icon, Close_Icon } from '../../images'
 
 import NavigationContext from './Navigation.Context'
 
+import * as ROUTES from '../../constants/routes'
 
 const Wrapper = styled.header`
     height: 57px;
@@ -51,34 +52,21 @@ const Navigation = () => {
 
         let path = location.pathname
 
+        const routes = {
+            '/signin': 'Sign In',
+            '/signup': 'Sign Up',
+            '/profile': 'Profile',
+            '/cart': 'Cart',
+            '/checkout': 'Checkout',
+        }
+
+        setPath(path === routes[path] ? routes[path] : 'Menu')
+
         path === '/'
             ?
             setIsButtonDisabled(true)
             :
             setIsButtonDisabled(false)
-
-
-        switch (path) {
-            case '/signin':
-                path = 'Sign In'
-                break;
-            case '/signup':
-                path = 'Sign Up'
-                break;
-            case '/profile':
-                path = 'Hi, Stranger'
-                break;
-            case '/cart':
-                path = 'Cart'
-                break;
-            case '/checkout':
-                path = 'Checkout'
-                break;
-            default:
-                path = 'Menu'
-        }
-        setPath(path)
-
 
     }, [location])
 
