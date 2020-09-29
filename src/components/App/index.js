@@ -12,7 +12,8 @@ import DishPage from '../Dish'
 import Onboard from '../Onboard'
 import Navigation from '../Navigation'
 import ProfileNavigation from '../Profile'
-
+import { useAuthentication } from '../Session'
+import AuthUserContext from '../Session/Context';
 import NavigationContext from '../Navigation/Navigation.Context'
 
 import * as ROUTES from '../../constants/routes'
@@ -21,39 +22,42 @@ import { BackgroundImage } from '../Background'
 
 
 function App() {
+    const authUser = useAuthentication();
     const [isHidden, setIsHidden] = useState(true)
     const toggleProfileNavigation = () => setIsHidden(!isHidden)
-
+    console.log(authUser)
     return (
         <>
-            <ThemeProvider theme={theme}>
-                <NavigationContext.Provider value={{ isHidden, toggleProfileNavigation }}>
-                    <GlobalStyle />
-                    <Onboard />
-                    <BackgroundImage />
+            <AuthUserContext.Provider value={authUser}>
+                <ThemeProvider theme={theme}>
+                    <NavigationContext.Provider value={{ isHidden, toggleProfileNavigation }}>
+                        <GlobalStyle />
+                        <Onboard />
+                        <BackgroundImage />
 
-                    <Router>
-                        <Navigation />
-                        <ProfileNavigation />
+                        <Router>
+                            <Navigation />
+                            <ProfileNavigation />
 
-                        <main style={{ position: 'relative', background: 'transparent', height: 'calc(100vh - 57px)', overflow: 'scroll' }}>
+                            <main style={{ position: 'relative', background: 'transparent', height: 'calc(100vh - 57px)', overflow: 'scroll' }}>
 
-                            <Switch>
-                                <Route exact path={ROUTES.MENU} component={MenuPage} />
-                                <Route path={ROUTES.CART} component={CartPage} />
-                                <Route path={ROUTES.CHECKOUT} component={CheckoutPage} />
-                                <Route path={ROUTES.SIGN_IN} component={SignInPage} />
-                                <Route path={ROUTES.SIGN_UP} component={SignUpPage} />
-                                <Route path={ROUTES.PROFILE} component={ProfilePage} />
-                                <Route path={ROUTES.DISH} component={DishPage} />
-                            </Switch>
+                                <Switch>
+                                    <Route exact path={ROUTES.MENU} component={MenuPage} />
+                                    <Route path={ROUTES.CART} component={CartPage} />
+                                    <Route path={ROUTES.CHECKOUT} component={CheckoutPage} />
+                                    <Route path={ROUTES.SIGN_IN} component={SignInPage} />
+                                    <Route path={ROUTES.SIGN_UP} component={SignUpPage} />
+                                    <Route path={ROUTES.PROFILE} component={ProfilePage} />
+                                    <Route path={ROUTES.DISH} component={DishPage} />
+                                </Switch>
 
-                        </main>
+                            </main>
 
-                    </Router>
+                        </Router>
 
-                </NavigationContext.Provider>
-            </ThemeProvider>
+                    </NavigationContext.Provider>
+                </ThemeProvider>
+            </AuthUserContext.Provider>
         </>
     )
 }
