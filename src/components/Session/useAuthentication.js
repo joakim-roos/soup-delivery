@@ -17,12 +17,10 @@ export const useAuthentication = () => {
             .once('value')
             .then(snapshot => {
               const dbUser = snapshot.val()
-              console.log(dbUser.roles)
-
+              console.log(snapshot.val())
+              console.log(authUser)
               if (!dbUser.roles) dbUser.roles = {}
 
-
-              console.log(dbUser.roles)
               authUser = {
                 uid: authUser.uid,
                 email: authUser.email,

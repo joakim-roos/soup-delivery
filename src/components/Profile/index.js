@@ -1,6 +1,8 @@
 import React, { useContext } from 'react'
 import styled from 'styled-components'
 import { BackgroundImage } from '../Background'
+import SignOutButton from '../SignOut'
+
 import NavigationContext from '../Navigation/Navigation.Context'
 import { AuthUserContext } from '../Session'
 
@@ -20,6 +22,7 @@ const Modal = styled.div`
 
 const Wrapper = styled.div`
     display: flex;
+    flex-direction: column;
     align-items: center;
     justify-content: center;
     margin-left: -100px;
@@ -53,20 +56,17 @@ const ProfileAuth = () => {
             <ul>
                 <li>
                     My Orders
-                    </li>
+                </li>
                 <li>
                     My Adresses
-                    </li>
+                </li>
                 <li>
                     Wallet
-                    </li>
+                </li>
                 <li>
                     Need Help?
-                    </li>
-                <br />
-                <li>
-                    Log out
-                    </li>
+                </li>
+                <SignOutButton label='Log out' />
             </ul>
         </Wrapper>
     )

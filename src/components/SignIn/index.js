@@ -30,6 +30,7 @@ const SignInForm = () => {
             .doSignInWithEmailAndPassword(email, password)
             .then(() => {
                 setInput({ ...INITIAL_STATE })
+                console.log(input)
                 history.push(ROUTES.MENU)
             })
             .catch(error => {
@@ -51,7 +52,7 @@ const SignInForm = () => {
                 name="email"
                 value={input.email}
                 onChange={(e) => onChange(e)}
-                type="text" placeholder="Email Address"
+                type="text" placeholder="Email"
             />
 
             <input
