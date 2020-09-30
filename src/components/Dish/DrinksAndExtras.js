@@ -1,9 +1,10 @@
-import React from 'react'
+import React, { useContext, useState } from 'react'
 import styled from 'styled-components'
 import { baseCardWrapper, baseBackgroundOpacity } from '../../style'
 
 import { Lemon_Juice } from '../../images'
 import { AddButton } from '../Buttons'
+import { OrderContext } from '../../context'
 
 const CardWrapper = styled.section`
     ${baseCardWrapper}
@@ -49,6 +50,14 @@ const Card = styled.div`
 
 
 const DrinksAndExtras = () => {
+    const [isAdded, setIsAdded] = useState(false);
+    const order = useContext(OrderContext)
+
+    const onAdded = () => {
+        setIsAdded(!isAdded)
+
+    }
+
     return (
         <CardWrapper>
             <BackgroundOpacity />
@@ -62,7 +71,9 @@ const DrinksAndExtras = () => {
                     <p>+ 39 kr</p>
                 </div>
 
-                <AddButton />
+                <AddButton
+                    isAdded={isAdded}
+                    onClick={() => onAdded()} />
             </Card>
 
             <Card>

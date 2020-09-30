@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React, { useState, useEffect } from 'react'
 import { BrowserRouter as Router, Route, Switch } from 'react-router-dom'
 import { ThemeProvider } from 'styled-components'
 import { theme, GlobalStyle } from '../../style'
@@ -13,18 +13,42 @@ import Onboard from '../Onboard'
 import Navigation from '../Navigation'
 import ProfileNavigation from '../Profile'
 import { useAuthentication } from '../Session'
-import AuthUserContext from '../Session/Context';
-import NavigationContext from '../Navigation/Navigation.Context'
-
+import { useFirebase } from '../Firebase'
+import { OrderContext, NavigationContext, AuthUserContext } from '../../context'
 import * as ROUTES from '../../constants/routes'
 
 import { BackgroundImage } from '../Background'
 
+const INITIAL_CART = {
+    products: [],
+}
 
 function App() {
     const authUser = useAuthentication();
+    const firebase = useFirebase()
     const [isHidden, setIsHidden] = useState(true)
+    /* const [cart, setCart] = useState(INITIAL_CART) */
+    const [menu, setMenu] = useState(JSON.parse(localStorage.getItem('menu')))
+
     const toggleProfileNavigation = () => setIsHidden(!isHidden)
+    /* const addToCart = add => setCart({ ...cart, add }) */
+
+
+
+
+
+    useEffect(() => {
+        firebase
+            .menu()
+            .on('value', snapshot => {
+                const menu = snapshot.val()
+                localStorage.setItem('products', JSON.stringify(menu))
+                setMenu(menu)
+
+            })
+        return () => firebase.menu().off()
+    }, [firebase])
+
 
     return (
         <>
@@ -42,13 +66,13 @@ function App() {
                             <main style={{ position: 'relative', background: 'transparent', height: 'calc(100vh - 57px)', overflow: 'scroll' }}>
 
                                 <Switch>
-                                    <Route exact path={ROUTES.MENU} component={MenuPage} />
+                                    <Route exact path={ROUTES.MENU} render={() => <MenuPage menu={menu} />} />
                                     <Route path={ROUTES.CART} component={CartPage} />
                                     <Route path={ROUTES.CHECKOUT} component={CheckoutPage} />
                                     <Route path={ROUTES.SIGN_IN} component={SignInPage} />
                                     <Route path={ROUTES.SIGN_UP} component={SignUpPage} />
                                     <Route path={ROUTES.PROFILE} component={ProfilePage} />
-                                    <Route path={ROUTES.DISH} component={DishPage} />
+                                    <Route path={ROUTES.DISH} render={() => <DishPage menu={menu} />} />
                                 </Switch>
 
                             </main>

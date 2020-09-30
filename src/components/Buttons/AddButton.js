@@ -15,7 +15,7 @@ const StyledAddButton = styled.button`
     width: 88px;
     /* padding-top: 0.5rem;
     padding-bottom: 0.5rem; */
-    padding: ${props => props.added ? '.5rem .6rem .5rem .6rem' : '.5rem 1rem .5rem 1rem'};
+    padding: ${props => props.isAdded ? '.5rem .6rem .5rem .6rem' : '.5rem 1rem .5rem 1rem'};
 
     & span {
         display: flex;
@@ -30,8 +30,8 @@ const StyledAddButton = styled.button`
 const AddButton = (props) => (
   <StyledAddButton {...props}>
     <span>
-      {props.added ? 'Added' : 'Add'}
-      <Icon src={props.added ? Added : Plus} />
+      {props.isAdded ? 'Added' : 'Add'}
+      <Icon src={props.isAdded ? Added : Plus} />
     </span>
   </StyledAddButton>
 )

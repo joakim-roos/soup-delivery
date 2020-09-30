@@ -1,7 +1,6 @@
 import React from 'react'
 import styled from 'styled-components'
 
-import { Tomato_Soup_Info } from '../../images';
 import { baseBackgroundOpacity, baseCardWrapper } from '../../style'
 
 const CardWrapper = styled.section`
@@ -26,8 +25,8 @@ const CardWrapper = styled.section`
 
 
 
-const Img = () => (
-    <img src={Tomato_Soup_Info} alt='' />
+const Img = (props) => (
+    <img src={props.src} alt='' />
 )
 
 const BackgroundOpacity = styled.div`
@@ -35,13 +34,15 @@ const BackgroundOpacity = styled.div`
 `;
 
 
-const Info = () => {
+const Info = ({ description, name, imageUrl }) => {
+
+
     return (
         <CardWrapper>
             <BackgroundOpacity />
-            <h2>Tomato Soup</h2>
-            <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop. </p>
-            <Img />
+            <h2>{name}</h2>
+            <p>{description}</p>
+            <Img src={imageUrl} />
         </CardWrapper>
 
     )

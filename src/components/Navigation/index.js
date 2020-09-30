@@ -4,9 +4,8 @@ import SVG from 'react-inlinesvg'
 import { useHistory, useLocation } from 'react-router-dom'
 import { Arrow_Icon, Profile_Icon, Close_Icon } from '../../images'
 
-import NavigationContext from './Navigation.Context'
+import { NavigationContext } from '../../context'
 
-import * as ROUTES from '../../constants/routes'
 
 const Wrapper = styled.header`
     height: 57px;

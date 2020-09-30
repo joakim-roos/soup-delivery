@@ -1,8 +1,8 @@
-import React, { useReducer } from 'react'
+import React, { useReducer, useContext } from 'react'
 
 import styled from 'styled-components'
 import { baseCardWrapper, baseBackgroundOpacity } from '../../style'
-import { RoundButton } from '../Buttons'
+import { CounterButtons } from '../Buttons'
 
 const CardWrapper = styled.section`
     ${baseCardWrapper}
@@ -13,15 +13,6 @@ const CardWrapper = styled.section`
     }
 `;
 
-const ButtonWrapper = styled.div`
-    display: flex;
-    align-items: center;
-    
-    & p {
-        font-size: var(--size-xl);
-        margin: 0 0.5rem 0 0.5rem;
-    }
-`;
 
 const Ingredient = styled.div`
     display: flex;
@@ -40,56 +31,29 @@ const BackgroundOpacity = styled.div`
     ${baseBackgroundOpacity}`;
 
 
-const IncrementButtonGroup = () => (
-    <ButtonWrapper>
-        <RoundButton primary />
-        <p>1</p>
-        <RoundButton increment primary />
-    </ButtonWrapper>
-)
-
-function init(initialCount) {
-    return { count: initialCount }
-}
-
-function reducer(state, action) {
-    switch (action.type) {
-        case 'increment':
-            return { count: state.count + 1 };
-        case 'decrement':
-            return { count: state.count - 1 };
-        case 'reset':
-            return init(action.payload)
-        default:
-            throw new Error()
-    }
-}
-
 const Customize = () => {
-    const [state, dispatch] = useReducer(reducer, 0, init);
 
     return (
         <CardWrapper>
-
             <BackgroundOpacity />
 
             <h2>Customize</h2>
             <Ingredient>
                 <p>Chili</p>
                 <p>+ 29 kr</p>
-                <IncrementButtonGroup />
+                <CounterButtons />
             </Ingredient>
 
             <Ingredient>
                 <p>Chili</p>
                 <p>+ 29 kr</p>
-                <IncrementButtonGroup />
+                <CounterButtons />
             </Ingredient>
 
             <Ingredient>
                 <p>Chili</p>
                 <p>+ 29 kr</p>
-                <IncrementButtonGroup />
+                <CounterButtons />
             </Ingredient>
 
         </CardWrapper>

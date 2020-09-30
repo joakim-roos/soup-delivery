@@ -1,19 +1,8 @@
-import React from 'react';
+import React, { useContext } from 'react';
 
 import styled from 'styled-components'
-import { RoundButton } from '../Buttons'
-import { ProceedButton } from '../Buttons'
-
-
-const ButtonWrapper = styled.div`
-    display: flex;
-    align-items: center;
-    
-    & p {
-        font-size: var(--size-xl);
-        margin: 0 0.5rem 0 0.5rem;
-    }
-`;
+import { ProceedButton, CounterButtons } from '../Buttons'
+import { OrderContext } from '../../context'
 
 const Panel = styled.div`
     background-color: var(--background);
@@ -32,20 +21,16 @@ const Price = styled.div`
     color: var(--font-color-secondary);
 `;
 
-const IncrementButtonGroup = () => (
-    <ButtonWrapper>
-        <RoundButton primary />
-        <p>1</p>
-        <RoundButton increment primary />
-    </ButtonWrapper>
-)
-
-const AddToCart = () => (
-    <Panel>
-        <IncrementButtonGroup />
-        <Price>129 kr</Price>
-        <ProceedButton primary />
-    </Panel>
-)
+const AddToCart = () => {
+    const order = useContext(OrderContext)
+    console.log(order)
+    return (
+        <Panel>
+            <CounterButtons />
+            <Price>129 kr</Price>
+            <ProceedButton primary />
+        </Panel>
+    )
+}
 
 export default AddToCart

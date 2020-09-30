@@ -1,8 +1,7 @@
-import React, { useState, useEffect } from 'react'
+import React, { useState } from 'react'
 import { Link } from 'react-router-dom'
 import styled from 'styled-components'
 import SVG from 'react-inlinesvg'
-import { useFirebase } from '../Firebase'
 import { Tomato_Soup, Right_Arrow } from '../../images'
 import { baseBackgroundOpacity, baseCardWrapper } from '../../style'
 
@@ -53,34 +52,18 @@ const CourseInfo = styled.div`
 }
 `;
 
-const MenuPage = () => {
-    const firebase = useFirebase()
-    const [menu, setMenu] = useState()
+const MenuPage = ({ menu }) => {
     const [isLoading, setIsLoading] = useState(false)
 
 
-    useEffect(() => {
-        setIsLoading(true)
-        firebase
-            .menu()
-            .on('value', snapshot => {
-                const menu = snapshot.val()
-                setMenu(menu)
-                setIsLoading(false)
-            })
-
-
-        return () => firebase.menu().off()
-    }, [firebase])
-
-
+    if (!menu) return null;
 
     return (
         <>
             {isLoading && <div>Hold on...</div>}
 
-            {menu && menu.map((dish) => (
-                <Article key={dish.id}>
+            {menu.soups.map((soup) => (
+                <Article key={soup.id}>
 
                     <BackgroundOpacity />
 
@@ -88,17 +71,17 @@ const MenuPage = () => {
 
                     <CourseInfo>
                         <h3>
-                            {dish.name}
+                            {soup.name}
                         </h3>
 
                         <p>
-                            {dish.ingredients_customizable}
+                            {soup.keywords}
                         </p>
 
                         <p>
-                            {dish.price} kr
+                            {soup.price} kr
                         </p>
-                        <StyledLink to={`/${dish.uid}`}>
+                        <StyledLink to={`/${soup.uid}`}>
                             <StyledSVG src={Right_Arrow} />
                         </StyledLink>
                     </CourseInfo>

@@ -3,8 +3,8 @@ import styled from 'styled-components'
 import { BackgroundImage } from '../Background'
 import SignOutButton from '../SignOut'
 
-import NavigationContext from '../Navigation/Navigation.Context'
-import { AuthUserContext } from '../Session'
+import { NavigationContext } from '../../context'
+import { AuthUserContext } from '../../context'
 
 const Modal = styled.div`
     position: absolute;
@@ -66,7 +66,7 @@ const ProfileAuth = () => {
                 <li>
                     Need Help?
                 </li>
-                <SignOutButton label='Log out' />
+                <SignOutButton label='Log Out' />
             </ul>
         </Wrapper>
     )
