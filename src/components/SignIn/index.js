@@ -30,7 +30,6 @@ const SignInForm = () => {
             .doSignInWithEmailAndPassword(email, password)
             .then(() => {
                 setInput({ ...INITIAL_STATE })
-                console.log(input)
                 history.push(ROUTES.MENU)
             })
             .catch(error => {

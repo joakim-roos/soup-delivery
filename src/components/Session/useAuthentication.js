@@ -17,8 +17,7 @@ export const useAuthentication = () => {
             .once('value')
             .then(snapshot => {
               const dbUser = snapshot.val()
-              console.log(snapshot.val())
-              console.log(authUser)
+
               if (!dbUser.roles) dbUser.roles = {}
 
               authUser = {

@@ -1,8 +1,8 @@
 import React, { useState, useEffect } from 'react'
 import { Link } from 'react-router-dom'
-import menu from './menu.json'
 import styled from 'styled-components'
 import SVG from 'react-inlinesvg'
+import { useFirebase } from '../Firebase'
 import { Tomato_Soup, Right_Arrow } from '../../images'
 import { baseBackgroundOpacity, baseCardWrapper } from '../../style'
 
@@ -54,17 +54,32 @@ const CourseInfo = styled.div`
 `;
 
 const MenuPage = () => {
-    const [orderMenu, setOrderMenu] = useState()
+    const firebase = useFirebase()
+    const [menu, setMenu] = useState()
+    const [isLoading, setIsLoading] = useState(false)
 
 
     useEffect(() => {
-        if (!menu) return
-        setOrderMenu(JSON.parse(JSON.stringify(menu)))
-    }, [])
+        setIsLoading(true)
+        firebase
+            .menu()
+            .on('value', snapshot => {
+                const menu = snapshot.val()
+                setMenu(menu)
+                setIsLoading(false)
+            })
+
+
+        return () => firebase.menu().off()
+    }, [firebase])
+
+
 
     return (
         <>
-            {orderMenu && orderMenu.dish.map((dish) => (
+            {isLoading && <div>Hold on...</div>}
+
+            {menu && menu.map((dish) => (
                 <Article key={dish.id}>
 
                     <BackgroundOpacity />
@@ -77,7 +92,7 @@ const MenuPage = () => {
                         </h3>
 
                         <p>
-                            {dish.main_ingredients}
+                            {dish.ingredients_customizable}
                         </p>
 
                         <p>
