@@ -41,13 +41,9 @@ const reducer = (state, action) => {
 }
 
 const DishPage = ({ menu }) => {
-    const [order, setOrder] = useState(INITIAL_ORDER)
-    const [state, dispatch] = useReducer(reducer, INITIAL_ORDER)
+    const [order, dispatch] = useReducer(reducer, INITIAL_ORDER)
     const [data, setData] = useState()
     const { slug } = useParams()
-
-    const addToOrder = add => setOrder(add)
-
 
     useEffect(() => {
         if (!menu) return;
@@ -69,19 +65,17 @@ const DishPage = ({ menu }) => {
     }
 
     const handleAdd = (product) => {
-        const includes = includesInArray(state.extras, product.id)
-        if (includes) {
-            return dispatch({
+        const includes = includesInArray(order.extras, product.id)
+
+        includes ?
+            dispatch({
                 type: 'remove',
                 payload: product.id
-            })
-        }
-        if (!includes) {
-            return dispatch({
+            }) :
+            dispatch({
                 type: 'add',
                 payload: product
             })
-        }
     }
 
 
@@ -89,7 +83,7 @@ const DishPage = ({ menu }) => {
 
     return (
         <>
-            <OrderContext.Provider value={{ order, addToOrder }}>
+            <OrderContext.Provider value={{ order, handleIncrement, handleDecrement, handleAdd }}>
                 <Info
                     description={data.description}
                     name={data.name}
@@ -98,11 +92,9 @@ const DishPage = ({ menu }) => {
 
                 <Customize
                     custom={data.ingredients_customizable}
-                    handleIncrement={handleIncrement}
-                    handleDecrement={handleDecrement} />
+                />
 
                 <DrinksAndExtras
-                    handleAdd={handleAdd}
                     addOnProducts={menu.extras} />
                 <AddToCart />
             </OrderContext.Provider>

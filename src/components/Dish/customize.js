@@ -1,8 +1,10 @@
-import React, { useReducer } from 'react'
+import React, { useReducer, useContext } from 'react'
 
 import styled from 'styled-components'
 import { baseCardWrapper, baseBackgroundOpacity } from '../../style'
 import { RoundButton } from '../Buttons'
+
+import { OrderContext } from '../../context'
 
 const CardWrapper = styled.section`
     ${baseCardWrapper}
@@ -54,8 +56,9 @@ const reducer = (state, action) => {
     }
 }
 
-const CounterButtons = ({ ingredient, handleIncrement, handleDecrement }) => {
+const CounterButtons = ({ ingredient }) => {
     const [state, dispatch] = useReducer(reducer, { count: 0 })
+    const { handleIncrement, handleDecrement } = useContext(OrderContext)
 
     return (
         <ButtonWrapper>
@@ -75,7 +78,7 @@ const CounterButtons = ({ ingredient, handleIncrement, handleDecrement }) => {
     )
 }
 
-const Customize = ({ custom, handleIncrement, handleDecrement }) => {
+const Customize = ({ custom }) => {
     if (!custom) return null;
 
     return (
@@ -89,8 +92,7 @@ const Customize = ({ custom, handleIncrement, handleDecrement }) => {
                     <p>+ {ingredient.price} kr</p>
                     <CounterButtons
                         ingredient={ingredient}
-                        handleIncrement={handleIncrement}
-                        handleDecrement={handleDecrement} />
+                    />
                 </Ingredient>
             ))}
         </CardWrapper>

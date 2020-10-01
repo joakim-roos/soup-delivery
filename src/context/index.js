@@ -6,8 +6,10 @@ export const NavigationContext = createContext({
 })
 
 export const OrderContext = createContext({
-  cart: [],
-  addToCart: () => { }
+  order: [],
+  handleAdd: () => { },
+  handleIncrement: () => { },
+  handleDecrement: () => { },
 })
 
 export const AuthUserContext = createContext(null);

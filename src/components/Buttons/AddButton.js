@@ -1,9 +1,9 @@
-import React, { useState } from 'react'
+import React, { useState, useContext } from 'react'
 import styled from 'styled-components'
 import SVG from 'react-inlinesvg'
 import { baseButton } from '../../style'
 import { Plus, Added } from '../../images'
-
+import { OrderContext } from '../../context'
 const Icon = styled(SVG)`
     display: block;
 `;
@@ -27,8 +27,9 @@ const StyledAddButton = styled.button`
     }
 `;
 
-const AddButton = ({ handleAdd, product }) => {
+const AddButton = ({ product }) => {
   const [isAdded, setIsAdded] = useState(false)
+  const { handleAdd } = useContext(OrderContext)
 
   const onAdded = () => (
     setIsAdded(!isAdded)

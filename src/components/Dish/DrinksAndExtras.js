@@ -48,7 +48,7 @@ const Card = styled.div`
 `;
 
 
-const DrinksAndExtras = ({ addOnProducts, handleAdd }) => {
+const DrinksAndExtras = ({ addOnProducts }) => {
 
     return (
         <CardWrapper>
@@ -66,7 +66,7 @@ const DrinksAndExtras = ({ addOnProducts, handleAdd }) => {
 
                     <AddButton
                         product={product}
-                        handleAdd={handleAdd} />
+                    />
                 </Card>
             ))}
         </CardWrapper>
