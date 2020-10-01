@@ -55,9 +55,7 @@ const CourseInfo = styled.div`
 const MenuPage = ({ menu }) => {
     const [isLoading, setIsLoading] = useState(false)
 
-
     if (!menu) return null;
-
     return (
         <>
             {isLoading && <div>Hold on...</div>}

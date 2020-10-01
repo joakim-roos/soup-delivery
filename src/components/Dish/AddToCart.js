@@ -1,8 +1,7 @@
-import React, { useContext } from 'react';
+import React from 'react';
 
 import styled from 'styled-components'
 import { ProceedButton, CounterButtons } from '../Buttons'
-import { OrderContext } from '../../context'
 
 const Panel = styled.div`
     background-color: var(--background);
@@ -22,8 +21,6 @@ const Price = styled.div`
 `;
 
 const AddToCart = () => {
-    const order = useContext(OrderContext)
-    console.log(order)
     return (
         <Panel>
             <CounterButtons />

@@ -14,14 +14,14 @@ import Navigation from '../Navigation'
 import ProfileNavigation from '../Profile'
 import { useAuthentication } from '../Session'
 import { useFirebase } from '../Firebase'
-import { OrderContext, NavigationContext, AuthUserContext } from '../../context'
+import { NavigationContext, AuthUserContext } from '../../context'
 import * as ROUTES from '../../constants/routes'
 
 import { BackgroundImage } from '../Background'
 
-const INITIAL_CART = {
+/* const INITIAL_CART = {
     products: [],
-}
+} */
 
 function App() {
     const authUser = useAuthentication();
@@ -32,10 +32,6 @@ function App() {
 
     const toggleProfileNavigation = () => setIsHidden(!isHidden)
     /* const addToCart = add => setCart({ ...cart, add }) */
-
-
-
-
 
     useEffect(() => {
         firebase

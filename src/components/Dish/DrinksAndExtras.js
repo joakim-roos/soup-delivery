@@ -1,10 +1,8 @@
-import React, { useContext, useState } from 'react'
+import React from 'react'
 import styled from 'styled-components'
 import { baseCardWrapper, baseBackgroundOpacity } from '../../style'
-
 import { Lemon_Juice } from '../../images'
 import { AddButton } from '../Buttons'
-import { OrderContext } from '../../context'
 
 const CardWrapper = styled.section`
     ${baseCardWrapper}
@@ -33,6 +31,7 @@ const Card = styled.div`
     
     & div {
         margin-bottom: 2rem;
+        min-width: 8rem;
     }
 
     & h3 {
@@ -49,43 +48,27 @@ const Card = styled.div`
 `;
 
 
-const DrinksAndExtras = () => {
-    const [isAdded, setIsAdded] = useState(false);
-    const order = useContext(OrderContext)
-
-    const onAdded = () => {
-        setIsAdded(!isAdded)
-
-    }
+const DrinksAndExtras = ({ addOnProducts, handleAdd }) => {
 
     return (
         <CardWrapper>
             <BackgroundOpacity />
             <h2>Drinks and Extras</h2>
 
-            <Card>
-                <Img src={Lemon_Juice} alt='' />
+            {addOnProducts.map(product => (
+                <Card key={product.id}>
+                    <Img src={Lemon_Juice} alt='' />
 
-                <div>
-                    <h3>Lemon Juice</h3>
-                    <p>+ 39 kr</p>
-                </div>
+                    <div>
+                        <h3>{product.name}</h3>
+                        <p>+ {product.price}</p>
+                    </div>
 
-                <AddButton
-                    isAdded={isAdded}
-                    onClick={() => onAdded()} />
-            </Card>
-
-            <Card>
-                <Img src={Lemon_Juice} alt='' />
-                <div>
-                    <h3>Lemon Juice</h3>
-                    <p>+ 39 kr</p>
-                </div>
-
-                <AddButton />
-            </Card>
-
+                    <AddButton
+                        product={product}
+                        handleAdd={handleAdd} />
+                </Card>
+            ))}
         </CardWrapper>
     )
 }

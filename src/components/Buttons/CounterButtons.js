@@ -1,7 +1,6 @@
-import React, { useReducer, useContext } from 'react'
+import React, { useReducer } from 'react'
 import styled from 'styled-components'
 import { RoundButton } from './index'
-import { OrderContext } from '../../context'
 
 const ButtonWrapper = styled.div`
     display: flex;
@@ -15,47 +14,35 @@ const ButtonWrapper = styled.div`
     }
 `;
 
-
-function init(initialCount) {
-  return { count: initialCount }
-}
-
 function reducer(state, action) {
-  switch (action.type) {
-    case 'increment':
-      if (state.count === 5) return { count: 5 }
-      return { count: state.count + 1 };
-    case 'decrement':
-      if (state.count === 0) return { count: 0 }
-      return { count: state.count - 1 };
-    default:
-      throw new Error()
-  }
+    switch (action.type) {
+        case 'increment':
+            if (state.count === 5) return { count: 5 }
+            return { count: state.count + 1 };
+        case 'decrement':
+            if (state.count === 0) return { count: 0 }
+            return { count: state.count - 1 };
+        default:
+            throw new Error()
+    }
 }
 
 const CounterButtons = () => {
-  const [state, dispatch] = useReducer(reducer, 0, init)
-  const order = useContext(OrderContext)
+    const [state, dispatch] = useReducer(reducer, { count: 0 })
 
+    return (
+        <ButtonWrapper>
+            <RoundButton
+                primary onClick={() => dispatch({ type: 'decrement' })} />
 
-  return (
-    <ButtonWrapper>
+            <p>{state.count}</p>
 
-      <RoundButton
-        primary
-        onClick={() => dispatch({ type: 'decrement' })}
-      />
-
-      <p>{state.count}</p>
-
-      <RoundButton
-        increment
-        primary
-        onClick={() => dispatch({ type: 'increment' })}
-      />
-
-    </ButtonWrapper>
-  )
+            <RoundButton
+                increment
+                primary
+                onClick={() => dispatch({ type: 'increment' })} />
+        </ButtonWrapper>
+    )
 }
 
 export default CounterButtons

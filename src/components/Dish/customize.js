@@ -1,8 +1,8 @@
-import React, { useReducer, useContext } from 'react'
+import React, { useReducer } from 'react'
 
 import styled from 'styled-components'
 import { baseCardWrapper, baseBackgroundOpacity } from '../../style'
-import { CounterButtons } from '../Buttons'
+import { RoundButton } from '../Buttons'
 
 const CardWrapper = styled.section`
     ${baseCardWrapper}
@@ -10,6 +10,18 @@ const CardWrapper = styled.section`
     & h2 {
         font-weight: 500;
         font-size: var(--size-xl);
+    }
+`;
+
+const ButtonWrapper = styled.div`
+    display: flex;
+    align-items: center;
+    
+    & p {
+        width: 15px;
+        text-align: center;
+        font-size: var(--size-xl);
+
     }
 `;
 
@@ -31,31 +43,56 @@ const BackgroundOpacity = styled.div`
     ${baseBackgroundOpacity}`;
 
 
-const Customize = () => {
+const reducer = (state, action) => {
+    switch (action.type) {
+        case 'increment':
+            return { count: state.count + 1 };
+        case 'decrement':
+            return { count: state.count - 1 };
+        default:
+            throw new Error('Something went wrong')
+    }
+}
+
+const CounterButtons = ({ ingredient, handleIncrement, handleDecrement }) => {
+    const [state, dispatch] = useReducer(reducer, { count: 0 })
+
+    return (
+        <ButtonWrapper>
+            <RoundButton
+                primary
+                disabled={state.count === 0 ? true : false}
+                onClick={() => { dispatch({ type: 'decrement' }); handleDecrement(ingredient); }}
+            />
+            <p>{state.count}</p>
+            <RoundButton
+                disabled={state.count === 5 ? true : false}
+                increment
+                primary
+                onClick={() => { dispatch({ type: 'increment' }); handleIncrement(ingredient); }}
+            />
+        </ButtonWrapper>
+    )
+}
+
+const Customize = ({ custom, handleIncrement, handleDecrement }) => {
+    if (!custom) return null;
 
     return (
         <CardWrapper>
             <BackgroundOpacity />
-
             <h2>Customize</h2>
-            <Ingredient>
-                <p>Chili</p>
-                <p>+ 29 kr</p>
-                <CounterButtons />
-            </Ingredient>
 
-            <Ingredient>
-                <p>Chili</p>
-                <p>+ 29 kr</p>
-                <CounterButtons />
-            </Ingredient>
-
-            <Ingredient>
-                <p>Chili</p>
-                <p>+ 29 kr</p>
-                <CounterButtons />
-            </Ingredient>
-
+            {custom.map(ingredient => (
+                <Ingredient key={ingredient.id}>
+                    <p>{ingredient.name}</p>
+                    <p>+ {ingredient.price} kr</p>
+                    <CounterButtons
+                        ingredient={ingredient}
+                        handleIncrement={handleIncrement}
+                        handleDecrement={handleDecrement} />
+                </Ingredient>
+            ))}
         </CardWrapper>
     )
 }

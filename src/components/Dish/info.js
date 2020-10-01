@@ -34,15 +34,13 @@ const BackgroundOpacity = styled.div`
 `;
 
 
-const Info = ({ description, name, imageUrl }) => {
-
-
+const Info = (props) => {
     return (
         <CardWrapper>
             <BackgroundOpacity />
-            <h2>{name}</h2>
-            <p>{description}</p>
-            <Img src={imageUrl} />
+            <h2>{props.name}</h2>
+            <p>{props.description}</p>
+            <Img src={props.imageUrl} />
         </CardWrapper>
 
     )

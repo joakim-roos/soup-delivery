@@ -6,7 +6,26 @@
         "price": "129",
         "imageUrl": "https://firebasestorage.googleapis.com/v0/b/soup-delivery-a8234.appspot.com/o/Tomato_Soup_Info.jpg?alt=media&token=bfbf5378-c6ec-4355-baac-8c38ee703bb1",
         "keywords": "Vegetarian, Cheese, Chili, Cilantro",
-        "ingredients_customizable": "Cheese, Chili, Cilantro",
+        "ingredients_customizable": [
+          {
+            "id": "1",
+            "name": "Chili",
+            "price": "29",
+            "uid": "ab9a1db8-38f6-4fe8-b645-0374cb045194"
+          },
+          {
+            "id": "2",
+            "name": "Cheese",
+            "price": "19",
+            "uid": "f9614389-9117-4096-be67-98dcc531f0dd"
+          },
+          {
+            "id": "3",
+            "name": "Cilantro",
+            "price": "10",
+            "uid": "75d3c94e-dfbc-4172-b9d7-fe7b0092bcf6"
+          }
+        ],
         "description": "This tomato soup is infused with fermented chillies. A medium spicy soup served hot to keep you warm. Topped with homemade buratta cheese.. And some cilantro for freshness and color. (Vegetarian, Glutenfree)",
         "id": "0",
         "uid": "tomato-soup"
@@ -16,7 +35,23 @@
         "price": "129",
         "imageUrl": "https://firebasestorage.googleapis.com/v0/b/soup-delivery-a8234.appspot.com/o/Tomato_Soup_Info.jpg?alt=media&token=bfbf5378-c6ec-4355-baac-8c38ee703bb1",
         "keywords": "Vegetarian, Cheese, Chili, Cilantro",
-        "ingredients_customizable": "Cheese, Chili, Cilantro",
+        "ingredients_customizable": [
+          {
+            "id": "1",
+            "name": "Chili",
+            "price": "29"
+          },
+          {
+            "id": "2",
+            "name": "Cheese",
+            "price": "19"
+          },
+          {
+            "id": "3",
+            "name": "Cilantro",
+            "price": "10"
+          }
+        ],
         "description": "This tomato soup is infused with fermented chillies. A medium spicy soup served hot to keep you warm. Topped with homemade buratta cheese.. And some cilantro for freshness and color. (Vegetarian, Glutenfree)",
         "id": "1",
         "uid": "tomato-soup1"
@@ -26,7 +61,23 @@
         "price": "129",
         "imageUrl": "https://firebasestorage.googleapis.com/v0/b/soup-delivery-a8234.appspot.com/o/Tomato_Soup_Info.jpg?alt=media&token=bfbf5378-c6ec-4355-baac-8c38ee703bb1",
         "keywords": "Vegetarian, Cheese, Chili, Cilantro",
-        "ingredients_customizable": "Cheese, Chili, Cilantro",
+        "ingredients_customizable": [
+          {
+            "id": "1",
+            "name": "Chili",
+            "price": "29"
+          },
+          {
+            "id": "2",
+            "name": "Cheese",
+            "price": "19"
+          },
+          {
+            "id": "3",
+            "name": "Cilantro",
+            "price": "10"
+          }
+        ],
         "description": "This tomato soup is infused with fermented chillies. A medium spicy soup served hot to keep you warm. Topped with homemade buratta cheese.. And some cilantro for freshness and color. (Vegetarian, Glutenfree)",
         "id": "2",
         "uid": "tomato-soup2"
@@ -36,7 +87,23 @@
         "price": "129",
         "imageUrl": "https://firebasestorage.googleapis.com/v0/b/soup-delivery-a8234.appspot.com/o/Tomato_Soup_Info.jpg?alt=media&token=bfbf5378-c6ec-4355-baac-8c38ee703bb1",
         "keywords": "Vegetarian, Cheese, Chili, Cilantro",
-        "ingredients_customizable": "Cheese, Chili, Cilantro",
+        "ingredients_customizable": [
+          {
+            "id": "1",
+            "name": "Chili",
+            "price": "29"
+          },
+          {
+            "id": "2",
+            "name": "Cheese",
+            "price": "19"
+          },
+          {
+            "id": "3",
+            "name": "Cilantro",
+            "price": "10"
+          }
+        ],
         "description": "This tomato soup is infused with fermented chillies. A medium spicy soup served hot to keep you warm. Topped with homemade buratta cheese.. And some cilantro for freshness and color. (Vegetarian, Glutenfree)",
         "id": "3",
         "uid": "tomato-soup3"
@@ -46,7 +113,23 @@
         "price": "129",
         "imageUrl": "https://firebasestorage.googleapis.com/v0/b/soup-delivery-a8234.appspot.com/o/Tomato_Soup_Info.jpg?alt=media&token=bfbf5378-c6ec-4355-baac-8c38ee703bb1",
         "keywords": "Vegetarian, Cheese, Chili, Cilantro",
-        "ingredients_customizable": "Cheese, Chili, Cilantro",
+        "ingredients_customizable": [
+          {
+            "id": "1",
+            "name": "Chili",
+            "price": "29"
+          },
+          {
+            "id": "2",
+            "name": "Cheese",
+            "price": "19"
+          },
+          {
+            "id": "3",
+            "name": "Cilantro",
+            "price": "10"
+          }
+        ],
         "description": "This tomato soup is infused with fermented chillies. A medium spicy soup served hot to keep you warm. Topped with homemade buratta cheese.. And some cilantro for freshness and color. (Vegetarian, Glutenfree)",
         "id": "4",
         "uid": "tomato-soup4"
@@ -56,7 +139,23 @@
         "price": "129",
         "imageUrl": "https://firebasestorage.googleapis.com/v0/b/soup-delivery-a8234.appspot.com/o/Tomato_Soup_Info.jpg?alt=media&token=bfbf5378-c6ec-4355-baac-8c38ee703bb1",
         "keywords": "Vegetarian, Cheese, Chili, Cilantro",
-        "ingredients_customizable": "Cheese, Chili, Cilantro",
+        "ingredients_customizable": [
+          {
+            "id": "1",
+            "name": "Chili",
+            "price": "29"
+          },
+          {
+            "id": "2",
+            "name": "Cheese",
+            "price": "19"
+          },
+          {
+            "id": "3",
+            "name": "Cilantro",
+            "price": "10"
+          }
+        ],
         "description": "This tomato soup is infused with fermented chillies. A medium spicy soup served hot to keep you warm. Topped with homemade buratta cheese.. And some cilantro for freshness and color. (Vegetarian, Glutenfree)",
         "id": "5",
         "uid": "tomato-soup5"
@@ -66,7 +165,23 @@
         "price": "129",
         "imageUrl": "https://firebasestorage.googleapis.com/v0/b/soup-delivery-a8234.appspot.com/o/Tomato_Soup_Info.jpg?alt=media&token=bfbf5378-c6ec-4355-baac-8c38ee703bb1",
         "keywords": "Vegetarian, Cheese, Chili, Cilantro",
-        "ingredients_customizable": "Cheese, Chili, Cilantro",
+        "ingredients_customizable": [
+          {
+            "id": "1",
+            "name": "Chili",
+            "price": "29"
+          },
+          {
+            "id": "2",
+            "name": "Cheese",
+            "price": "19"
+          },
+          {
+            "id": "3",
+            "name": "Cilantro",
+            "price": "10"
+          }
+        ],
         "description": "This tomato soup is infused with fermented chillies. A medium spicy soup served hot to keep you warm. Topped with homemade buratta cheese.. And some cilantro for freshness and color. (Vegetarian, Glutenfree)",
         "id": "6",
         "uid": "tomato-soup6"
@@ -76,7 +191,23 @@
         "price": "129",
         "imageUrl": "https://firebasestorage.googleapis.com/v0/b/soup-delivery-a8234.appspot.com/o/Tomato_Soup_Info.jpg?alt=media&token=bfbf5378-c6ec-4355-baac-8c38ee703bb1",
         "keywords": "Vegetarian, Cheese, Chili, Cilantro",
-        "ingredients_customizable": "Cheese, Chili, Cilantro",
+        "ingredients_customizable": [
+          {
+            "id": "1",
+            "name": "Chili",
+            "price": "29"
+          },
+          {
+            "id": "2",
+            "name": "Cheese",
+            "price": "19"
+          },
+          {
+            "id": "3",
+            "name": "Cilantro",
+            "price": "10"
+          }
+        ],
         "description": "This tomato soup is infused with fermented chillies. A medium spicy soup served hot to keep you warm. Topped with homemade buratta cheese.. And some cilantro for freshness and color. (Vegetarian, Glutenfree)",
         "id": "7",
         "uid": "tomato-soup7"
@@ -89,6 +220,27 @@
         "imageUrl": "",
         "description": "Our homemade Lemon Juice",
         "id": "1"
+      },
+      {
+        "name": "Orange Juice",
+        "price": "39",
+        "imageUrl": "",
+        "description": "Orange Juice from Orangeriet.",
+        "id": "2"
+      },
+      {
+        "name": "Sparkling Water",
+        "price": "39",
+        "imageUrl": "",
+        "description": "Really sparkly water.",
+        "id": "3"
+      },
+      {
+        "name": "Bread",
+        "price": "39",
+        "imageUrl": "",
+        "description": "Magnificent homemade bread.",
+        "id": "4"
       }
     ]
   }

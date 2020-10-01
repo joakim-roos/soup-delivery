@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useState } from 'react'
 import styled from 'styled-components'
 import SVG from 'react-inlinesvg'
 import { baseButton } from '../../style'
@@ -27,13 +27,24 @@ const StyledAddButton = styled.button`
     }
 `;
 
-const AddButton = (props) => (
-  <StyledAddButton {...props}>
-    <span>
-      {props.isAdded ? 'Added' : 'Add'}
-      <Icon src={props.isAdded ? Added : Plus} />
-    </span>
-  </StyledAddButton>
-)
+const AddButton = ({ handleAdd, product }) => {
+  const [isAdded, setIsAdded] = useState(false)
+
+  const onAdded = () => (
+    setIsAdded(!isAdded)
+  )
+
+  return (
+    <StyledAddButton
+      isAdded={isAdded}
+      onClick={() => { onAdded(); handleAdd(product); }}
+    >
+      <span>
+        {isAdded ? 'Added' : 'Add'}
+        <Icon src={isAdded ? Added : Plus} />
+      </span>
+    </StyledAddButton>
+  )
+}
 
 export default AddButton
