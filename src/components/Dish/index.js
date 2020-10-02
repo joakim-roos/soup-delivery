@@ -16,24 +16,48 @@ const INITIAL_ORDER =
     uid: ''
 }
 
+function filterOutByIndex(arr, value) {
+    return arr.filter((val, i) => i !== value)
+}
+function filterOutByValue(arr, value) {
+    return arr.filter(obj => value !== obj.id)
+}
+function findIndexInArray(arr, value) {
+    return arr.findIndex(obj => value === obj.id)
+}
 
 const reducer = (state, action) => {
     let arr;
     switch (action.type) {
         case 'increment':
-            return { ...state, custom: [...state.custom, action.payload] }
+            return {
+                ...state,
+                custom: [...state.custom, action.payload]
+            }
 
         case 'decrement':
-            let index = state.custom.findIndex(obj => action.payload === obj.id)
-            arr = state.custom.filter((val, i) => i !== index);
-            return { ...state, custom: [...arr] }
+            /* let index = state.custom.findIndex(obj => action.payload === obj.id) */
+            let index = findIndexInArray(state.custom, action.payload)
+            /* arr = state.custom.filter((val, i) => i !== index); */
+            arr = filterOutByIndex(state.custom, index)
+            return {
+                ...state,
+                custom: [...arr]
+            }
 
         case 'add':
-            return { ...state, extras: [...state.extras, action.payload] }
+            return {
+                ...state,
+                extras: [...state.extras, action.payload]
+            }
 
         case 'remove':
-            arr = state.extras.filter(obj => action.payload !== obj.id)
-            return { ...state, extras: [...arr] }
+            /* arr = state.extras.filter(obj => action.payload !== obj.id) */
+            arr = filterOutByValue(state.extras, action.payload)
+            return {
+                ...state,
+                extras: [...arr]
+            }
 
         default:
             throw new Error()
