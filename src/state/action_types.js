@@ -10,4 +10,6 @@ export const INCREMENT_BUTTON = 'INCREMENT_BUTTON'
 export const DECREMENT_BUTTON = 'DECREMENT_BUTTON'
 export const SET_BASE_PRICE = 'SET_BASE_PRICE'
 export const TOTAL_PRICE = 'TOTAL_PRICE'
-
+export const ADD_TO_CART = 'ADD_TO_CART'
+export const RESET_ORDER = 'RESET_ORDER'
+export const RESET = 'RESET'

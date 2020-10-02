@@ -1,6 +1,6 @@
-import React, { useContrast } from 'react'
+import React, { useContext } from 'react'
 import styled from 'styled-components'
-import { OrderContext } from '../../context'
+
 
 
 import { baseButton } from '../../style'
@@ -16,10 +16,12 @@ const StyledProceedButton = styled.button`
   padding: .3rem;
 `;
 
-const ProceedButton = (props) => (
-  <StyledProceedButton {...props}>
-    <p>Add to Cart</p>
-  </StyledProceedButton>
-)
+const ProceedButton = (props) => {
+  return (
+    <StyledProceedButton {...props}>
+      <p>Add to Cart</p>
+    </StyledProceedButton>
+  )
+}
 
 export default ProceedButton

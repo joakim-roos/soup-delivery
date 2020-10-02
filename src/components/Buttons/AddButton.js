@@ -1,4 +1,4 @@
-import React, { useState, useContext } from 'react'
+import React, { useState, useContext, useEffect } from 'react'
 import styled from 'styled-components'
 import SVG from 'react-inlinesvg'
 import { baseButton } from '../../style'
@@ -17,8 +17,6 @@ const StyledAddButton = styled.button`
     border-radius: var(--border-rounded-button);
     font-size: var(--size-sm);
     width: 88px;
-    /* padding-top: 0.5rem;
-    padding-bottom: 0.5rem; */
     padding: ${props => props.isAdded ? '.5rem .6rem .5rem .6rem' : '.5rem 1rem .5rem 1rem'};
 
     & span {
@@ -33,17 +31,24 @@ const StyledAddButton = styled.button`
 
 const AddButton = ({ product }) => {
   const [isAdded, setIsAdded] = useState(false)
-  const { dispatch, order } = useContext(OrderContext)
+  const { dispatch, state } = useContext(OrderContext)
+
 
   const onClickHandler = () => {
+    const { extras } = state.order
     setIsAdded(!isAdded)
-    const includes = includesInArray(order.extras, product.id)
+    const includes = includesInArray(extras, product.id)
 
     includes ?
       dispatch(ACTION.remove_extra(product))
       :
       dispatch(ACTION.add_extra(product))
   }
+
+
+  useEffect(() => {
+    setIsAdded(false)
+  }, [state.cart])
 
 
   return (

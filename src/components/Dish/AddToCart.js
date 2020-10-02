@@ -4,6 +4,7 @@ import styled from 'styled-components'
 import { ProceedButton, CounterButtons } from '../Buttons'
 import { OrderContext } from '../../context'
 import { ACTION } from '../../state'
+import { INITIAL_ORDER } from '../../constants/state'
 
 const Panel = styled.div`
     background-color: var(--background);
@@ -23,14 +24,13 @@ const Price = styled.div`
 `;
 
 const AddToCart = () => {
-    const { order, dispatch } = useContext(OrderContext)
-    const { price, base_price, custom, extras, amount } = order
-
+    const { state, dispatch } = useContext(OrderContext)
+    const { price, base_price, custom, extras, amount } = state.order
+    const { order } = state
 
     useEffect(() => {
         if (!custom) return;
         let arr = []
-
         for (let i = 0; i < custom.length; i++) {
             let price = custom[i].price
             arr.push(parseInt(price))
@@ -47,13 +47,21 @@ const AddToCart = () => {
 
     }, [custom, extras, base_price, amount])
 
+    const onClickHandler = () => {
+        dispatch(ACTION.add_to_cart(order))
+        dispatch(ACTION.reset_order(INITIAL_ORDER.order))
+    }
+
+
     return (
         <Panel>
             <CounterButtons
                 isCartButton
                 initialCount={1} />
             <Price>{price} kr</Price>
-            <ProceedButton primary />
+            <ProceedButton
+                onClick={() => onClickHandler()}
+                primary />
         </Panel>
     )
 }

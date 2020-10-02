@@ -5,38 +5,28 @@ import Customize from './Customize'
 import DrinksAndExtras from './DrinksAndExtras'
 import AddToCart from './AddToCart'
 import { OrderContext } from '../../context'
-
+import { INITIAL_ORDER } from '../../constants/state'
 import { orderReducer, ACTION } from '../../state'
 
 
-const INITIAL_ORDER =
-{
-    name: '',
-    custom: [],
-    extras: [],
-    amount: 1,
-    base_price: '',
-    price: '',
-    uid: ''
-}
-
 const DishPage = ({ menu }) => {
-    const [order, dispatch] = useReducer(orderReducer, INITIAL_ORDER)
+    const [state, dispatch] = useReducer(orderReducer, INITIAL_ORDER)
     const [data, setData] = useState()
     const { slug } = useParams()
 
     useEffect(() => {
         if (!menu) return;
-        const data = menu.soups.filter(i => i.uid === slug)
+        let data = menu.soups.filter(i => i.uid === slug)
+
         setData(...data)
         dispatch(ACTION.update_name(data[0].name))
         dispatch(ACTION.set_base_price(data[0].price))
-    }, [menu, slug])
+    }, [menu, slug, state.cart])
 
     if (!data) return null;
     return (
         <>
-            <OrderContext.Provider value={{ order, dispatch }}>
+            <OrderContext.Provider value={{ state, dispatch }}>
                 <Info
                     description={data.description}
                     name={data.name}

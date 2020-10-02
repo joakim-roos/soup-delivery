@@ -7,68 +7,111 @@ const orderReducer = (state, action) => {
     case ACTION_TYPE.INCREMENT_CUSTOM:
       return {
         ...state,
-        custom: [...state.custom, action.payload]
+        order: {
+          ...state.order,
+          custom: [
+            ...state.order.custom,
+            action.payload
+          ]
+        }
       }
 
     case ACTION_TYPE.DECREMENT_CUSTOM:
-      let index = findIndexInArray(state.custom, action.payload)
-      arr = filterOutByIndex(state.custom, index)
+      let index = findIndexInArray(state.order.custom, action.payload)
+      arr = filterOutByIndex(state.order.custom, index)
       return {
         ...state,
-        custom: [...arr]
+        order: {
+          ...state.order,
+          custom: [
+            ...arr
+          ]
+        }
       }
 
     case ACTION_TYPE.ADD_EXTRA:
       return {
         ...state,
-        extras: [...state.extras, action.payload]
+        order: {
+          ...state.order,
+          extras: [
+            ...state.order.extras,
+            action.payload
+          ]
+        }
       }
 
     case ACTION_TYPE.REMOVE_EXTRA:
-      arr = filterOutByValue(state.extras, action.payload)
+      arr = filterOutByValue(state.order.extras, action.payload)
       return {
         ...state,
-        extras: [...arr]
+        order: {
+          ...state.order,
+          extras: [
+            ...arr
+          ]
+        }
       }
 
     case ACTION_TYPE.UPDATE_NAME:
       return {
         ...state,
-        name: action.payload
+        order: {
+          ...state.order,
+          name: action.payload
+        }
       }
 
     case ACTION_TYPE.UPDATE_PRICE:
       return {
         ...state,
-        price: action.payload
+        order: {
+          ...state.order,
+          price: action.payload
+        }
       }
 
     case ACTION_TYPE.INCREMENT_AMOUNT:
       return {
         ...state,
-        amount: action.payload + 1
+        order: {
+          ...state.order,
+          amount: action.payload + 1
+        }
       }
 
     case ACTION_TYPE.DECREMENT_AMOUNT:
       return {
         ...state,
-        amount: action.payload
+        order: {
+          ...state.order,
+          amount: action.payload
+        }
       }
 
     case ACTION_TYPE.SET_BASE_PRICE:
       return {
         ...state,
-        base_price: action.payload
+        order: {
+          ...state.order,
+          base_price: action.payload
+        }
       }
 
-    /*  case ACTION_TYPE.TOTAL_PRICE:
-       return {
-         ...state,
-         price: action.payload
-       } */
+    case ACTION_TYPE.ADD_TO_CART:
+      return {
+        ...state,
+        cart: action.payload
+      }
+
+    case ACTION_TYPE.RESET_ORDER:
+      return {
+        ...state,
+        order: action.payload
+      }
 
     default:
-      throw new Error('Something went wrong, order reducer')
+      throw new Error('Something went wrong!')
   }
 }
 
