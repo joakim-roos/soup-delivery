@@ -19,10 +19,14 @@ export function removeFirstObjectFoundWithID(arr, value) {
   })
 }
 
-/* function removeID(arr, value) {
-    let array = arr
-    let firstMatch = array.findIndex(obj => obj.id === value)
-    array.splice(firstMatch, 1)
-    console.log(array)
-    return array
-} */
+export function filterOutByIndex(arr, value) {
+  return arr.filter((val, i) => i !== value)
+}
+
+export function filterOutByValue(arr, value) {
+  return arr.filter(obj => value !== obj.id)
+}
+
+export function findIndexInArray(arr, value) {
+  return arr.findIndex(obj => value === obj.id)
+}

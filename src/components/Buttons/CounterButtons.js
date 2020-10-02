@@ -1,6 +1,10 @@
-import React, { useReducer } from 'react'
+import React, { useReducer, useContext, useEffect } from 'react'
 import styled from 'styled-components'
-import { RoundButton } from './index'
+import { RoundButton } from '../Buttons'
+import { ACTION_TYPE, ACTION, buttonReducer } from '../../state'
+import { OrderContext } from '../../context'
+import { initializeApp } from 'firebase'
+
 
 const ButtonWrapper = styled.div`
     display: flex;
@@ -14,33 +18,46 @@ const ButtonWrapper = styled.div`
     }
 `;
 
-function reducer(state, action) {
-    switch (action.type) {
-        case 'increment':
-            if (state.count === 5) return { count: 5 }
-            return { count: state.count + 1 };
-        case 'decrement':
-            if (state.count === 0) return { count: 0 }
-            return { count: state.count - 1 };
-        default:
-            throw new Error()
+
+
+const CounterButtons = ({ ingredient, isCartButton, initialCount }) => {
+    const [state, buttonDispatch] = useReducer(buttonReducer, initialCount, init)
+    const { order, dispatch } = useContext(OrderContext)
+
+    function init(initialCount) {
+        return { count: initialCount }
     }
-}
 
-const CounterButtons = () => {
-    const [state, dispatch] = useReducer(reducer, { count: 0 })
+    const onClickHandler = (type) => {
+        buttonDispatch({
+            type: type
+        });
 
+        if (type === ACTION_TYPE.INCREMENT_BUTTON && isCartButton) return dispatch(ACTION.increment_amount(state.count))
+        if (type === ACTION_TYPE.DECREMENT_BUTTON && isCartButton) return dispatch(ACTION.decrement_amount(state.count))
+
+        if (type === ACTION_TYPE.DECREMENT_BUTTON) return dispatch(ACTION.decrement_custom(ingredient))
+        if (type === ACTION_TYPE.INCREMENT_BUTTON) return dispatch(ACTION.increment_custom(ingredient))
+    }
+    const isMinValue = () => {
+        if (isCartButton) {
+            return state.count === 1;
+        } else return state.count === 0;
+    }
     return (
         <ButtonWrapper>
             <RoundButton
-                primary onClick={() => dispatch({ type: 'decrement' })} />
-
+                primary
+                disabled={isMinValue()}
+                onClick={() => onClickHandler(ACTION_TYPE.DECREMENT_BUTTON)}
+            />
             <p>{state.count}</p>
-
             <RoundButton
+                disabled={state.count === 5 ? true : false}
                 increment
                 primary
-                onClick={() => dispatch({ type: 'increment' })} />
+                onClick={() => onClickHandler(ACTION_TYPE.INCREMENT_BUTTON)}
+            />
         </ButtonWrapper>
     )
 }

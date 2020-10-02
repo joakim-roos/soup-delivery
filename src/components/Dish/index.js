@@ -5,67 +5,23 @@ import Customize from './Customize'
 import DrinksAndExtras from './DrinksAndExtras'
 import AddToCart from './AddToCart'
 import { OrderContext } from '../../context'
-import { includesInArray } from '../../helpers'
+
+import { orderReducer, ACTION } from '../../state'
+
 
 const INITIAL_ORDER =
 {
     name: '',
     custom: [],
     extras: [],
-    total: '',
+    amount: 1,
+    base_price: '',
+    price: '',
     uid: ''
 }
 
-function filterOutByIndex(arr, value) {
-    return arr.filter((val, i) => i !== value)
-}
-function filterOutByValue(arr, value) {
-    return arr.filter(obj => value !== obj.id)
-}
-function findIndexInArray(arr, value) {
-    return arr.findIndex(obj => value === obj.id)
-}
-
-const reducer = (state, action) => {
-    let arr;
-    switch (action.type) {
-        case 'increment':
-            return {
-                ...state,
-                custom: [...state.custom, action.payload]
-            }
-
-        case 'decrement':
-            /* let index = state.custom.findIndex(obj => action.payload === obj.id) */
-            let index = findIndexInArray(state.custom, action.payload)
-            /* arr = state.custom.filter((val, i) => i !== index); */
-            arr = filterOutByIndex(state.custom, index)
-            return {
-                ...state,
-                custom: [...arr]
-            }
-
-        case 'add':
-            return {
-                ...state,
-                extras: [...state.extras, action.payload]
-            }
-
-        case 'remove':
-            /* arr = state.extras.filter(obj => action.payload !== obj.id) */
-            arr = filterOutByValue(state.extras, action.payload)
-            return {
-                ...state,
-                extras: [...arr]
-            }
-
-        default:
-            throw new Error()
-    }
-}
-
 const DishPage = ({ menu }) => {
-    const [order, dispatch] = useReducer(reducer, INITIAL_ORDER)
+    const [order, dispatch] = useReducer(orderReducer, INITIAL_ORDER)
     const [data, setData] = useState()
     const { slug } = useParams()
 
@@ -73,41 +29,14 @@ const DishPage = ({ menu }) => {
         if (!menu) return;
         const data = menu.soups.filter(i => i.uid === slug)
         setData(...data)
+        dispatch(ACTION.update_name(data[0].name))
+        dispatch(ACTION.set_base_price(data[0].price))
     }, [menu, slug])
 
-    const handleIncrement = ingredient => {
-        dispatch({
-            type: 'increment',
-            payload: ingredient
-        })
-    }
-    const handleDecrement = ingredient => {
-        dispatch({
-            type: 'decrement',
-            payload: ingredient.id
-        })
-    }
-
-    const handleAdd = (product) => {
-        const includes = includesInArray(order.extras, product.id)
-
-        includes ?
-            dispatch({
-                type: 'remove',
-                payload: product.id
-            }) :
-            dispatch({
-                type: 'add',
-                payload: product
-            })
-    }
-
-
     if (!data) return null;
-
     return (
         <>
-            <OrderContext.Provider value={{ order, handleIncrement, handleDecrement, handleAdd }}>
+            <OrderContext.Provider value={{ order, dispatch }}>
                 <Info
                     description={data.description}
                     name={data.name}

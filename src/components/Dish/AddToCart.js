@@ -1,7 +1,9 @@
-import React from 'react';
+import React, { useContext, useEffect } from 'react';
 
 import styled from 'styled-components'
 import { ProceedButton, CounterButtons } from '../Buttons'
+import { OrderContext } from '../../context'
+import { ACTION } from '../../state'
 
 const Panel = styled.div`
     background-color: var(--background);
@@ -21,10 +23,36 @@ const Price = styled.div`
 `;
 
 const AddToCart = () => {
+    const { order, dispatch } = useContext(OrderContext)
+    const { price, base_price, custom, extras, amount } = order
+
+
+    useEffect(() => {
+        if (!custom) return;
+        let arr = []
+
+        for (let i = 0; i < custom.length; i++) {
+            let price = custom[i].price
+            arr.push(parseInt(price))
+        }
+        for (let j = 0; j < extras.length; j++) {
+            let price = extras[j].price
+            arr.push(parseInt(price))
+        }
+
+        let number = arr.reduce((a, b) => a + b, 0) + parseInt(base_price)
+        number = number * amount
+
+        dispatch(ACTION.update_price(number.toString()))
+
+    }, [custom, extras, base_price, amount])
+
     return (
         <Panel>
-            <CounterButtons />
-            <Price>129 kr</Price>
+            <CounterButtons
+                isCartButton
+                initialCount={1} />
+            <Price>{price} kr</Price>
             <ProceedButton primary />
         </Panel>
     )

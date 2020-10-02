@@ -4,6 +4,10 @@ import SVG from 'react-inlinesvg'
 import { baseButton } from '../../style'
 import { Plus, Added } from '../../images'
 import { OrderContext } from '../../context'
+import { ACTION } from '../../state'
+import { includesInArray } from '../../helpers'
+
+
 const Icon = styled(SVG)`
     display: block;
 `;
@@ -29,16 +33,23 @@ const StyledAddButton = styled.button`
 
 const AddButton = ({ product }) => {
   const [isAdded, setIsAdded] = useState(false)
-  const { handleAdd } = useContext(OrderContext)
+  const { dispatch, order } = useContext(OrderContext)
 
-  const onAdded = () => (
+  const onClickHandler = () => {
     setIsAdded(!isAdded)
-  )
+    const includes = includesInArray(order.extras, product.id)
+
+    includes ?
+      dispatch(ACTION.remove_extra(product))
+      :
+      dispatch(ACTION.add_extra(product))
+  }
+
 
   return (
     <StyledAddButton
       isAdded={isAdded}
-      onClick={() => { onAdded(); handleAdd(product); }}
+      onClick={() => onClickHandler()}
     >
       <span>
         {isAdded ? 'Added' : 'Add'}

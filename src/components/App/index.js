@@ -19,9 +19,6 @@ import * as ROUTES from '../../constants/routes'
 
 import { BackgroundImage } from '../Background'
 
-/* const INITIAL_CART = {
-    products: [],
-} */
 
 function App() {
     const authUser = useAuthentication();
@@ -44,7 +41,6 @@ function App() {
             })
         return () => firebase.menu().off()
     }, [firebase])
-
 
     return (
         <>

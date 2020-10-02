@@ -1,10 +1,7 @@
-import React, { useReducer, useContext } from 'react'
-
+import React from 'react'
 import styled from 'styled-components'
 import { baseCardWrapper, baseBackgroundOpacity } from '../../style'
-import { RoundButton } from '../Buttons'
-
-import { OrderContext } from '../../context'
+import { CounterButtons } from '../Buttons'
 
 const CardWrapper = styled.section`
     ${baseCardWrapper}
@@ -15,17 +12,6 @@ const CardWrapper = styled.section`
     }
 `;
 
-const ButtonWrapper = styled.div`
-    display: flex;
-    align-items: center;
-    
-    & p {
-        width: 15px;
-        text-align: center;
-        font-size: var(--size-xl);
-
-    }
-`;
 
 
 const Ingredient = styled.div`
@@ -45,38 +31,6 @@ const BackgroundOpacity = styled.div`
     ${baseBackgroundOpacity}`;
 
 
-const reducer = (state, action) => {
-    switch (action.type) {
-        case 'increment':
-            return { count: state.count + 1 };
-        case 'decrement':
-            return { count: state.count - 1 };
-        default:
-            throw new Error('Something went wrong')
-    }
-}
-
-const CounterButtons = ({ ingredient }) => {
-    const [state, dispatch] = useReducer(reducer, { count: 0 })
-    const { handleIncrement, handleDecrement } = useContext(OrderContext)
-
-    return (
-        <ButtonWrapper>
-            <RoundButton
-                primary
-                disabled={state.count === 0 ? true : false}
-                onClick={() => { dispatch({ type: 'decrement' }); handleDecrement(ingredient); }}
-            />
-            <p>{state.count}</p>
-            <RoundButton
-                disabled={state.count === 5 ? true : false}
-                increment
-                primary
-                onClick={() => { dispatch({ type: 'increment' }); handleIncrement(ingredient); }}
-            />
-        </ButtonWrapper>
-    )
-}
 
 const Customize = ({ custom }) => {
     if (!custom) return null;
@@ -92,6 +46,7 @@ const Customize = ({ custom }) => {
                     <p>+ {ingredient.price} kr</p>
                     <CounterButtons
                         ingredient={ingredient}
+                        initialCount={0}
                     />
                 </Ingredient>
             ))}
