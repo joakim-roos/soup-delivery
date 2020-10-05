@@ -101,7 +101,10 @@ const orderReducer = (state, action) => {
     case ACTION_TYPE.ADD_TO_CART:
       return {
         ...state,
-        cart: action.payload
+        cart: [
+          ...state.cart,
+          action.payload
+        ]
       }
 
     case ACTION_TYPE.RESET_ORDER:

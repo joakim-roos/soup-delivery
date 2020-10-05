@@ -7,12 +7,14 @@ import AddToCart from './AddToCart'
 import { OrderContext } from '../../context'
 import { INITIAL_ORDER } from '../../constants/state'
 import { orderReducer, ACTION } from '../../state'
+import Modal from './Modal'
 
 
 const DishPage = ({ menu }) => {
     const [state, dispatch] = useReducer(orderReducer, INITIAL_ORDER)
     const [data, setData] = useState()
     const { slug } = useParams()
+    const [isModalOpen, setIsModalOpen] = useState(false)
 
     useEffect(() => {
         if (!menu) return;
@@ -23,10 +25,24 @@ const DishPage = ({ menu }) => {
         dispatch(ACTION.set_base_price(data[0].price))
     }, [menu, slug, state.cart])
 
+    useEffect(() => {
+        setIsModalOpen(true)
+    }, [state.cart])
+
+
+    const handleModal = () => (
+        setIsModalOpen(!isModalOpen)
+    )
+
     if (!data) return null;
     return (
         <>
             <OrderContext.Provider value={{ state, dispatch }}>
+                <Modal
+                    handleModal={handleModal}
+                    isModalOpen={isModalOpen}
+                />
+
                 <Info
                     description={data.description}
                     name={data.name}
@@ -38,8 +54,12 @@ const DishPage = ({ menu }) => {
                 />
 
                 <DrinksAndExtras
-                    addOnProducts={menu.extras} />
-                <AddToCart />
+                    addOnProducts={menu.extras}
+                />
+
+                <AddToCart
+                    handleModal={handleModal}
+                />
             </OrderContext.Provider>
         </>
     )

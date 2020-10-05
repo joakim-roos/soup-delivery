@@ -45,7 +45,7 @@ const AddToCart = () => {
 
         dispatch(ACTION.update_price(number.toString()))
 
-    }, [custom, extras, base_price, amount])
+    }, [custom, extras, base_price, amount, dispatch])
 
     const onClickHandler = () => {
         dispatch(ACTION.add_to_cart(order))
@@ -61,7 +61,10 @@ const AddToCart = () => {
             <Price>{price} kr</Price>
             <ProceedButton
                 onClick={() => onClickHandler()}
-                primary />
+                primary
+            >
+                Add to cart
+                </ProceedButton>
         </Panel>
     )
 }

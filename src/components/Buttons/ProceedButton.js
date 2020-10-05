@@ -19,7 +19,7 @@ const StyledProceedButton = styled.button`
 const ProceedButton = (props) => {
   return (
     <StyledProceedButton {...props}>
-      <p>Add to Cart</p>
+      {props.children}
     </StyledProceedButton>
   )
 }
