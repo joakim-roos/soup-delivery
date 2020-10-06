@@ -25,8 +25,13 @@ const DishPage = ({ menu }) => {
         dispatch(ACTION.set_base_price(data[0].price))
     }, [menu, slug, state.cart])
 
+
     useEffect(() => {
-        setIsModalOpen(true)
+        state.cart.length === 0
+            ?
+            setIsModalOpen(false)
+            :
+            setIsModalOpen(true)
     }, [state.cart])
 
 
@@ -57,9 +62,7 @@ const DishPage = ({ menu }) => {
                     addOnProducts={menu.extras}
                 />
 
-                <AddToCart
-                    handleModal={handleModal}
-                />
+                <AddToCart />
             </OrderContext.Provider>
         </>
     )

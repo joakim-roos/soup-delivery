@@ -37,18 +37,19 @@ const StyledProceedButton = styled(ProceedButton)`
 margin-top: 4rem;
 `;
 
+const defaultOptions = {
+    loop: false,
+    autoplay: false,
+    play: false,
+    /* onComplete: setLottie({ ...lottie, isStopped: true }), */
+    animationData: animationData,
+    rendererSettings: {
+        preserveAspectRatio: 'xMidYMid slice'
+    }
+};
+
 const Modal = ({ handleModal, isModalOpen }) => {
     const [lottie, setLottie] = useState({ isStopped: false })
-    const defaultOptions = {
-        loop: false,
-        autoplay: false,
-        play: false,
-        /* onComplete: setLottie({ ...lottie, isStopped: true }), */
-        animationData: animationData,
-        rendererSettings: {
-            preserveAspectRatio: 'xMidYMid slice'
-        }
-    };
 
     useEffect(() => {
         setTimeout(() => {
@@ -61,6 +62,7 @@ const Modal = ({ handleModal, isModalOpen }) => {
     }, [isModalOpen])
 
     return (
+
         <>
             <BackgroundFilter
                 isModalOpen={isModalOpen}
