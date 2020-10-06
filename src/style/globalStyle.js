@@ -21,6 +21,7 @@ const GlobalStyle = createGlobalStyle`
   --color-yellow: #FFCB40;
   --color-yellow-secondary: #FFE59F;
   --color-gray-light: #949494;
+  --color-gray-lighter: #828282;
   --letter-spacing-wide: 0.3px;
   --letter-spacing-wider: 0.5px;
 }

@@ -1,4 +1,5 @@
 
+import { ACTION } from '.'
 import * as ACTION_TYPE from './action_types'
 
 export const increment_custom = (payload) => {
@@ -74,6 +75,13 @@ export const add_to_cart = (payload) => {
 export const reset_order = (payload) => {
   return {
     type: ACTION_TYPE.RESET_ORDER,
+    payload: payload
+  }
+}
+
+export const total_price = (payload) => {
+  return {
+    type: ACTION_TYPE.TOTAL_PRICE,
     payload: payload
   }
 }

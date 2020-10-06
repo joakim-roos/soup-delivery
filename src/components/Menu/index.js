@@ -1,10 +1,13 @@
-import React, { useState } from 'react'
+import React, { useState, useEffect, useContext, useMemo } from 'react'
 import { Link } from 'react-router-dom'
 import styled from 'styled-components'
 import SVG from 'react-inlinesvg'
 import { Tomato_Soup, Right_Arrow } from '../../images'
 import { baseBackgroundOpacity, baseCardWrapper } from '../../style'
+import { ProceedButton } from '../Buttons'
+import { ACTION } from '../../state'
 
+import { OrderContext } from '../../context'
 const Article = styled.article`
     ${baseCardWrapper}
     display: flex;
@@ -55,6 +58,8 @@ const CourseInfo = styled.div`
 const Panel = styled.div`
     background-color: var(--background);
     display: flex;
+    padding-left: 1rem;
+    padding-right: 1rem;
     justify-content: space-between;
     align-items: center;
     height: 80px;
@@ -62,21 +67,85 @@ const Panel = styled.div`
     bottom: 0;
     left: 0;
     right: 0;
+
+    & div {
+        display: flex;
+        flex-direction: column;
+        /* justify-content: space-between; */
+    }
+    & div p:first-of-type {
+        font-weight: 400;
+        margin-bottom: 0.5rem;
+        font-size: var(--size-sm);
+        color: var(--color-gray-lighter);
+    }
+
+    & div p:last-of-type {
+        font-weight: 500;
+        font-size: var(--size-sm);
+        color: var(--font-color-secondary);
+    }
 `;
 
-const Cart = () => {
+const Cart = ({ cart }) => {
 
     return (
         <Panel>
-            Cart
+            <div>
+                <TotalPrice cart={cart} />
+            </div>
+            <ProceedButton primary>
+                View Cart
+            </ProceedButton>
         </Panel>
     )
 }
 
+function TotalPrice({ cart }) {
+    const calculatedPrice = useMemo(() => {
+        let arr = [];
+        for (let i = 0; i < cart.length; i++) {
+            arr.push(parseInt(cart[i].price))
+        }
+        return arr.reduce((a, b) => a + b, 0)
+    }, [cart])
+
+    return (
+        <>
+            <p>You have {cart.length} soups in the cart.</p>
+            <p>Total: {calculatedPrice} kr</p>
+        </>
+    )
+}
+
+
+
 const MenuPage = ({ menu }) => {
     const [isLoading, setIsLoading] = useState(false)
+    const [isVisible, setIsVisible] = useState(true)
+    const { state, dispatch } = useContext(OrderContext)
+
+    /* const calculateTotalPrice = useMemo(() => {
+        let arr = []
+        let total;
+        for (let i = 0; i < state.cart.length; i++) {
+            arr.push(parseInt(state.cart[i].price))
+            console.log(arr)
+        }
+        total = arr.reduce((a, b) => a + b, 0)
+        return dispatch(ACTION.total_price(total))
+    }, [state.cart]) */
+
+    useEffect(() => {
+        state.cart.length === 0
+            ?
+            setIsVisible(false)
+            :
+            setIsVisible(true)
+    }, [state.cart.length])
 
     if (!menu) return null;
+
     return (
         <>
             {isLoading && <div>Hold on...</div>}
@@ -107,7 +176,14 @@ const MenuPage = ({ menu }) => {
 
                 </Article>
             ))}
-            <Cart></Cart>
+
+            {isVisible
+                ?
+                <Cart cart={state.cart} />
+                :
+                null
+            }
+
         </>
     )
 }

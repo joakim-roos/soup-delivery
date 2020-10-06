@@ -113,6 +113,12 @@ const orderReducer = (state, action) => {
         order: action.payload
       }
 
+    case ACTION_TYPE.TOTAL_PRICE:
+      return {
+        ...state,
+        total_price: action.payload
+      }
+
     default:
       throw new Error('Something went wrong!')
   }

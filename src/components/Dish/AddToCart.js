@@ -13,6 +13,8 @@ const Panel = styled.div`
     align-items: center;
     height: 80px;
     position: sticky;
+    padding-left: 1rem;
+    padding-right: 1rem;
     bottom: 0;
     left: 0;
     right: 0;
@@ -23,7 +25,7 @@ const Price = styled.div`
     color: var(--font-color-secondary);
 `;
 
-const AddToCart = () => {
+const AddToCart = ({ handleModal }) => {
     const { state, dispatch } = useContext(OrderContext)
     const { price, base_price, custom, extras, amount } = state.order
     const { order } = state
@@ -50,6 +52,7 @@ const AddToCart = () => {
     const onClickHandler = () => {
         dispatch(ACTION.add_to_cart(order))
         dispatch(ACTION.reset_order(INITIAL_ORDER.order))
+        handleModal()
     }
 
 
@@ -60,7 +63,7 @@ const AddToCart = () => {
                 initialCount={1} />
             <Price>{price} kr</Price>
             <ProceedButton
-                onClick={() => onClickHandler()}
+                onClick={() => { onClickHandler() }}
                 primary
             >
                 Add to cart

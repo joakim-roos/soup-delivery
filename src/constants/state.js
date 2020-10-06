@@ -8,5 +8,6 @@ export const INITIAL_ORDER = {
         price: '',
         uid: ''
     },
-    cart: []
+    cart: [],
+    total_price: ''
 }
