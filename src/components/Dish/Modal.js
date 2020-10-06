@@ -41,7 +41,6 @@ const defaultOptions = {
     loop: false,
     autoplay: false,
     play: false,
-    /* onComplete: setLottie({ ...lottie, isStopped: true }), */
     animationData: animationData,
     rendererSettings: {
         preserveAspectRatio: 'xMidYMid slice'

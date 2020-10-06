@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useReducer } from 'react'
+import React, { useState, useEffect, useContext } from 'react'
 import { useParams } from 'react-router-dom'
 import Info from './Info'
 import Customize from './Customize'
@@ -11,10 +11,10 @@ import Modal from './Modal'
 
 
 const DishPage = ({ menu }) => {
-    const [state, dispatch] = useReducer(orderReducer, INITIAL_ORDER)
     const [data, setData] = useState()
     const { slug } = useParams()
     const [isModalOpen, setIsModalOpen] = useState(false)
+    const { state, dispatch } = useContext(OrderContext)
 
     useEffect(() => {
         if (!menu) return;
@@ -42,28 +42,28 @@ const DishPage = ({ menu }) => {
     if (!data) return null;
     return (
         <>
-            <OrderContext.Provider value={{ state, dispatch }}>
-                <Modal
-                    handleModal={handleModal}
-                    isModalOpen={isModalOpen}
-                />
 
-                <Info
-                    description={data.description}
-                    name={data.name}
-                    imageUrl={data.imageUrl}
-                />
+            <Modal
+                handleModal={handleModal}
+                isModalOpen={isModalOpen}
+            />
 
-                <Customize
-                    custom={data.ingredients_customizable}
-                />
+            <Info
+                description={data.description}
+                name={data.name}
+                imageUrl={data.imageUrl}
+            />
 
-                <DrinksAndExtras
-                    addOnProducts={menu.extras}
-                />
+            <Customize
+                custom={data.ingredients_customizable}
+            />
 
-                <AddToCart />
-            </OrderContext.Provider>
+            <DrinksAndExtras
+                addOnProducts={menu.extras}
+            />
+
+            <AddToCart />
+
         </>
     )
 }

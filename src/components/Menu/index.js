@@ -52,6 +52,27 @@ const CourseInfo = styled.div`
 }
 `;
 
+const Panel = styled.div`
+    background-color: var(--background);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    height: 80px;
+    position: sticky;
+    bottom: 0;
+    left: 0;
+    right: 0;
+`;
+
+const Cart = () => {
+
+    return (
+        <Panel>
+            Cart
+        </Panel>
+    )
+}
+
 const MenuPage = ({ menu }) => {
     const [isLoading, setIsLoading] = useState(false)
 
@@ -86,6 +107,7 @@ const MenuPage = ({ menu }) => {
 
                 </Article>
             ))}
+            <Cart></Cart>
         </>
     )
 }
