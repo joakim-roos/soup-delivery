@@ -49,20 +49,29 @@ const Navigation = () => {
     const { isHidden, toggleProfileNavigation } = useContext(NavigationContext)
 
 
-
     useEffect(() => {
 
         let path = location.pathname
-
-        const routes = {
-            '/signin': 'Sign In',
-            '/signup': 'Sign Up',
-            '/profile': 'Profile',
-            '/cart': 'Cart',
-            '/checkout': 'Checkout',
+        switch (path) {
+            case '/signin':
+                path = 'Sign In'
+                break;
+            case '/signup':
+                path = 'Sign Up'
+                break;
+            case '/profile':
+                path = 'Hi, Stranger'
+                break;
+            case '/cart':
+                path = 'Cart'
+                break;
+            case '/checkout':
+                path = 'Checkout'
+                break;
+            default:
+                path = 'Menu'
         }
-
-        setPath(path === routes[path] ? routes[path] : 'Menu')
+        setPath(path)
 
         path === '/'
             ?
@@ -70,7 +79,7 @@ const Navigation = () => {
             :
             setIsButtonDisabled(false)
 
-    }, [location])
+    }, [location.pathname])
 
     const onGoBack = (e) => {
         if (history.length === 0) return

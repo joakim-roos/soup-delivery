@@ -1,11 +1,11 @@
 import React, { useState, useEffect, useContext, useMemo } from 'react'
-import { Link } from 'react-router-dom'
+import { Link, useHistory } from 'react-router-dom'
 import styled from 'styled-components'
 import SVG from 'react-inlinesvg'
 import { Tomato_Soup, Right_Arrow } from '../../images'
 import { baseBackgroundOpacity, baseCardWrapper } from '../../style'
 import { ProceedButton } from '../Buttons'
-import { ACTION } from '../../state'
+import * as ROUTES from '../../constants/routes'
 
 import { OrderContext } from '../../context'
 const Article = styled.article`
@@ -88,13 +88,20 @@ const Panel = styled.div`
 `;
 
 const Cart = ({ cart }) => {
+    const history = useHistory()
 
+    const onClickHandler = () => {
+        history.push(ROUTES.CART)
+    }
     return (
         <Panel>
             <div>
                 <TotalPrice cart={cart} />
             </div>
-            <ProceedButton primary>
+            <ProceedButton
+                primary
+                onClick={() => onClickHandler()}
+            >
                 View Cart
             </ProceedButton>
         </Panel>
