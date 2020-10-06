@@ -10,6 +10,7 @@ const Icon = styled(SVG)`
 
 const StyledRoundButton = styled.button`
     ${baseButton}
+    
     border-radius: 50%;
     margin: 0.5rem;
 `;
@@ -17,9 +18,9 @@ const StyledRoundButton = styled.button`
 
 
 const RoundButton = (props) => (
-  <StyledRoundButton {...props}>
-    <Icon src={props.increment ? Plus : Minus} />
-  </StyledRoundButton>
+    <StyledRoundButton {...props}>
+        <Icon src={props.increment ? Plus : Minus} />
+    </StyledRoundButton>
 )
 
 export default RoundButton

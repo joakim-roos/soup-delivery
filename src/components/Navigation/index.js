@@ -73,7 +73,7 @@ const Navigation = () => {
         }
         setPath(path)
 
-        path === '/'
+        location.pathname === '/'
             ?
             setIsButtonDisabled(true)
             :

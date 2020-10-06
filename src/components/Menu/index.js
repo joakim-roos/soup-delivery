@@ -132,17 +132,6 @@ const MenuPage = ({ menu }) => {
     const [isVisible, setIsVisible] = useState(true)
     const { state, dispatch } = useContext(OrderContext)
 
-    /* const calculateTotalPrice = useMemo(() => {
-        let arr = []
-        let total;
-        for (let i = 0; i < state.cart.length; i++) {
-            arr.push(parseInt(state.cart[i].price))
-            console.log(arr)
-        }
-        total = arr.reduce((a, b) => a + b, 0)
-        return dispatch(ACTION.total_price(total))
-    }, [state.cart]) */
-
     useEffect(() => {
         state.cart.length === 0
             ?

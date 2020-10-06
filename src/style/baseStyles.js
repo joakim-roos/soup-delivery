@@ -20,7 +20,7 @@ export const baseCardWrapper = css`
 `;
 
 export const baseButton = css`
-    display: block;
+    display: inline-block;
     padding: .7rem;
     border: none;
     box-shadow: 0 1px 1.5px 0 rgba(0,0,0,.12), 0 1px 1px 0 rgba(0,0,0,.24);

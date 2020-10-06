@@ -10,6 +10,7 @@ const GlobalStyle = createGlobalStyle`
   --font-color-secondary: #4F4F4F;
   --size-xs: 10px;
   --size-sm: 12px;
+  --size-base: 14px;
   --size-md: 16px;
   --size-lg: 20px;
   --size-xl: 22px;
@@ -20,8 +21,8 @@ const GlobalStyle = createGlobalStyle`
   --border-rounded: 4px;
   --color-yellow: #FFCB40;
   --color-yellow-secondary: #FFE59F;
-  --color-gray-light: #949494;
-  --color-gray-lighter: #828282;
+  --color-gray-lighter: #949494;
+  --color-gray-light: #828282;
   --letter-spacing-wide: 0.3px;
   --letter-spacing-wider: 0.5px;
 }
