@@ -140,7 +140,13 @@ const MenuPage = ({ menu }) => {
             setIsVisible(true)
     }, [state.cart.length])
 
+    useEffect(() => {
+        console.log('MENU RAN')
+    }, [])
+
     if (!menu) return null;
+
+
 
     return (
         <>

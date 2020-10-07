@@ -16,15 +16,22 @@ const DishPage = ({ menu }) => {
     const { state, dispatch } = useContext(OrderContext)
     const history = useHistory()
 
-
     useEffect(() => {
         if (!menu) return;
         let data = menu.soups.filter(i => i.uid === slug)
+        setData(data)
+        console.log(data)
+    }, [menu])
 
-        setData(...data)
-        dispatch(ACTION.update_name(data[0].name))
+
+
+    useEffect(() => {
+        if (!data || data === undefined) return;
+        console.log('useEFfect in index dishpage ran')
         dispatch(ACTION.set_base_price(data[0].price))
-    }, [menu, slug, state.cart])
+        dispatch(ACTION.update_name(data[0].name))
+        dispatch(ACTION.set_base_custom(data[0].ingredients_customizable))
+    }, [data, dispatch])
 
 
     const handleClosedModal = () => {
@@ -37,6 +44,7 @@ const DishPage = ({ menu }) => {
     }
 
     if (!data) return null;
+
     return (
         <>
             <Modal
@@ -45,13 +53,13 @@ const DishPage = ({ menu }) => {
             />
 
             <Info
-                description={data.description}
-                name={data.name}
-                imageUrl={data.imageUrl}
+                description={data[0].description}
+                name={data[0].name}
+                imageUrl={data[0].imageUrl}
             />
 
             <Customize
-                custom={data.ingredients_customizable}
+                custom={data[0].ingredients_customizable}
             />
 
             <DrinksAndExtras

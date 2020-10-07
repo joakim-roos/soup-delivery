@@ -2,7 +2,6 @@ import React from 'react'
 import styled from 'styled-components'
 
 import { baseCardWrapper, baseButton, baseBackgroundOpacity } from '../../style'
-import { ProceedButton } from '../Buttons'
 
 const CardWrapper = styled.section`
      ${baseCardWrapper}

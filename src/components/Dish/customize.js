@@ -1,7 +1,8 @@
-import React from 'react'
+import React, { useEffect, useState } from 'react'
 import styled from 'styled-components'
 import { baseCardWrapper, baseBackgroundOpacity } from '../../style'
 import { CounterButtons } from '../Buttons'
+
 
 const CardWrapper = styled.section`
     ${baseCardWrapper}
@@ -11,8 +12,6 @@ const CardWrapper = styled.section`
         font-size: var(--size-xl);
     }
 `;
-
-
 
 const Ingredient = styled.div`
     display: flex;
@@ -31,10 +30,9 @@ const BackgroundOpacity = styled.div`
     ${baseBackgroundOpacity}`;
 
 
-
 const Customize = ({ custom }) => {
-    if (!custom) return null;
 
+    if (!custom) return null;
     return (
         <CardWrapper>
             <BackgroundOpacity />

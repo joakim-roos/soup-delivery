@@ -28,29 +28,30 @@ const Price = styled.div`
 const AddToCart = ({ handleModal }) => {
     const { state, dispatch } = useContext(OrderContext)
     const { price, base_price, custom, extras, amount } = state.order
-    const { order } = state
+
 
     useEffect(() => {
         if (!custom) return;
         let arr = []
         for (let i = 0; i < custom.length; i++) {
-            let price = custom[i].price
+
+            let price = custom[i].price * custom[i].amount
             arr.push(parseInt(price))
         }
         for (let j = 0; j < extras.length; j++) {
             let price = extras[j].price
             arr.push(parseInt(price))
         }
-
+        console.log(base_price)
         let number = arr.reduce((a, b) => a + b, 0) + parseInt(base_price)
         number = number * amount
-
+        console.log('UPDATE PRICE RAN')
         dispatch(ACTION.update_price(number.toString()))
 
     }, [custom, extras, base_price, amount, dispatch])
 
     const onClickHandler = () => {
-        dispatch(ACTION.add_to_cart(order))
+        dispatch(ACTION.add_to_cart(state.order))
         dispatch(ACTION.reset_order(INITIAL_ORDER.order))
         handleModal()
     }

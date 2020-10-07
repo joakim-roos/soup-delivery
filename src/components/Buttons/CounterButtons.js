@@ -5,7 +5,6 @@ import { ACTION_TYPE, ACTION, buttonReducer, initState } from '../../state'
 import { OrderContext } from '../../context'
 
 
-
 const ButtonWrapper = styled.div`
     display: flex;
     align-items: center;
@@ -23,7 +22,7 @@ const ButtonWrapper = styled.div`
 
 const CounterButtons = ({ ingredient, isCartButton, initialCount }) => {
     const [buttonState, buttonDispatch] = useReducer(buttonReducer, initialCount, initState)
-    const { dispatch, state } = useContext(OrderContext)
+    const { state, dispatch } = useContext(OrderContext)
     const { count } = buttonState
 
     useEffect(() => {
@@ -41,8 +40,8 @@ const CounterButtons = ({ ingredient, isCartButton, initialCount }) => {
         if (type === ACTION_TYPE.INCREMENT_BUTTON && isCartButton) return dispatch(ACTION.increment_amount(count))
         if (type === ACTION_TYPE.DECREMENT_BUTTON && isCartButton) return dispatch(ACTION.decrement_amount(count))
 
-        if (type === ACTION_TYPE.INCREMENT_BUTTON) return dispatch(ACTION.increment_custom(ingredient))
-        if (type === ACTION_TYPE.DECREMENT_BUTTON) return dispatch(ACTION.decrement_custom(ingredient))
+        if (type === ACTION_TYPE.INCREMENT_BUTTON) return dispatch(ACTION.increment_custom(ingredient.id, count))
+        if (type === ACTION_TYPE.DECREMENT_BUTTON) return dispatch(ACTION.decrement_custom(ingredient, count))
 
     }
     const isMinValue = () => {

@@ -36,9 +36,9 @@ const Card = styled.div`
         font-weight: 500;
         font-size: var(--size-md);
     }
-    & p {
+    & span {
         color: var(--color-gray-light);
-        font-size: var(--size-sm);
+        font-size: var(--size-xs);
     }
 
     & > :last-child {
@@ -49,7 +49,19 @@ const Card = styled.div`
 `;
 const Ordered = () => {
     const { state, dispatch } = useContext(OrderContext)
-    console.log(state.cart)
+
+
+
+    const customToString = (custom) => {
+        if (custom.amount === 0) {
+            return (
+                <span>No {custom.name}, </span>
+            )
+        } else return (
+            <span>{custom.amount} Extra {custom.name}, </span>
+        )
+    }
+
     return (
         <CardWrapper>
             <BackgroundOpacity />
@@ -60,9 +72,9 @@ const Ordered = () => {
                     <div>
                         <h3>{product.name}</h3>
 
-                        {product.custom.map(custom => (
-                            <p>{custom.name}</p>
-                        ))}
+                        {product.custom.map(custom => {
+                            return customToString(custom)
+                        })}
 
                         {product.extras.map(extras => (
                             <p>{extras.name}</p>

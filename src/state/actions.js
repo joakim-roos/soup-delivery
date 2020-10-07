@@ -1,18 +1,20 @@
 
-import { ACTION } from '.'
 import * as ACTION_TYPE from './action_types'
 
-export const increment_custom = (payload) => {
+export const increment_custom = (payload, count) => {
+
   return {
     type: ACTION_TYPE.INCREMENT_CUSTOM,
     payload: payload,
+    count: count
   }
 }
 
-export const decrement_custom = (payload) => {
+export const decrement_custom = (payload, count) => {
   return {
     type: ACTION_TYPE.DECREMENT_CUSTOM,
-    payload: payload.id
+    payload: payload.id,
+    count: count
   }
 }
 
@@ -38,6 +40,7 @@ export const update_name = (payload) => {
 }
 
 export const increment_amount = (payload) => {
+  console.log(payload)
   return {
     type: ACTION_TYPE.INCREMENT_AMOUNT,
     payload: payload,
@@ -54,6 +57,13 @@ export const decrement_amount = (payload) => {
 export const set_base_price = (payload) => {
   return {
     type: ACTION_TYPE.SET_BASE_PRICE,
+    payload: payload
+  }
+}
+
+export const set_base_custom = (payload) => {
+  return {
+    type: ACTION_TYPE.SET_BASE_CUSTOM,
     payload: payload
   }
 }
