@@ -12,6 +12,10 @@ const Wrapper = styled.header`
     width: 100vw;
     overflow: hidden;
     border-bottom: 1px solid var(--font-color-secondary);
+    background-color: var(--background);
+    position: sticky; 
+    top: 0;
+    z-index: 100;
 
     & > div {
         display: flex;

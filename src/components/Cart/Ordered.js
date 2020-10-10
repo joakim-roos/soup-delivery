@@ -26,9 +26,11 @@ const Card = styled.div`
     margin-top: 10px;
     margin-bottom: 1rem;
     
-    & div {
+    & > div {
         min-width: 8rem;
-        margin-right: 1rem;
+        flex: 1;
+        align-self: stretch;
+        margin-left: 0.5rem;
     }
 
     & h3 {
@@ -47,42 +49,48 @@ const Card = styled.div`
         color: var(--font-color-secondary);
     }
 `;
+
+const customToString = (custom) => (
+    custom.amount === 0
+        ?
+        <span> No {custom.name}. </span>
+        :
+        <span>{custom.amount} Extra {custom.name}. </span>
+)
+
+const extrasToString = extras => (
+    <span key={extras.name}>
+        {extras.name}.
+    </span>
+)
+
+
 const Ordered = () => {
-    const { state, dispatch } = useContext(OrderContext)
-
-
-
-    const customToString = (custom) => {
-        if (custom.amount === 0) {
-            return (
-                <span>No {custom.name}, </span>
-            )
-        } else return (
-            <span>{custom.amount} Extra {custom.name}, </span>
-        )
-    }
+    const { state } = useContext(OrderContext)
 
     return (
         <CardWrapper>
             <BackgroundOpacity />
-
+            <h2>Your Order</h2>
             {state.cart.map(product => (
-                <Card>
-                    <Img src={Lemon_Juice} alt=' ' />
-                    <div>
+                <Card key={product.name + 1}>
+                    <Img src={Lemon_Juice} alt='' />
+                    <div key={product.name + 1}>
                         <h3>{product.name}</h3>
-
-                        {product.custom.map(custom => {
-                            return customToString(custom)
-                        })}
-
-                        {product.extras.map(extras => (
-                            <p>{extras.name}</p>
-                        ))}
+                        <div>
+                            {product.custom.map(custom => (
+                                customToString(custom)
+                            ))}
+                            <br />
+                            {product.extras.map(extras => (
+                                extrasToString(extras)
+                            ))}
+                        </div>
                     </div>
                     <p>{product.price} kr</p>
                 </Card>
             ))}
+
         </CardWrapper>
     )
 }

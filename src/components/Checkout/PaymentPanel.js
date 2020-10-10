@@ -1,8 +1,8 @@
 import React from 'react'
 import styled from 'styled-components'
-import { baseButton } from '../../style'
-import * as ROUTES from '../../constants/routes'
 import { Link } from 'react-router-dom'
+
+import { baseButton } from '../../style'
 
 const Panel = styled.div`
     background-color: var(--background);
@@ -18,27 +18,24 @@ const Panel = styled.div`
     right: 0;
 `;
 
-const Button = styled.button`
+const SubmitButton = styled.button`
     ${baseButton}
     text-decoration: none;
     border-radius: var(--border-rounded-button);
     font-size: var(--size-base);
 `;
 
-
-const CheckoutPanel = ({ handleFormSubmit }) => {
+const PaymentPanel = () => {
 
     return (
         <Panel>
-            <Button
+            <SubmitButton
                 type='submit'
-                form='radioform'
-                onSubmit={(e) => handleFormSubmit(e)}
-            >
-                Checkout
-            </Button>
+                form='payment'>
+                Pay
+            </SubmitButton>
         </Panel>
     )
 }
 
-export default CheckoutPanel
+export default PaymentPanel

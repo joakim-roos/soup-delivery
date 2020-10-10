@@ -1,10 +1,9 @@
-import { ACTION, ACTION_TYPE } from '../state'
-import { findIndexInArray, filterOutByIndex, filterOutByValue, includesInArray } from '../helpers'
+import { ACTION_TYPE } from '../state'
+import { filterOutByValue } from '../helpers'
 
 const orderReducer = (state, action) => {
     let arr;
-    let index;
-    let custom;
+
     switch (action.type) {
         case ACTION_TYPE.INCREMENT_CUSTOM:
             arr = state.order.custom.map((item) => item.id === action.payload
@@ -143,6 +142,16 @@ const orderReducer = (state, action) => {
             return {
                 ...state,
                 total_price: action.payload
+            }
+
+        case ACTION_TYPE.SET_DELIVERY_OPTION:
+            return {
+                ...state,
+                delivery: {
+                    ...state.delivery,
+                    option: action.payload,
+                    price: action.price
+                }
             }
 
         default:

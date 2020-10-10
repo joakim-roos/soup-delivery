@@ -1,5 +1,4 @@
 import React, { useContext, useEffect } from 'react';
-
 import styled from 'styled-components'
 import { ProceedButton, CounterButtons } from '../Buttons'
 import { OrderContext } from '../../context'
@@ -16,16 +15,14 @@ const Panel = styled.div`
     padding-left: 1rem;
     padding-right: 1rem;
     bottom: 0;
-    left: 0;
-    right: 0;
+    z-index: 100;
 `;
 
 const Price = styled.div`
-    margin-left: 2rem;
     color: var(--font-color-secondary);
 `;
 
-const AddToCart = ({ handleModal }) => {
+const AddToCart = ({ handleModal, isModalOpen }) => {
     const { state, dispatch } = useContext(OrderContext)
     const { price, base_price, custom, extras, amount } = state.order
 
@@ -65,6 +62,7 @@ const AddToCart = ({ handleModal }) => {
             <Price>{price} kr</Price>
             <ProceedButton
                 onClick={() => { onClickHandler() }}
+                isModalOpen={isModalOpen}
                 primary
             >
                 Add to cart

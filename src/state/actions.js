@@ -96,10 +96,18 @@ export const total_price = (payload) => {
   }
 }
 
+export const set_delivery_option = (payload, price) => {
+  return {
+    type: ACTION_TYPE.SET_DELIVERY_OPTION,
+    payload: payload,
+    price: price
+  }
+}
+
 
 /////////////
 ///BUTTONS///
-////////////
+/////////////
 
 export const increment_button = () => {
   return {

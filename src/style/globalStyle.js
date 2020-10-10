@@ -1,7 +1,7 @@
 import { createGlobalStyle } from 'styled-components'
 
 const GlobalStyle = createGlobalStyle`
-@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;700&display=swap');
+/* @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;700&display=swap'); */
 /* Poppins font. Weights: 400 (regular), 500 (medium) and 700 (bold) */
 
 :root {
@@ -30,6 +30,7 @@ const GlobalStyle = createGlobalStyle`
 html {
   box-sizing: border-box;
   font-size: 16px;
+  -webkit-text-size-adjust: none;
 }
 
 *{

@@ -67,7 +67,10 @@ const DishPage = ({ menu }) => {
             />
 
             <AddToCart
-                handleModal={handleClosedModal} />
+                handleModal={handleClosedModal}
+                isModalOpen={isModalOpen}
+            />
+
         </>
     )
 }

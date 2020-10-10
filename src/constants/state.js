@@ -9,5 +9,9 @@ export const INITIAL_ORDER = {
         uid: ''
     },
     cart: [],
-    total_price: ''
+    total_price: '',
+    delivery: {
+        option: '',
+        price: ''
+    }
 }

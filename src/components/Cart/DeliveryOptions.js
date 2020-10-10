@@ -1,10 +1,18 @@
-import React from 'react'
+import React, { useReducer, useContext, useState } from 'react'
 import styled from 'styled-components'
+import { OrderContext } from '../../context'
 
 import { baseCardWrapper, baseButton, baseBackgroundOpacity } from '../../style'
 
+import { ACTION } from '../../state'
+
 const CardWrapper = styled.section`
      ${baseCardWrapper}
+     
+     & h2 {
+        font-weight: 500;
+        font-size: var(--size-xl);
+    }
 `;
 
 const BackgroundOpacity = styled.div`
@@ -46,19 +54,36 @@ const Label = styled.label`
   
 `;
 
-const RadioButtonForm = ({ children }) => {
+const RadioButtonForm = ({ children, handleFormSubmit }) => {
+    /* const [state, setState] = useState({ selectedOption: null }) */
+    const { state, dispatch } = useContext(OrderContext)
+
+    console.log(state.delivery)
+    const handleSubmit = (e) => {
+        e.preventDefault()
+        /* handleFormSubmit(state.selectedOption) */
+    }
+
+    const handleOptionsChange = (e, price) => {
+        dispatch(ACTION.set_delivery_option(e.target.value, price))
+    }
+
     return (
         <>
             {children}
 
-            <Form>
+            <Form
+                id='radioform'
+                onSubmit={(e) => handleSubmit(e)}>
                 <Input
                     type='radio'
-                    id='Pick up at restaurant'
-                    value='Pick up at restaurant'
-                    name='Delivery Option' />
+                    id='Pick up'
+                    value='Pick up'
+                    name='Delivery Option'
+                    defaultChecked={state.delivery.option === 'Pick up'}
+                    onChange={(e) => handleOptionsChange(e, 0)} />
                 <Label
-                    htmlFor='Pick up at restaurant'>
+                    htmlFor='Pick up'>
                     Pick up at restaurant
             </Label>
 
@@ -66,7 +91,10 @@ const RadioButtonForm = ({ children }) => {
                     type='radio'
                     id='Delivery'
                     value='Delivery'
-                    name='Delivery Option' />
+                    name='Delivery Option'
+                    defaultChecked={state.delivery.option === 'Delivery'}
+                    onChange={(e) => handleOptionsChange(e, 49)}
+                />
                 <Label htmlFor='Delivery'>
                     Delivery
             </Label>
@@ -74,13 +102,13 @@ const RadioButtonForm = ({ children }) => {
         </>
     )
 }
-const DeliveryOptions = () => {
+const DeliveryOptions = ({ handleFormSubmit }) => {
     return (
         <CardWrapper>
+            <h2>Delivery Options</h2>
             <BackgroundOpacity />
-            <RadioButtonForm>
-                Delivery Options
-            </RadioButtonForm>
+            <RadioButtonForm
+                handleFormSubmit={handleFormSubmit} />
         </CardWrapper >
     )
 }

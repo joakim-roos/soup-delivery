@@ -14,7 +14,7 @@ export const baseBackgroundOpacity = css`
 
 export const baseCardWrapper = css`
     border-radius: var(--border-rounded-card);
-    margin: 10px;
+    margin: 10px 5px;
     padding: 10px;
     position: relative;
 `;
