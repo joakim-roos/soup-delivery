@@ -154,6 +154,28 @@ const orderReducer = (state, action) => {
                 }
             }
 
+        case ACTION_TYPE.SET_DELIVERY_ADDRESS:
+            return {
+                ...state,
+                delivery: {
+                    ...state.delivery,
+                    address: {
+                        ...state.delivery.address,
+                        [action.name]: action.value
+                    }
+                }
+            }
+
+        case ACTION_TYPE.SET_IMAGE:
+            console.log(action.payload)
+            return {
+                ...state,
+                order: {
+                    ...state.order,
+                    image_url: action.payload
+                }
+            }
+
         default:
             throw new Error('Something went wrong!')
     }

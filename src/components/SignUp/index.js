@@ -49,7 +49,6 @@ const SignUpForm = () => {
         firebase
             .doCreateUserWithEmailAndPassword(email, passwordOne)
             .then(authUser => {
-                console.log(roles)
                 return firebase
                     .user(authUser.user.uid)
                     .set({

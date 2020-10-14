@@ -13,24 +13,23 @@ const DishPage = ({ menu }) => {
     const [data, setData] = useState()
     const { slug } = useParams()
     const [isModalOpen, setIsModalOpen] = useState(false)
-    const { state, dispatch } = useContext(OrderContext)
+    const { dispatch } = useContext(OrderContext)
     const history = useHistory()
 
     useEffect(() => {
         if (!menu) return;
         let data = menu.soups.filter(i => i.uid === slug)
         setData(data)
-        console.log(data)
-    }, [menu])
+    }, [menu, slug])
 
 
 
     useEffect(() => {
         if (!data || data === undefined) return;
-        console.log('useEFfect in index dishpage ran')
         dispatch(ACTION.set_base_price(data[0].price))
         dispatch(ACTION.update_name(data[0].name))
         dispatch(ACTION.set_base_custom(data[0].ingredients_customizable))
+        dispatch(ACTION.set_image(data[0].imageUrl))
     }, [data, dispatch])
 
 
@@ -69,6 +68,7 @@ const DishPage = ({ menu }) => {
             <AddToCart
                 handleModal={handleClosedModal}
                 isModalOpen={isModalOpen}
+
             />
 
         </>

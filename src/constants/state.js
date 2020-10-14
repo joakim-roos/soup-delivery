@@ -6,7 +6,8 @@ export const INITIAL_ORDER = {
         amount: 1,
         base_price: '',
         price: '',
-        uid: ''
+        uid: '',
+        image_url: ''
     },
     cart: [],
     total_price: '',

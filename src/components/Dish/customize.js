@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react'
+import React from 'react'
 import styled from 'styled-components'
 import { baseCardWrapper, baseBackgroundOpacity } from '../../style'
 import { CounterButtons } from '../Buttons'

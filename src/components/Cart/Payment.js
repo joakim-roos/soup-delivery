@@ -1,24 +1,30 @@
 import React from 'react'
 import styled, { css } from 'styled-components'
 import { PaymentInputsWrapper, usePaymentInputs } from 'react-payment-inputs'
+import { baseCardWrapper, baseBackgroundOpacity } from '../../style'
 import images from 'react-payment-inputs/images';
-import { baseCardWrapper, baseButton } from '../../style'
-import Address from './Adress'
-import PaymentPanel from './PaymentPanel'
-
-
 
 const CardWrapper = styled.section`
     ${baseCardWrapper}
-    background: pink;
         & h2 {
         font-weight: 500;
         font-size: var(--size-xl);
         }
 `;
 
-const SubmitButton = styled.button`
-    ${baseButton}
+const BackgroundOpacity = styled.div`
+  ${baseBackgroundOpacity}
+
+`;
+
+const CardNumberWrapper = styled.div`
+  background-color: white;
+  border-radius: var(--border-rounded-card);
+  border: 1px solid var(--color-gray-light);
+  padding: 0.5rem;
+  display: flex; 
+  flex-direction: row;
+  justify-content: space-between;
 `;
 
 const Payment = () => {
@@ -35,32 +41,35 @@ const Payment = () => {
             display: flex;
             flex-wrap: wrap;
             height: 100px;
+            justify-content: center;
             border: none;
-            padding: 0 0.5rem;
             border-radius: var(--border-rounded-card);
             background: transparent;
             box-shadow: none;
             `,
             errored: css`
-                border-color: red;
+              border-color: red;
             `,
         },
         input: {
             base: css`
-                border-radius: var(--border-rounded-card);
+              border-radius: var(--border-rounded-card);
+            `,
+
+            expiryDate: css`
                 border: 1px solid var(--color-gray-light);
+                flex-basis: 30%;
+                margin-right: 0.5rem;
                 padding: 0.5rem;
             `,
+
             cardNumber: css`
-                flex-basis: 70%;
             `,
-            expiryDate: css`
-                flex-basis: 30%;
-                margin-left: 2rem;
-                margin-right: 1rem;
-            `,
+
             cvc: css`
                 flex-basis: 30%;
+                padding: 0.5rem;
+                border: 1px solid var(--color-gray-light);
             `,
             focused: css`
                 border-color: blue;
@@ -84,15 +93,20 @@ const Payment = () => {
     return (
         <>
             <CardWrapper>
+                <BackgroundOpacity />
                 <h2>Payment</h2>
                 <form
-                    id='payment'
+                    id='form'
                     onSubmit={(e) => handleSubmit(e)}>
                     <PaymentInputsWrapper styles={style} {...wrapperProps}>
-                        <svg {...getCardImageProps({ images })} />
-                        <input {...getCardNumberProps({ onChange: handleChangeCardNumber })} />
+
+                        <CardNumberWrapper>
+                            <input {...getCardNumberProps({ onChange: handleChangeCardNumber })} />
+                            <svg {...getCardImageProps({ images })} />
+                        </CardNumberWrapper>
                         <input {...getExpiryDateProps({ onChange: handleChangeExpiryDate })} />
                         <input {...getCVCProps({ onChange: handleChangeCVC })} />
+
                     </PaymentInputsWrapper>
                 </form>
             </CardWrapper>
@@ -100,14 +114,4 @@ const Payment = () => {
     )
 }
 
-const CheckoutPage = () => {
-    return (
-        <>
-            <Address></Address>
-            <Payment></Payment>
-            <PaymentPanel></PaymentPanel>
-        </>
-    )
-}
-
-export default CheckoutPage
+export default Payment

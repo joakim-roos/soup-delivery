@@ -1,8 +1,6 @@
 import React from 'react'
 import styled from 'styled-components'
 import { baseButton } from '../../style'
-import * as ROUTES from '../../constants/routes'
-import { Link } from 'react-router-dom'
 
 const Panel = styled.div`
     background-color: var(--background);
@@ -26,14 +24,14 @@ const Button = styled.button`
 `;
 
 
-const CheckoutPanel = ({ handleFormSubmit }) => {
+const CheckoutPanel = ({ handleAddressSubmit, handlePaymentSubmit }) => {
 
     return (
         <Panel>
             <Button
                 type='submit'
-                form='radioform'
-                onSubmit={(e) => handleFormSubmit(e)}
+                form='form'
+
             >
                 Checkout
             </Button>

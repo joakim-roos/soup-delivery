@@ -2,68 +2,64 @@ import React, { useContext } from 'react'
 import styled from 'styled-components'
 import { baseCardWrapper, baseBackgroundOpacity } from '../../style'
 import { OrderContext } from '../../context'
-import { Lemon_Juice } from '../../images'
 
 const CardWrapper = styled.section`
-    ${baseCardWrapper}
+	${baseCardWrapper}
 
-    & h2 {
-        font-weight: 500;
-        font-size: var(--size-xl);
-    }
-`;
+	& h2 {
+		font-weight: 500;
+		font-size: var(--size-xl);
+	}
+`
 const Img = styled.img`
-    border-radius: var(--border-rounded-card);
-`;
+	border-radius: var(--border-rounded-card);
+    width: 80px;
+`
 const BackgroundOpacity = styled.div`
-    ${baseBackgroundOpacity}
-`;
+	${baseBackgroundOpacity}
+`
 
 const Card = styled.div`
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    margin-top: 10px;
-    margin-bottom: 1rem;
-    
-    & > div {
-        min-width: 8rem;
-        flex: 1;
-        align-self: stretch;
-        margin-left: 0.5rem;
-    }
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
+	margin-top: 10px;
+	margin-bottom: 1rem;
 
-    & h3 {
-        width: 150px;
-        font-weight: 500;
-        font-size: var(--size-md);
-    }
-    & span {
-        color: var(--color-gray-light);
-        font-size: var(--size-xs);
-    }
+	& > div {
+		min-width: 8rem;
+		flex: 1;
+		align-self: stretch;
+		margin-left: 0.5rem;
+	}
 
-    & > :last-child {
-        margin-top: 3.5rem;
-        font-size: var(--size-base);
-        color: var(--font-color-secondary);
-    }
-`;
+	& h3 {
+		width: 150px;
+		font-weight: 500;
+		font-size: var(--size-md);
+	}
+	& span {
+		color: var(--color-gray-light);
+		font-size: var(--size-xs);
+	}
 
-const customToString = (custom) => (
-    custom.amount === 0
-        ?
-        <span> No {custom.name}. </span>
-        :
-        <span>{custom.amount} Extra {custom.name}. </span>
-)
+	& > :last-child {
+		margin-top: 3.5rem;
+		font-size: var(--size-base);
+		color: var(--font-color-secondary);
+	}
+`
 
-const extrasToString = extras => (
-    <span key={extras.name}>
-        {extras.name}.
-    </span>
-)
+const customToString = (custom, key) =>
+    custom.amount === 0 ? (
+        <span key={key}> No {custom.name}.{' '}</span>
+    ) : (
+            <span key={key}>
+                {custom.amount} Extra {custom.name}.{' '}
+            </span>
+        )
 
+const extrasToString = (extras) => <span key={extras.name}>{extras.name}.{' '}</span>
 
 const Ordered = () => {
     const { state } = useContext(OrderContext)
@@ -72,25 +68,24 @@ const Ordered = () => {
         <CardWrapper>
             <BackgroundOpacity />
             <h2>Your Order</h2>
-            {state.cart.map(product => (
-                <Card key={product.name + 1}>
-                    <Img src={Lemon_Juice} alt='' />
+            {state.cart.map((product, index) => (
+                <Card key={product.name + index}>
+                    <Img src={product.image_url} alt='' />
                     <div key={product.name + 1}>
                         <h3>{product.name}</h3>
                         <div>
-                            {product.custom.map(custom => (
-                                customToString(custom)
-                            ))}
+                            {product.custom.map((custom, index) =>
+                                customToString(custom, index)
+                            )}
                             <br />
-                            {product.extras.map(extras => (
+                            {product.extras.map((extras) =>
                                 extrasToString(extras)
-                            ))}
+                            )}
                         </div>
                     </div>
                     <p>{product.price} kr</p>
                 </Card>
             ))}
-
         </CardWrapper>
     )
 }

@@ -1,13 +1,15 @@
-import React, { useState, useEffect, useContext, useMemo } from 'react'
+import React, { useState, useEffect, useContext, useRef } from 'react'
 import { Link, useHistory } from 'react-router-dom'
 import styled from 'styled-components'
 import SVG from 'react-inlinesvg'
 import { Tomato_Soup, Right_Arrow } from '../../images'
 import { baseBackgroundOpacity, baseCardWrapper } from '../../style'
-import { ProceedButton } from '../Buttons'
+import CartPanel from './CartPanel'
 import * as ROUTES from '../../constants/routes'
+import Modal from './Modal'
 
-import { OrderContext } from '../../context'
+import { OrderContext, AuthUserContext } from '../../context'
+
 const Article = styled.article`
     ${baseCardWrapper}
     display: flex;
@@ -55,103 +57,61 @@ const CourseInfo = styled.div`
 }
 `;
 
-const Panel = styled.div`
-    background-color: var(--background);
-    display: flex;
-    padding-left: 1rem;
-    padding-right: 1rem;
-    justify-content: space-between;
-    align-items: center;
-    height: 80px;
-    position: sticky;
-    bottom: 0;
-    left: 0;
-    right: 0;
-
-    & div {
-        display: flex;
-        flex-direction: column;
-        /* justify-content: space-between; */
-    }
-    & div p:first-of-type {
-        font-weight: 400;
-        margin-bottom: 0.5rem;
-        font-size: var(--size-sm);
-        color: var(--color-gray-lighter);
-    }
-
-    & div p:last-of-type {
-        font-weight: 500;
-        font-size: var(--size-sm);
-        color: var(--font-color-secondary);
-    }
-`;
-
-const Cart = ({ cart }) => {
-    const history = useHistory()
-
-    const onClickHandler = () => {
-        history.push(ROUTES.CART)
-    }
-    return (
-        <Panel>
-            <div>
-                <TotalPrice cart={cart} />
-            </div>
-            <ProceedButton
-                primary
-                onClick={() => onClickHandler()}
-            >
-                View Cart
-            </ProceedButton>
-        </Panel>
-    )
-}
-
-function TotalPrice({ cart }) {
-    const calculatedPrice = useMemo(() => {
-        let arr = [];
-        for (let i = 0; i < cart.length; i++) {
-            arr.push(parseInt(cart[i].price))
-        }
-        return arr.reduce((a, b) => a + b, 0)
-    }, [cart])
-
-    return (
-        <>
-            <p>You have {cart.length} soups in the cart.</p>
-            <p>Total: {calculatedPrice} kr</p>
-        </>
-    )
-}
-
-
-
 const MenuPage = ({ menu }) => {
-    const [isLoading, setIsLoading] = useState(false)
-    const [isVisible, setIsVisible] = useState(true)
-    const { state, dispatch } = useContext(OrderContext)
+    const [isCartVisible, setIsCartVisible] = useState(false)
+    const { state } = useContext(OrderContext)
+    const [isModalOpen, setIsModalOpen] = useState(false)
+    const history = useHistory()
+    const authUser = useContext(AuthUserContext)
+
+
 
     useEffect(() => {
         state.cart.length === 0
             ?
-            setIsVisible(false)
+            setIsCartVisible(false)
             :
-            setIsVisible(true)
+            setIsCartVisible(true)
     }, [state.cart.length])
 
     useEffect(() => {
-        console.log('MENU RAN')
-    }, [])
+        if (state.cart.length >= 1 && authUser) setIsModalOpen(false)
+    }, [authUser, state.cart.length])
+
+    const onViewCartOnClick = () => {
+        state.cart.length >= 1 && authUser
+            ?
+            history.push(ROUTES.CART)
+            : setIsModalOpen(true)
+    }
+
+    const wrapperRef = useRef(null)
+
+    const useClickOutside = ref => {
+        useEffect(() => {
+
+            const onClickOutside = e => {
+                if (ref.current && !ref.current.contains(e.target)) {
+                    setIsModalOpen(false)
+                }
+            }
+
+            document.addEventListener("mousedown", onClickOutside);
+
+            return () => {
+                document.removeEventListener('mousedown', onClickOutside)
+            }
+        }, [ref])
+    }
 
     if (!menu) return null;
-
-
-
     return (
         <>
-            {isLoading && <div>Hold on...</div>}
-
+            <Modal
+                isModalOpen={isModalOpen}
+                wrapperRef={wrapperRef}
+                useClickOutside={useClickOutside}
+            />
             {menu.soups.map((soup) => (
                 <Article key={soup.id}>
 
@@ -179,9 +139,11 @@ const MenuPage = ({ menu }) => {
                 </Article>
             ))}
 
-            {isVisible
+            {isCartVisible
                 ?
-                <Cart cart={state.cart} />
+                <CartPanel
+                    cart={state.cart}
+                    onButtonClick={onViewCartOnClick} />
                 :
                 null
             }

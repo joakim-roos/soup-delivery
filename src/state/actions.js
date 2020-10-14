@@ -1,4 +1,5 @@
 
+import { ACTION } from '.'
 import * as ACTION_TYPE from './action_types'
 
 export const increment_custom = (payload, count) => {
@@ -40,7 +41,6 @@ export const update_name = (payload) => {
 }
 
 export const increment_amount = (payload) => {
-  console.log(payload)
   return {
     type: ACTION_TYPE.INCREMENT_AMOUNT,
     payload: payload,
@@ -76,6 +76,7 @@ export const update_price = (payload) => {
 }
 
 export const add_to_cart = (payload) => {
+  console.log(payload)
   return {
     type: ACTION_TYPE.ADD_TO_CART,
     payload: payload
@@ -104,6 +105,21 @@ export const set_delivery_option = (payload, price) => {
   }
 }
 
+export const set_delivery_address = (name, value) => {
+  return {
+    type: ACTION_TYPE.SET_DELIVERY_ADDRESS,
+    name: name,
+    value: value,
+  }
+}
+
+export const set_image = (payload) => {
+  return {
+    type: ACTION_TYPE.SET_IMAGE,
+    payload: payload
+  }
+}
+
 
 /////////////
 ///BUTTONS///
@@ -127,6 +143,8 @@ export const reset = (payload) => {
     payload: payload
   }
 }
+
+
 
 
 

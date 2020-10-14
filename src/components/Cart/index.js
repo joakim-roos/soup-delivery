@@ -1,33 +1,30 @@
-import React, { useContext, useEffect } from 'react'
-import styled from 'styled-components'
+import React from 'react'
 import Ordered from './Ordered'
-import DeliveryOptions from './DeliveryOptions'
+import DeliveryAndPayment from './DeliveryAndPayment'
 import SubTotal from './SubTotal'
 import CheckoutPanel from './CheckoutPanel'
-import { ACTION } from '../../state'
-
-import { OrderContext } from '../../context'
+import Payment from './Payment'
 
 const CartPage = (e) => {
-    const { state, dispatch } = useContext(OrderContext)
 
-    const handleFormSubmit = (option) => {
-        console.log(option)
+    const handleAddressSubmit = (option) => {
+
     }
 
-
-
-    /* useEffect(() => {
-        dispatch(ACTION.set_delivery())
-    }, [state.delivery]) */
+    const handlePaymentSubmit = (option) => {
+        console.log('handlePauyment')
+    }
 
     return (
         <>
             <Ordered />
 
-            <DeliveryOptions
-                handleFormSubmit={handleFormSubmit}
+            <DeliveryAndPayment
+                handleAddressSubmit={handleAddressSubmit}
+                handlePaymentSubmit={handlePaymentSubmit}
             />
+
+            <Payment />
 
             <SubTotal />
 
