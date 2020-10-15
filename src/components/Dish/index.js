@@ -23,7 +23,6 @@ const DishPage = ({ menu }) => {
     }, [menu, slug])
 
 
-
     useEffect(() => {
         if (!data || data === undefined) return;
         dispatch(ACTION.set_base_price(data[0].price))
@@ -31,7 +30,6 @@ const DishPage = ({ menu }) => {
         dispatch(ACTION.set_base_custom(data[0].ingredients_customizable))
         dispatch(ACTION.set_image(data[0].imageUrl))
     }, [data, dispatch])
-
 
     const handleClosedModal = () => {
         setIsModalOpen(true)

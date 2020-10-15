@@ -39,10 +39,9 @@ const AddToCart = ({ handleModal, isModalOpen }) => {
             let price = extras[j].price
             arr.push(parseInt(price))
         }
-        console.log(base_price)
+
         let number = arr.reduce((a, b) => a + b, 0) + parseInt(base_price)
         number = number * amount
-        console.log('UPDATE PRICE RAN')
         dispatch(ACTION.update_price(number.toString()))
 
     }, [custom, extras, base_price, amount, dispatch])
@@ -52,7 +51,6 @@ const AddToCart = ({ handleModal, isModalOpen }) => {
         dispatch(ACTION.reset_order(INITIAL_ORDER.order))
         handleModal()
     }
-
 
     return (
         <Panel>

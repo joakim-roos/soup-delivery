@@ -1,6 +1,12 @@
-import React from 'react'
+import React, { useContext } from 'react'
 import styled from 'styled-components'
+import { useHistory } from 'react-router-dom'
 import { baseButton } from '../../style'
+import { useFirebase } from '../Firebase'
+import { AuthUserContext, OrderContext } from '../../context'
+import { v4 as uidv4 } from 'uuid';
+
+import * as ROUTES from '../../constants/routes'
 
 const Panel = styled.div`
     background-color: var(--background);
@@ -25,15 +31,58 @@ const Button = styled.button`
 
 
 const CheckoutPanel = ({ handleAddressSubmit, handlePaymentSubmit }) => {
+    const firebase = useFirebase()
+    const authUser = useContext(AuthUserContext)
+    const { state } = useContext(OrderContext)
+    const history = useHistory()
 
+    const handleOnClick = () => {
+        let today = new Date()
+        let date = today.getFullYear() + '-' + (today.getMonth() + 1) + '-' + today.getDate();
+        let time = today.getHours() + ":" + today.getMinutes();
+        if (state.cart.length === 0) return null;
+
+        const id = uidv4()
+        firebase
+            .user(authUser.uid)
+            .child('orders')
+            .push({
+                id: id,
+                order_created: {
+                    date: date,
+                    time: time
+                },
+                items: { ...state.cart },
+                total_price: state.total_price,
+                delivery: state.delivery,
+            })
+            .then(
+                firebase
+                    .orders().push({
+                        id: id,
+                        order_created: {
+                            date: date,
+                            time: time
+                        },
+                        items: { ...state.cart },
+                        total_price: state.total_price,
+                        delivery: state.delivery,
+                        user: authUser.uid
+                    })
+            )
+        history.push(ROUTES.TRACK_ORDER)
+    }
+    console.log(state.total_price)
     return (
         <Panel>
             <Button
+                primary
+                disabled={state.cart.length === 0}
                 type='submit'
                 form='form'
-
+                onClick={() => handleOnClick()}
             >
-                Checkout
+                Pay {state.total_price} kr
             </Button>
         </Panel>
     )

@@ -13,6 +13,12 @@ export const INITIAL_ORDER = {
     total_price: '',
     delivery: {
         option: '',
-        price: ''
+        price: '',
+        address: {
+            street: null,
+            postal_code: null,
+            phone_number: null,
+            other_info: null
+        }
     }
 }

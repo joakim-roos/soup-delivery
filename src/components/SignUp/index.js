@@ -38,9 +38,7 @@ const SignUpForm = () => {
         const { email, passwordOne, username, isAdmin } = input
 
         const roles = {};
-        const orders = {
-            1495: 'TesT'
-        }
+
         if (isAdmin) {
             roles[ROLES.ADMIN] = ROLES.ADMIN;
         }
@@ -55,7 +53,7 @@ const SignUpForm = () => {
                         username,
                         email,
                         roles,
-                        orders,
+                        orders: {}
                     })
             })
             .then(authUser => {

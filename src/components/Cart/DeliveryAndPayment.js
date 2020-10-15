@@ -1,4 +1,4 @@
-import React, { useContext } from 'react'
+import React, { useContext, useState } from 'react'
 import styled from 'styled-components'
 import { OrderContext } from '../../context'
 import { baseCardWrapper, baseButton, baseBackgroundOpacity } from '../../style'
@@ -101,8 +101,16 @@ const OptionsField = styled.select`
 `;
 
 
+const INITIAL_ERROR = {
+    errors: {
+        street: '',
+        postal_code: '',
+        phone_number: '',
+    }
+}
 const DeliveryAndPayment = ({ handleAddressSubmit, handlePaymentSubmit }) => {
     const { state, dispatch } = useContext(OrderContext)
+    const [error, setError] = useState(INITIAL_ERROR)
 
     const handleFormSubmit = (e) => {
         e.preventDefault()
@@ -114,8 +122,41 @@ const DeliveryAndPayment = ({ handleAddressSubmit, handlePaymentSubmit }) => {
         dispatch(ACTION.set_delivery_option(e.target.value, price))
     }
 
+    /* const PHONE_NUMBER_REG = /^0[7][0-9]{7}$/
+    const STREET_REG = /\d/ */
+
     const handleAddressField = (e) => {
-        dispatch(ACTION.set_delivery_address(e.target.name, e.target.value))
+        const { name, value } = e.target;
+        /* const { phone_number, postal_code, other_info, street } = state.delivery.address
+        const { errors } = error */
+
+        /* switch (name) {
+
+            case 'street':
+                errors.street =
+                    STREET_REG.test(street)
+                        ? 'Address has to include a number.'
+                        : ''
+                break;
+
+            case 'postal_code':
+                errors.postal_code =
+                    postal_code && postal_code.length < 5
+                        ? 'Your postal code has to be 5 digits.'
+                        : ''
+                break;
+
+            case 'phone_number':
+                errors.phone_number =
+                    PHONE_NUMBER_REG.test(phone_number)
+                        ? ''
+                        : 'Phone number is not valid!'
+                break;
+            default:
+                break;
+        }
+        setError({ errors }, () => console.log(error)) */
+        dispatch(ACTION.set_delivery_address(name, value))
     }
 
     return (
@@ -169,6 +210,7 @@ const DeliveryAndPayment = ({ handleAddressSubmit, handlePaymentSubmit }) => {
                             type='text'
                             placeholder='Postal Code'
                             name='postal_code'
+                            maxLength='5'
                             onChange={e => handleAddressField(e)}
                         />
                         <input

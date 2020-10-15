@@ -38,6 +38,8 @@ class Firebase {
 
   users = () => this.db.ref('users');
 
+  orders = () => this.db.ref('orders')
+
   menu = () => this.db.ref('products');
 
   soup = uid => this.db.ref(`soups/${uid}`)

@@ -1,5 +1,5 @@
 import React, { useState, useEffect, useReducer } from 'react'
-import { BrowserRouter as Router, Route, Switch } from 'react-router-dom'
+import { BrowserRouter as Router, Route, Switch, Redirect } from 'react-router-dom'
 import { ThemeProvider } from 'styled-components'
 import { theme, GlobalStyle } from '../../style'
 import MenuPage from '../Menu'
@@ -11,6 +11,8 @@ import ProfilePage from '../Profile'
 import DishPage from '../Dish'
 import Onboard from '../Onboard'
 import Navigation from '../Navigation'
+import AdminPage from '../Admin'
+import TrackOrderPage from '../TrackOrder'
 import ProfileNavigation from '../Profile'
 import { useAuthentication } from '../Session'
 import { useFirebase } from '../Firebase'
@@ -30,7 +32,7 @@ function App() {
     const [menu, setMenu] = useState(JSON.parse(localStorage.getItem('menu')))
     const [state, dispatch] = useReducer(orderReducer, INITIAL_ORDER)
     const toggleProfileNavigation = () => setIsHidden(!isHidden)
-
+    console.log(authUser)
 
     useEffect(() => {
         firebase
@@ -62,12 +64,15 @@ function App() {
 
                                     <Switch>
                                         <Route exact path={ROUTES.MENU} render={() => <MenuPage menu={menu} />} />
+                                        <Route path={ROUTES.ADMIN} component={AdminPage} />
                                         <Route path={ROUTES.CART} component={CartPage} />
                                         <Route path={ROUTES.CHECKOUT} component={CheckoutPage} />
                                         <Route path={ROUTES.SIGN_IN} component={SignInPage} />
                                         <Route path={ROUTES.SIGN_UP} component={SignUpPage} />
                                         <Route path={ROUTES.PROFILE} component={ProfilePage} />
-                                        <Route path={ROUTES.DISH} render={() => <DishPage menu={menu} />} />
+                                        <Route path={ROUTES.TRACK_ORDER} component={TrackOrderPage} />
+                                        <Route exact path={ROUTES.DISH} render={() => <DishPage menu={menu} />} />
+                                        <Redirect from={'*'} to={ROUTES.MENU} />
                                     </Switch>
 
                                 </main>

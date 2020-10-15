@@ -131,7 +131,7 @@ const MenuPage = ({ menu }) => {
                         <p>
                             {soup.price} kr
                         </p>
-                        <StyledLink to={`/${soup.uid}`}>
+                        <StyledLink to={`/menu/${soup.uid}`}>
                             <StyledSVG src={Right_Arrow} />
                         </StyledLink>
                     </CourseInfo>
