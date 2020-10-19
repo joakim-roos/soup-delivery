@@ -12,7 +12,6 @@ import { orderReducer } from '../../state'
 import Routing from './Routing'
 
 
-
 function App() {
     const authUser = useAuthentication();
     const firebase = useFirebase()

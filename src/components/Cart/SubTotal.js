@@ -40,14 +40,20 @@ const BackgroundOpacity = styled.div`
 
 const SubTotal = () => {
     const { state, dispatch } = useContext(OrderContext)
+    // tood: destructure
 
     useEffect(() => {
-        let arr = []
-        arr = state.cart.map(item => (
+        //let arr = []
+        /* arr = state.cart.map(item => (
             parseInt(item.price)
         ))
+ */
+        //arr = state.cart.map(({ price }) => Number(price));
 
-        let total = arr.reduce((a, b) => a + b, 0)
+        // let total = arr.reduce((a, b) => a + b, 0)
+
+        // let total = state.cart.map(({ price }) => Number(price)).reduce((a, b) => a + b, 0)
+        let total = state.cart.reduce((a, b) => a + parseInt(b.price), 0)
 
         dispatch(ACTION.total_price(total))
     }, [state.cart, dispatch])

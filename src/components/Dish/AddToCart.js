@@ -44,6 +44,7 @@ const AddToCart = () => {
 
         let number = arr.reduce((a, b) => a + b, 0) + parseInt(base_price)
         number = number * amount
+        if (!number) number = 0
         dispatch(ACTION.update_price(number.toString()))
 
     }, [custom, extras, base_price, amount, dispatch])
