@@ -10,7 +10,6 @@ const useAuthorization = condition => {
   const history = useHistory()
 
   useEffect(() => {
-    console.log('useEffect inside useAuthoriz ran');
     const listener = firebase.auth.onAuthStateChanged(
       authUser => {
 
@@ -29,7 +28,6 @@ const useAuthorization = condition => {
                 email: authUser.email,
                 ...dbUser
               }
-              console.log(authUser)
               if (!condition(authUser)) history.push(ROUTES.SIGN_IN)
             })
         }

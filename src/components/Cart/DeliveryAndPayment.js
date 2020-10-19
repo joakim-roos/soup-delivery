@@ -80,25 +80,25 @@ const AddressField = styled.div`
     }
 `;
 
-const OptionsField = styled.select`
+/* const OptionsField = styled.select`
     display: block;
-	font-size: 16px;
-	color: var(--font-color-secondary);
-	line-height: 1.3;
-	padding: .6rem;
-	width: 100%;
-	max-width: 100%;
-	box-sizing: border-box;
-	margin: 0;
-	border: 1px solid var(--color-gray-light);
-	box-shadow: 0 1px 0 1px rgba(0,0,0,.04);
-	border-radius: var(--border-rounded-card);
-	-moz-appearance: none;
-	-webkit-appearance: none;
-	appearance: none;
-	background-color: #fff;
+    font-size: 16px;
+    color: var(--font-color-secondary);
+    line-height: 1.3;
+    padding: .6rem;
+    width: 100%;
+    max-width: 100%;
+    box-sizing: border-box;
+    margin: 0;
+    border: 1px solid var(--color-gray-light);
+    box-shadow: 0 1px 0 1px rgba(0,0,0,.04);
+    border-radius: var(--border-rounded-card);
+    -moz-appearance: none;
+    -webkit-appearance: none;
+    appearance: none;
+    background-color: #fff;
 
-`;
+`; */
 
 
 const INITIAL_ERROR = {
@@ -110,7 +110,7 @@ const INITIAL_ERROR = {
 }
 const DeliveryAndPayment = ({ handleAddressSubmit, handlePaymentSubmit }) => {
     const { state, dispatch } = useContext(OrderContext)
-    const [error, setError] = useState(INITIAL_ERROR)
+    /* const [error, setError] = useState(INITIAL_ERROR) */
 
     const handleFormSubmit = (e) => {
         e.preventDefault()

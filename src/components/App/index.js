@@ -1,38 +1,30 @@
 import React, { useState, useEffect, useReducer } from 'react'
-import { BrowserRouter as Router, Route, Switch, Redirect } from 'react-router-dom'
+import { BrowserRouter as Router } from 'react-router-dom'
 import { ThemeProvider } from 'styled-components'
 import { theme, GlobalStyle } from '../../style'
-import MenuPage from '../Menu'
-import CartPage from '../Cart'
-import CheckoutPage from '../Checkout'
-import SignInPage from '../SignIn'
-import SignUpPage from '../SignUp'
-import ProfilePage from '../Profile'
-import DishPage from '../Dish'
-import Onboard from '../Onboard'
-import Navigation from '../Navigation'
-import AdminPage from '../Admin'
-import TrackOrderPage from '../TrackOrder'
-import ProfileNavigation from '../Profile'
+
 import { useAuthentication } from '../Session'
 import { useFirebase } from '../Firebase'
-import { NavigationContext, AuthUserContext, OrderContext } from '../../context'
+import { NavigationContext, AuthUserContext, OrderContext, ModalContext } from '../../context'
 import { INITIAL_ORDER } from '../../constants/state'
 import { orderReducer } from '../../state'
 
-import * as ROUTES from '../../constants/routes'
+import Routing from './Routing'
 
-import { BackgroundImage } from '../Background'
 
 
 function App() {
     const authUser = useAuthentication();
     const firebase = useFirebase()
     const [isHidden, setIsHidden] = useState(true)
+    const [isModalOpen, setIsModalOpen] = useState(false)
     const [menu, setMenu] = useState(JSON.parse(localStorage.getItem('menu')))
     const [state, dispatch] = useReducer(orderReducer, INITIAL_ORDER)
+
     const toggleProfileNavigation = () => setIsHidden(!isHidden)
-    console.log(authUser)
+    const toggleModal = (val) => setIsModalOpen(val)
+    const handleClosedModal = () => setIsModalOpen(true)
+    const handleOpenModal = () => setIsModalOpen(false)
 
     useEffect(() => {
         firebase
@@ -47,42 +39,34 @@ function App() {
     }, [firebase])
 
     return (
-        <>
+        <Router>
             <AuthUserContext.Provider value={authUser}>
                 <ThemeProvider theme={theme}>
-                    <NavigationContext.Provider value={{ isHidden, toggleProfileNavigation }}>
-                        <OrderContext.Provider value={{ state, dispatch }}>
-                            <GlobalStyle />
-                            <Onboard />
-                            <BackgroundImage />
+                    <NavigationContext.Provider value={{
+                        isHidden,
+                        toggleProfileNavigation
+                    }}>
+                        <OrderContext.Provider value={{
+                            state,
+                            dispatch
+                        }}>
+                            <ModalContext.Provider value={{
+                                isModalOpen,
+                                handleOpenModal,
+                                handleClosedModal,
+                                toggleModal
+                            }}>
+                                <GlobalStyle />
 
-                            <Router>
-                                <Navigation />
-                                <ProfileNavigation />
+                                <Routing menu={menu} />
 
-                                <main style={{ position: 'relative', background: 'transparent', height: 'calc(100vh - 57px)', overflow: 'scroll' }}>
-
-                                    <Switch>
-                                        <Route exact path={ROUTES.MENU} render={() => <MenuPage menu={menu} />} />
-                                        <Route path={ROUTES.ADMIN} component={AdminPage} />
-                                        <Route path={ROUTES.CART} component={CartPage} />
-                                        <Route path={ROUTES.CHECKOUT} component={CheckoutPage} />
-                                        <Route path={ROUTES.SIGN_IN} component={SignInPage} />
-                                        <Route path={ROUTES.SIGN_UP} component={SignUpPage} />
-                                        <Route path={ROUTES.PROFILE} component={ProfilePage} />
-                                        <Route path={ROUTES.TRACK_ORDER} component={TrackOrderPage} />
-                                        <Route exact path={ROUTES.DISH} render={() => <DishPage menu={menu} />} />
-                                        <Redirect from={'*'} to={ROUTES.MENU} />
-                                    </Switch>
-
-                                </main>
-
-                            </Router>
+                            </ModalContext.Provider>
                         </OrderContext.Provider>
                     </NavigationContext.Provider>
                 </ThemeProvider>
             </AuthUserContext.Provider>
-        </>
+        </Router>
+
     )
 }
 

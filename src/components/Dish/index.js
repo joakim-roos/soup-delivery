@@ -1,20 +1,18 @@
 import React, { useState, useEffect, useContext } from 'react'
-import { useParams, useHistory } from 'react-router-dom'
+import { useParams } from 'react-router-dom'
 import Info from './Info'
 import Customize from './Customize'
 import DrinksAndExtras from './DrinksAndExtras'
 import AddToCart from './AddToCart'
+import Layout from '../Layout'
 import { OrderContext } from '../../context'
 import { ACTION } from '../../state'
-import Modal from './Modal'
-import * as ROUTES from '../../constants/routes'
+
 
 const DishPage = ({ menu }) => {
     const [data, setData] = useState()
     const { slug } = useParams()
-    const [isModalOpen, setIsModalOpen] = useState(false)
     const { dispatch } = useContext(OrderContext)
-    const history = useHistory()
 
     useEffect(() => {
         if (!menu) return;
@@ -31,23 +29,11 @@ const DishPage = ({ menu }) => {
         dispatch(ACTION.set_image(data[0].imageUrl))
     }, [data, dispatch])
 
-    const handleClosedModal = () => {
-        setIsModalOpen(true)
-    }
-
-    const handleOpenModal = () => {
-        setIsModalOpen(false)
-        history.push(ROUTES.MENU)
-    }
 
     if (!data) return null;
 
     return (
-        <>
-            <Modal
-                handleModal={handleOpenModal}
-                isModalOpen={isModalOpen}
-            />
+        <Layout>
 
             <Info
                 description={data[0].description}
@@ -63,13 +49,8 @@ const DishPage = ({ menu }) => {
                 addOnProducts={menu.extras}
             />
 
-            <AddToCart
-                handleModal={handleClosedModal}
-                isModalOpen={isModalOpen}
-
-            />
-
-        </>
+            <AddToCart />
+        </Layout>
     )
 }
 

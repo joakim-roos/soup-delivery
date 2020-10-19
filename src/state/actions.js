@@ -1,5 +1,3 @@
-
-import { ACTION } from '.'
 import * as ACTION_TYPE from './action_types'
 
 export const increment_custom = (payload, count) => {

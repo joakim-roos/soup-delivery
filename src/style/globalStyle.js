@@ -1,8 +1,6 @@
 import { createGlobalStyle } from 'styled-components'
 
 const GlobalStyle = createGlobalStyle`
-/* @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;700&display=swap'); */
-/* Poppins font. Weights: 400 (regular), 500 (medium) and 700 (bold) */
 
 :root {
   --background: #F5F5F5;
@@ -27,25 +25,40 @@ const GlobalStyle = createGlobalStyle`
   --letter-spacing-wider: 0.5px;
 }
 
+
+/* @media screen and (min-width: 500px) {
+  #root {
+  border: 4px solid black;
+  margin: 1rem;
+  overflow: hidden;
+}
+} */
+
 html {
   box-sizing: border-box;
   font-size: 16px;
   -webkit-text-size-adjust: none;
+  margin: auto;
+  
 }
 
 *{
   box-sizing: border-box;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+  max-width: 400px;
 }
+
 
 
 body {
   background-color: var(--background);
+  
 }
 
 html {
   color: var(--font-color-primary);
+  
 }
 
 *, *:before, *:after {

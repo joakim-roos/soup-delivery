@@ -4,6 +4,8 @@ import { ProceedButton, CounterButtons } from '../Buttons'
 import { OrderContext } from '../../context'
 import { ACTION } from '../../state'
 import { INITIAL_ORDER } from '../../constants/state'
+import { ModalContext } from '../../context'
+
 
 const Panel = styled.div`
     background-color: var(--background);
@@ -22,10 +24,10 @@ const Price = styled.div`
     color: var(--font-color-secondary);
 `;
 
-const AddToCart = ({ handleModal, isModalOpen }) => {
+const AddToCart = () => {
     const { state, dispatch } = useContext(OrderContext)
     const { price, base_price, custom, extras, amount } = state.order
-
+    const { isModalOpen, toggleModal } = useContext(ModalContext)
 
     useEffect(() => {
         if (!custom) return;
@@ -49,7 +51,7 @@ const AddToCart = ({ handleModal, isModalOpen }) => {
     const onClickHandler = () => {
         dispatch(ACTION.add_to_cart(state.order))
         dispatch(ACTION.reset_order(INITIAL_ORDER.order))
-        handleModal()
+        toggleModal(true)
     }
 
     return (
@@ -59,7 +61,7 @@ const AddToCart = ({ handleModal, isModalOpen }) => {
                 initialCount={1} />
             <Price>{price} kr</Price>
             <ProceedButton
-                onClick={() => { onClickHandler() }}
+                onClick={() => onClickHandler()}
                 isModalOpen={isModalOpen}
                 primary
             >

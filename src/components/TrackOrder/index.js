@@ -1,6 +1,6 @@
 import React from 'react'
 import styled from 'styled-components'
-
+import Layout from '../Layout'
 import { baseCardWrapper, baseBackgroundOpacity } from '../../style'
 
 const CardWrapper = styled.div`
@@ -47,14 +47,17 @@ const UntilDelivery = () => {
 
 const TrackOrderPage = () => {
     return (
-        <>
-            <UntilDelivery></UntilDelivery>
-            <CardWrapper>
-                <BackgroundOpacity />
-                <span>Order Number: #23954</span>
-                <span>Delivery Adress: Lotta Svärds Gränd 3</span>
-            </CardWrapper>
-        </>
+        <Layout>
+            <div>
+                <UntilDelivery></UntilDelivery>
+                <CardWrapper>
+                    <BackgroundOpacity />
+                    <span>Order Number: #23954</span>
+                    <span>Delivery Adress: Lotta Svärds Gränd 3</span>
+                </CardWrapper>
+
+            </div>
+        </Layout>
     )
 }
 

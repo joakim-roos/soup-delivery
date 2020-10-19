@@ -23,8 +23,6 @@ const CardWrapper = styled.section`
     }
 `;
 
-
-
 const Img = (props) => (
     <img src={props.src} alt='' />
 )

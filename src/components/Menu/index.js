@@ -1,14 +1,13 @@
-import React, { useState, useEffect, useContext, useRef } from 'react'
+import React, { useState, useEffect, useContext } from 'react'
 import { Link, useHistory } from 'react-router-dom'
 import styled from 'styled-components'
 import SVG from 'react-inlinesvg'
-import { Tomato_Soup, Right_Arrow } from '../../images'
-import { baseBackgroundOpacity, baseCardWrapper } from '../../style'
 import CartPanel from './CartPanel'
 import * as ROUTES from '../../constants/routes'
-import Modal from './Modal'
-
-import { OrderContext, AuthUserContext } from '../../context'
+import Layout from '../Layout'
+import { Tomato_Soup, Right_Arrow } from '../../images'
+import { baseBackgroundOpacity, baseCardWrapper } from '../../style'
+import { OrderContext, AuthUserContext, ModalContext } from '../../context'
 
 const Article = styled.article`
     ${baseCardWrapper}
@@ -60,11 +59,9 @@ const CourseInfo = styled.div`
 const MenuPage = ({ menu }) => {
     const [isCartVisible, setIsCartVisible] = useState(false)
     const { state } = useContext(OrderContext)
-    const [isModalOpen, setIsModalOpen] = useState(false)
+    const { toggleModal } = useContext(ModalContext)
     const history = useHistory()
     const authUser = useContext(AuthUserContext)
-
-
 
     useEffect(() => {
         state.cart.length === 0
@@ -75,43 +72,21 @@ const MenuPage = ({ menu }) => {
     }, [state.cart.length])
 
     useEffect(() => {
-        if (state.cart.length >= 1 && authUser) setIsModalOpen(false)
-    }, [authUser, state.cart.length])
+        if (state.cart.length >= 1 && authUser) toggleModal(false)
+    }, [authUser, state.cart.length, toggleModal])
 
     const onViewCartOnClick = () => {
         state.cart.length >= 1 && authUser
             ?
             history.push(ROUTES.CART)
-            : setIsModalOpen(true)
+            : toggleModal(true)
     }
 
-    const wrapperRef = useRef(null)
-
-    const useClickOutside = ref => {
-        useEffect(() => {
-
-            const onClickOutside = e => {
-                if (ref.current && !ref.current.contains(e.target)) {
-                    setIsModalOpen(false)
-                }
-            }
-
-            document.addEventListener("mousedown", onClickOutside);
-
-            return () => {
-                document.removeEventListener('mousedown', onClickOutside)
-            }
-        }, [ref])
-    }
 
     if (!menu) return null;
     return (
-        <>
-            <Modal
-                isModalOpen={isModalOpen}
-                wrapperRef={wrapperRef}
-                useClickOutside={useClickOutside}
-            />
+        <Layout>
+
             {menu.soups.map((soup) => (
                 <Article key={soup.id}>
 
@@ -148,7 +123,7 @@ const MenuPage = ({ menu }) => {
                 null
             }
 
-        </>
+        </Layout>
     )
 }
 

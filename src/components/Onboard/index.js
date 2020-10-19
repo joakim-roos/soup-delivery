@@ -2,7 +2,7 @@ import React, { useState } from 'react'
 import styled from 'styled-components'
 import { Logo_Onboard } from '../../images';
 
-import { BackgroundImage } from '../Background'
+import BackgroundImage from '../Background'
 
 const Modal = styled.div`
     position: absolute;

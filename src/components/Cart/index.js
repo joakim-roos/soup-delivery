@@ -7,6 +7,8 @@ import Payment from './Payment'
 import * as ROUTES from '../../constants/routes'
 import { AuthUserContext } from '../../context'
 import { useHistory } from 'react-router-dom'
+import Layout from '../Layout'
+
 
 const CartPage = (e) => {
     const authUser = useContext(AuthUserContext)
@@ -25,7 +27,7 @@ const CartPage = (e) => {
     }
 
     return (
-        <>
+        <Layout>
             <Ordered />
 
             <DeliveryAndPayment
@@ -39,7 +41,7 @@ const CartPage = (e) => {
 
             <CheckoutPanel
             />
-        </>
+        </Layout>
     )
 }
 

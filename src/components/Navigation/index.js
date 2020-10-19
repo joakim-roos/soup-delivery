@@ -9,7 +9,6 @@ import { NavigationContext } from '../../context'
 
 const Wrapper = styled.header`
     height: 57px;
-    width: 100vw;
     overflow: hidden;
     border-bottom: 1px solid var(--font-color-secondary);
     background-color: var(--background);
@@ -71,6 +70,9 @@ const Navigation = () => {
                 break;
             case '/checkout':
                 path = 'Checkout'
+                break;
+            case '/admin':
+                path = 'Admin'
                 break;
             default:
                 path = 'Menu'

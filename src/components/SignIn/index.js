@@ -1,6 +1,7 @@
 import React, { useState } from 'react'
 import { useFirebase } from '../Firebase'
 import { useHistory } from 'react-router-dom'
+import Layout from '../Layout'
 
 import * as ROUTES from '../../constants/routes'
 
@@ -45,29 +46,31 @@ const SignInForm = () => {
     }
 
     return (
-        <form onSubmit={(e) => onSubmit(e)}>
+        <Layout>
+            <form onSubmit={(e) => onSubmit(e)}>
 
-            <input
-                name="email"
-                value={input.email}
-                onChange={(e) => onChange(e)}
-                type="text" placeholder="Email"
-            />
+                <input
+                    name="email"
+                    value={input.email}
+                    onChange={(e) => onChange(e)}
+                    type="text" placeholder="Email"
+                />
 
-            <input
-                name="password"
-                value={input.password}
-                onChange={(e) => onChange(e)} type="password"
-                placeholder="Password"
-            />
+                <input
+                    name="password"
+                    value={input.password}
+                    onChange={(e) => onChange(e)} type="password"
+                    placeholder="Password"
+                />
 
-            <button disabled={isInvalid} type="submit">
-                Sign In
+                <button disabled={isInvalid} type="submit">
+                    Sign In
             </button>
 
-            {error && <p>{error.message}</p>}
+                {error && <p>{error.message}</p>}
 
-        </form>
+            </form>
+        </Layout>
     )
 }
 

@@ -1,6 +1,6 @@
 import React, { useContext } from 'react'
 import styled from 'styled-components'
-import { BackgroundImage } from '../Background'
+import BackgroundImage from '../Background'
 import SignOutButton from '../SignOut'
 
 import { NavigationContext } from '../../context'
@@ -11,7 +11,6 @@ const Modal = styled.div`
     background-color: var(--background);
     display: ${props => props.isHidden ? 'none' : 'block'};
     margin-top: 57px;
-    width: 100vw; 
     min-height: calc(100vh -57px); 
     top: 0;
     left: 0;

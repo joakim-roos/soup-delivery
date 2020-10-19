@@ -30,7 +30,7 @@ const Button = styled.button`
 `;
 
 
-const CheckoutPanel = ({ handleAddressSubmit, handlePaymentSubmit }) => {
+const CheckoutPanel = () => {
     const firebase = useFirebase()
     const authUser = useContext(AuthUserContext)
     const { state } = useContext(OrderContext)
@@ -43,12 +43,13 @@ const CheckoutPanel = ({ handleAddressSubmit, handlePaymentSubmit }) => {
         if (state.cart.length === 0) return null;
 
         const id = uidv4()
+
         firebase
             .user(authUser.uid)
             .child('orders')
             .push({
                 id: id,
-                order_created: {
+                created_at: {
                     date: date,
                     time: time
                 },
@@ -60,7 +61,7 @@ const CheckoutPanel = ({ handleAddressSubmit, handlePaymentSubmit }) => {
                 firebase
                     .orders().push({
                         id: id,
-                        order_created: {
+                        created_at: {
                             date: date,
                             time: time
                         },
@@ -72,7 +73,7 @@ const CheckoutPanel = ({ handleAddressSubmit, handlePaymentSubmit }) => {
             )
         history.push(ROUTES.TRACK_ORDER)
     }
-    console.log(state.total_price)
+
     return (
         <Panel>
             <Button

@@ -7,12 +7,15 @@ export const NavigationContext = createContext({
 
 export const OrderContext = createContext({
   order: [],
-  handleAdd: () => { },
-  handleIncrement: () => { },
-  handleDecrement: () => { },
 })
 
 export const AuthUserContext = createContext(null);
 
+export const ModalContext = createContext({
+  isModalOpen: false,
+  handleOpenModal: () => { },
+  handleClosedModal: () => { },
+  toggleModal: () => { }
+})
 
 
