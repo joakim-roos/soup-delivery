@@ -3,7 +3,7 @@ import { createGlobalStyle } from 'styled-components'
 const GlobalStyle = createGlobalStyle`
 
 :root {
-  --background: #F5F5F5;
+  --background: #FFF;
   --font-color-primary: #333333;
   --font-color-secondary: #4F4F4F;
   --size-xs: 10px;
@@ -25,15 +25,6 @@ const GlobalStyle = createGlobalStyle`
   --letter-spacing-wider: 0.5px;
 }
 
-
-/* @media screen and (min-width: 500px) {
-  #root {
-  border: 4px solid black;
-  margin: 1rem;
-  overflow: hidden;
-}
-} */
-
 html {
   box-sizing: border-box;
   font-size: 16px;
@@ -48,8 +39,6 @@ html {
   -moz-osx-font-smoothing: grayscale;
   max-width: 400px;
 }
-
-
 
 body {
   background-color: var(--background);

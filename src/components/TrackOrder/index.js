@@ -4,10 +4,7 @@ import { baseCardWrapper, baseBackgroundOpacity } from '../../style'
 
 const CardWrapper = styled.div`
     ${baseCardWrapper}
-    position: absolute; 
-    bottom: 0;
-    width: 97%;
-
+    padding: 1rem;
     & span {
         display: block;
     }
@@ -18,12 +15,12 @@ const BackgroundOpacity = styled.div`
 `;
 
 const StyledUntilDelivery = styled.div`
+    width: 100%;
+    margin: auto;
+    display: inline-block;
     text-align: center;
-    top: 25%;
-    transform: translateY(-50%);
-    left: 50%;
-    transform: translateX(-50%);
-    position: absolute;
+    margin-top: 200px;
+
     & div:first-of-type {
         font-size: 70px;
         font-weight: 800;
@@ -47,14 +44,13 @@ const UntilDelivery = () => {
 const TrackOrderPage = () => {
     return (
 
-        <div>
-            <UntilDelivery></UntilDelivery>
+        <div style={{ width: '100%' }}>
             <CardWrapper>
                 <BackgroundOpacity />
                 <span>Order Number: #23954</span>
                 <span>Delivery Adress: Lotta Svärds Gränd 3</span>
             </CardWrapper>
-
+            <UntilDelivery />
         </div>
     )
 }

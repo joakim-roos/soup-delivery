@@ -10,7 +10,6 @@ import ProfilePage from '../Profile'
 import DishPage from '../Dish'
 import AdminPage from '../Admin'
 import TrackOrderPage from '../TrackOrder'
-import Layout from '../Layout'
 
 
 const Routing = ({ menu }) => {
@@ -18,9 +17,8 @@ const Routing = ({ menu }) => {
     const history = useHistory()
     const transitions = useTransition(location, location => location.pathname, ({
         from: { opacity: .5, transform: `translate3d(${history.action === 'POP' ? '-100%' : '100%'},0,0`, position: 'absolute' },
-        enter: { opacity: 1, transform: 'translate3d(0%,0,0' },
+        enter: { opacity: 1, transform: 'translate3d(0%,0,0', position: 'static' },
         leave: { opacity: .5, transform: `translate3d(${history.action === 'POP' ? '100%' : '-100%'},0,0`, position: 'absolute' },
-
     }))
 
     return (

@@ -1,9 +1,9 @@
 import { css } from 'styled-components'
 
 export const baseBackgroundOpacity = css`
-    background-color: var(--background);
+    background-color: #FFF;
     border-radius: var(--border-rounded-card);
-    opacity: 0.8;
+    opacity: 0.95;
     position: absolute; 
     top: 0;
     left: 0;

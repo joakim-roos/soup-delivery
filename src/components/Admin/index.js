@@ -103,14 +103,12 @@ const AdminPage = () => {
                             <Link to='/'>Details</Link>
                         </Wrapper>
                     ))}
-                    </div>
+                </div>
                     
-                    <h2>Total Amount:</h2>
-                    <div>
-                        <p>{calculateTotalAmount()}</p>
-                    </div>
-                
-                
+                <h2>Total Amount:</h2>
+                <div>
+                    <p>{calculateTotalAmount()}</p>
+                </div>
                 </>
                 : 
                 <NotAuthorized />

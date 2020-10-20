@@ -1,8 +1,35 @@
 import React, { useState } from 'react'
+import styled from 'styled-components'
 import { useFirebase } from '../Firebase'
 import { useHistory } from 'react-router-dom'
 import * as ROUTES from '../../constants/routes'
 import * as ROLES from '../../constants/roles';
+
+const Wrapper = styled.div`
+    margin-top: 3rem;
+    & form {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+    }
+    & input[type=text], input[type=password] {
+        border-radius: var(--border-rounded-card);
+        margin-bottom: 0.5rem;
+        padding: 0.6rem;
+        border: 1px solid var(--color-gray-light);
+        width: 100%;
+        
+        ::placeholder {
+            font-size: var(--size-md);
+            color: var(--color-gray-lighter);
+        } 
+    }
+
+    & input[type=checkbox] {
+        
+    }
+`;
 
 const INITIAL_STATE = {
     username: '',
@@ -72,58 +99,60 @@ const SignUpForm = () => {
     )
 
     return (
-        <form onSubmit={(e) => onSubmit(e)}>
-            <input
-                name='username'
-                value={input.username}
-                onChange={(e) => onChange(e)}
-                type='text'
-                placeholder='Full Name'
-            />
-
-            <input
-                name="email"
-                value={input.email}
-                onChange={(e) => onChange(e)}
-                type="text"
-                placeholder="Email Address"
-            />
-
-            <input
-                name="passwordOne"
-                value={input.passwordOne}
-                onChange={(e) => onChange(e)}
-                type="password"
-                placeholder="Password"
-            />
-
-            <input
-                name="passwordTwo"
-                value={input.passwordTwo}
-                onChange={(e) => onChange(e)}
-                type="password"
-                placeholder="Confirm Password"
-            />
-
-            <label>
-                Admin:
+        <Wrapper>
+            <form onSubmit={(e) => onSubmit(e)}>
                 <input
-                    name="isAdmin"
-                    type="checkbox"
-                    checked={input.isAdmin}
-                    onChange={(e) => onChangeCheckbox(e)}
+                    name='username'
+                    value={input.username}
+                    onChange={(e) => onChange(e)}
+                    type='text'
+                    placeholder='Full Name'
                 />
-            </label>
 
-            <button
-                type="submit"
-                disabled={isInvalid}
-            >
-                Sign Up
+                <input
+                    name="email"
+                    value={input.email}
+                    onChange={(e) => onChange(e)}
+                    type="text"
+                    placeholder="Email Address"
+                />
+
+                <input
+                    name="passwordOne"
+                    value={input.passwordOne}
+                    onChange={(e) => onChange(e)}
+                    type="password"
+                    placeholder="Password"
+                />
+
+                <input
+                    name="passwordTwo"
+                    value={input.passwordTwo}
+                    onChange={(e) => onChange(e)}
+                    type="password"
+                    placeholder="Confirm Password"
+                />
+                <div>
+                    <label>
+                        Admin:
+                    <input
+                            name="isAdmin"
+                            type="checkbox"
+                            checked={input.isAdmin}
+                            onChange={(e) => onChangeCheckbox(e)}
+                        />
+                    </label>
+                </div>
+                <button
+                    type="submit"
+                    disabled={isInvalid}
+                >
+                    Sign Up
             </button>
 
-            {error && <p>{error.message}</p>}
-        </form>
+                {error && <p>{error.message}</p>}
+            </form>
+        </Wrapper>
     )
 }
 
