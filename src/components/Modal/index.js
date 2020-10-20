@@ -80,7 +80,7 @@ const Modal = () => {
 
     const onButtonClick = () => {
         toggleModal(false)
-        history.push('/menu')
+        history.goBack()
     }
 
 

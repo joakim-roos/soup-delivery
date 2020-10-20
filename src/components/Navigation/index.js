@@ -79,7 +79,7 @@ const Navigation = () => {
         }
         setPath(path)
 
-        location.pathname === '/'
+        location.pathname === '/menu'
             ?
             setIsButtonDisabled(true)
             :
@@ -97,13 +97,18 @@ const Navigation = () => {
         <Wrapper isButtonDisabled={isButtonDisabled}>
             <div>
 
-                <button disabled={isButtonDisabled} onClick={(e) => onGoBack(e)}>
+                <button
+                    disabled={isButtonDisabled}
+                    onClick={(e) => onGoBack(e)}
+                >
                     <Icon src={Arrow_Icon} />
                 </button>
 
                 <h2>{path}</h2>
 
-                <button onClick={(e) => toggleProfileNavigation(e)}>
+                <button
+                    onClick={(e) => toggleProfileNavigation(e)}
+                >
                     <Icon src=
                         {isHidden ?
                             Profile_Icon :

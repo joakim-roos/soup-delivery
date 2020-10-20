@@ -4,7 +4,6 @@ import Info from './Info'
 import Customize from './Customize'
 import DrinksAndExtras from './DrinksAndExtras'
 import AddToCart from './AddToCart'
-import Layout from '../Layout'
 import { OrderContext } from '../../context'
 import { ACTION } from '../../state'
 
@@ -33,8 +32,7 @@ const DishPage = ({ menu }) => {
     if (!data) return null;
 
     return (
-        <Layout>
-
+        <>
             <Info
                 description={data[0].description}
                 name={data[0].name}
@@ -50,7 +48,7 @@ const DishPage = ({ menu }) => {
             />
 
             <AddToCart />
-        </Layout>
+        </>
     )
 }
 

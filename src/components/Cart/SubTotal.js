@@ -53,7 +53,7 @@ const SubTotal = () => {
         // let total = arr.reduce((a, b) => a + b, 0)
 
         // let total = state.cart.map(({ price }) => Number(price)).reduce((a, b) => a + b, 0)
-        let total = state.cart.reduce((a, b) => a + parseInt(b.price), 0)
+        let total = state.cart.reduce((a, b) => a + Number(b.price), 0)
 
         dispatch(ACTION.total_price(total))
     }, [state.cart, dispatch])

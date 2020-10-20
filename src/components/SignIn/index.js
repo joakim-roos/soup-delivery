@@ -1,7 +1,6 @@
 import React, { useState } from 'react'
 import { useFirebase } from '../Firebase'
 import { useHistory } from 'react-router-dom'
-import Layout from '../Layout'
 
 import * as ROUTES from '../../constants/routes'
 
@@ -46,7 +45,7 @@ const SignInForm = () => {
     }
 
     return (
-        <Layout>
+        <>
             <form onSubmit={(e) => onSubmit(e)}>
 
                 <input
@@ -70,7 +69,7 @@ const SignInForm = () => {
                 {error && <p>{error.message}</p>}
 
             </form>
-        </Layout>
+        </>
     )
 }
 

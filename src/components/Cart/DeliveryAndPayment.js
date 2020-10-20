@@ -1,10 +1,9 @@
-import React, { useContext, useState } from 'react'
+import React, { useContext } from 'react'
 import styled from 'styled-components'
 import { OrderContext } from '../../context'
 import { baseCardWrapper, baseButton, baseBackgroundOpacity } from '../../style'
-
-
 import { ACTION } from '../../state'
+
 
 const CardWrapper = styled.section`
      ${baseCardWrapper}

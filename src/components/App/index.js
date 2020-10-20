@@ -10,7 +10,7 @@ import { INITIAL_ORDER } from '../../constants/state'
 import { orderReducer } from '../../state'
 
 import Routing from './Routing'
-
+import Layout from '../Layout'
 
 function App() {
     const authUser = useAuthentication();
@@ -57,7 +57,9 @@ function App() {
                             }}>
                                 <GlobalStyle />
 
-                                <Routing menu={menu} />
+                                <Layout>
+                                    <Routing menu={menu} />
+                                </Layout>
 
                             </ModalContext.Provider>
                         </OrderContext.Provider>

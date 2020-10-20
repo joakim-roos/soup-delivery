@@ -1,9 +1,6 @@
 import React, { useState } from 'react'
 import { useFirebase } from '../Firebase'
 import { useHistory } from 'react-router-dom'
-
-import Layout from '../Layout'
-
 import * as ROUTES from '../../constants/routes'
 import * as ROLES from '../../constants/roles';
 
@@ -75,60 +72,58 @@ const SignUpForm = () => {
     )
 
     return (
-        <Layout>
-            <form onSubmit={(e) => onSubmit(e)}>
+        <form onSubmit={(e) => onSubmit(e)}>
+            <input
+                name='username'
+                value={input.username}
+                onChange={(e) => onChange(e)}
+                type='text'
+                placeholder='Full Name'
+            />
+
+            <input
+                name="email"
+                value={input.email}
+                onChange={(e) => onChange(e)}
+                type="text"
+                placeholder="Email Address"
+            />
+
+            <input
+                name="passwordOne"
+                value={input.passwordOne}
+                onChange={(e) => onChange(e)}
+                type="password"
+                placeholder="Password"
+            />
+
+            <input
+                name="passwordTwo"
+                value={input.passwordTwo}
+                onChange={(e) => onChange(e)}
+                type="password"
+                placeholder="Confirm Password"
+            />
+
+            <label>
+                Admin:
                 <input
-                    name='username'
-                    value={input.username}
-                    onChange={(e) => onChange(e)}
-                    type='text'
-                    placeholder='Full Name'
+                    name="isAdmin"
+                    type="checkbox"
+                    checked={input.isAdmin}
+                    onChange={(e) => onChangeCheckbox(e)}
                 />
+            </label>
 
-                <input
-                    name="email"
-                    value={input.email}
-                    onChange={(e) => onChange(e)}
-                    type="text"
-                    placeholder="Email Address"
-                />
-
-                <input
-                    name="passwordOne"
-                    value={input.passwordOne}
-                    onChange={(e) => onChange(e)}
-                    type="password"
-                    placeholder="Password"
-                />
-
-                <input
-                    name="passwordTwo"
-                    value={input.passwordTwo}
-                    onChange={(e) => onChange(e)}
-                    type="password"
-                    placeholder="Confirm Password"
-                />
-
-                <label>
-                    Admin:
-                <input
-                        name="isAdmin"
-                        type="checkbox"
-                        checked={input.isAdmin}
-                        onChange={(e) => onChangeCheckbox(e)}
-                    />
-                </label>
-
-                <button
-                    type="submit"
-                    disabled={isInvalid}
-                >
-                    Sign Up
+            <button
+                type="submit"
+                disabled={isInvalid}
+            >
+                Sign Up
             </button>
 
-                {error && <p>{error.message}</p>}
-            </form>
-        </Layout>
+            {error && <p>{error.message}</p>}
+        </form>
     )
 }
 

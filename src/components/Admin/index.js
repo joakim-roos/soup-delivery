@@ -6,12 +6,10 @@ import { AuthUserContext } from '../../context'
 import { useAuthorization } from '../Session'
 import * as ROLES from '../../constants/roles'
 
-import Layout from '../Layout'
 
 const Wrapper = styled.div`
     display: flex; 
     flex-direction: row;
-    background-color: gray;
     justify-content: space-between;
 
     & div {
@@ -30,7 +28,8 @@ const condition = authUser =>
 
 const INITIAL_STATE = {
     users: [],
-    orders: []
+    orders: [],
+    total_amount: null
 }
 
 
@@ -44,8 +43,11 @@ const AdminPage = () => {
     const firebase = useFirebase()
     const authUser = useContext(AuthUserContext)
     const [state, setState] = useState(INITIAL_STATE)
-
     useAuthorization(condition)
+
+    const calculateTotalAmount = () => {
+        return state.orders.reduce((a, b) => a + Number(b.total_price), 0)
+    }
 
     useEffect(() => {
         firebase
@@ -79,34 +81,41 @@ const AdminPage = () => {
     }, [firebase])
 
     return (
-        <Layout>
+    <>
             {authUser
                 ?
                 <>
                 <h2>Users</h2>
-            <div>
-                {state && state.users.map((user) => (
-                    <p>{user.email}</p>
-                ))}
-            </div>
-            <h2>Orders</h2>
-            <div>
-                {state && state.orders.map((order) => (
-                    <Wrapper>
-                        <div>
-                            <p>{order.created_at.date}</p>
-                            <p>{order.created_at.time}</p>
-                        </div>
-                        <Link to='/'>Details</Link>
-                    </Wrapper>
-                ))}
-            </div>
-                    <h2>Popular Extras</h2>
-                    </>
+                <div>
+                    {state && state.users.map((user) => (
+                        <p>{user.email}</p>
+                    ))}
+                </div>
+                    
+                <h2>Orders</h2>
+                <div>
+                    {state && state.orders.map((order) => (
+                        <Wrapper>
+                            <div>
+                                <p>{order.created_at.date}</p>
+                                <p>{order.created_at.time}</p>
+                            </div>
+                            <Link to='/'>Details</Link>
+                        </Wrapper>
+                    ))}
+                    </div>
+                    
+                    <h2>Total Amount:</h2>
+                    <div>
+                        <p>{calculateTotalAmount()}</p>
+                    </div>
+                
+                
+                </>
                 : 
                 <NotAuthorized />
             }
-        </Layout>
+        </>
     )
 }
 

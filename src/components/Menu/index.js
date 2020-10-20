@@ -4,7 +4,6 @@ import styled from 'styled-components'
 import SVG from 'react-inlinesvg'
 import CartPanel from './CartPanel'
 import * as ROUTES from '../../constants/routes'
-import Layout from '../Layout'
 import { Tomato_Soup, Right_Arrow } from '../../images'
 import { baseBackgroundOpacity, baseCardWrapper } from '../../style'
 import { OrderContext, AuthUserContext, ModalContext } from '../../context'
@@ -85,8 +84,7 @@ const MenuPage = ({ menu }) => {
 
     if (!menu) return null;
     return (
-        <Layout>
-
+        <>
             {menu.soups.map((soup) => (
                 <Article key={soup.id}>
 
@@ -122,8 +120,7 @@ const MenuPage = ({ menu }) => {
                 :
                 null
             }
-
-        </Layout>
+        </>
     )
 }
 
