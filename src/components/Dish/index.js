@@ -25,7 +25,7 @@ const DishPage = ({ menu }) => {
         dispatch(ACTION.set_base_price(data[0].price))
         dispatch(ACTION.update_name(data[0].name))
         dispatch(ACTION.set_base_custom(data[0].ingredients_customizable))
-        dispatch(ACTION.set_image(data[0].imageUrl))
+        dispatch(ACTION.set_image(data[0].images.small))
     }, [data, dispatch])
 
 
@@ -36,7 +36,7 @@ const DishPage = ({ menu }) => {
             <Info
                 description={data[0].description}
                 name={data[0].name}
-                imageUrl={data[0].imageUrl}
+                imageUrl={data[0].images.medium}
             />
 
             <Customize

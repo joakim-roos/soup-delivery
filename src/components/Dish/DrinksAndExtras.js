@@ -3,6 +3,8 @@ import styled from 'styled-components'
 import { baseCardWrapper, baseBackgroundOpacity } from '../../style'
 import { Lemon_Juice } from '../../images'
 import { AddButton } from '../Buttons'
+import LoadImage, { placeHolder } from '../LoadImage'
+
 
 const CardWrapper = styled.section`
     ${baseCardWrapper}
@@ -58,6 +60,9 @@ const DrinksAndExtras = ({ addOnProducts }) => {
             {addOnProducts.map(product => (
                 <Card key={product.id}>
                     <Img src={Lemon_Juice} alt='' />
+                    <LoadImage
+                        placeholder={placeHolder(85)}
+                        src={Lemon_Juice} />
 
                     <div>
                         <h3>{product.name}</h3>

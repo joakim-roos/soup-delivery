@@ -43,7 +43,6 @@ const AdminPage = () => {
     const firebase = useFirebase()
     const authUser = useContext(AuthUserContext)
     const [state, setState] = useState(INITIAL_STATE)
-    useAuthorization(condition)
 
     const calculateTotalAmount = () => {
         return state.orders.reduce((a, b) => a + Number(b.total_price), 0)
@@ -107,7 +106,7 @@ const AdminPage = () => {
                     
                 <h2>Total Amount:</h2>
                 <div>
-                    <p>{calculateTotalAmount()}</p>
+                    <p>{calculateTotalAmount()} kr</p>
                 </div>
                 </>
                 : 

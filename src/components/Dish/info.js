@@ -1,5 +1,7 @@
 import React from 'react'
 import styled from 'styled-components'
+import LoadImage, { placeHolder } from '../LoadImage'
+
 
 import { baseBackgroundOpacity, baseCardWrapper } from '../../style'
 
@@ -19,6 +21,7 @@ const CardWrapper = styled.section`
 
     & img {
         display: block;
+        width: 100%;
         border-radius: var(--border-rounded);
     }
 `;
@@ -38,7 +41,10 @@ const Info = (props) => {
             <BackgroundOpacity />
             <h2>{props.name}</h2>
             <p>{props.description}</p>
-            <Img src={props.imageUrl} />
+            <LoadImage
+                placeholder={placeHolder(345)}
+                src={props.imageUrl}
+            />
         </CardWrapper>
 
     )

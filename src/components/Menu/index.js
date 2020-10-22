@@ -4,9 +4,11 @@ import styled from 'styled-components'
 import SVG from 'react-inlinesvg'
 import CartPanel from './CartPanel'
 import * as ROUTES from '../../constants/routes'
-import { Tomato_Soup, Right_Arrow } from '../../images'
+import { Right_Arrow } from '../../images'
 import { baseBackgroundOpacity, baseCardWrapper } from '../../style'
 import { OrderContext, AuthUserContext, ModalContext } from '../../context'
+import { placeHolder } from '../../helpers'
+import LoadImage from '../LoadImage'
 
 const Article = styled.article`
     ${baseCardWrapper}
@@ -15,10 +17,6 @@ const Article = styled.article`
 
 const BackgroundOpacity = styled.div`
     ${baseBackgroundOpacity}
-`;
-
-const Img = styled.img`
-    border-radius: var(--border-rounded-card);
 `;
 
 
@@ -62,6 +60,7 @@ const MenuPage = ({ menu }) => {
     const history = useHistory()
     const authUser = useContext(AuthUserContext)
 
+    console.log(menu)
     useEffect(() => {
         state.cart.length === 0
             ?
@@ -86,12 +85,16 @@ const MenuPage = ({ menu }) => {
     return (
         <>
             {menu.soups.map((soup) => (
+
                 <Article key={soup.id}>
 
                     <BackgroundOpacity />
 
-                    <Img src={Tomato_Soup} alt=''></Img>
+                    <LoadImage
+                        placeholder={placeHolder(128)}
+                        src={soup.images.small}
 
+                    />
                     <CourseInfo>
                         <h3>
                             {soup.name}
@@ -110,7 +113,8 @@ const MenuPage = ({ menu }) => {
                     </CourseInfo>
 
                 </Article>
-            ))}
+            )
+            )}
 
             {isCartVisible
                 ?

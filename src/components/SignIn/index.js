@@ -2,9 +2,7 @@ import React, { useState } from 'react'
 import styled from 'styled-components'
 import { useFirebase } from '../Firebase'
 import { useHistory } from 'react-router-dom'
-
 import * as ROUTES from '../../constants/routes'
-
 
 const FormWrapper = styled.form`
     margin-top: 3rem;
@@ -14,15 +12,17 @@ const FormWrapper = styled.form`
     align-items: center;
 
     & input {
-        border-radius: var(--border-rounded-card);
+        border-radius: var(--border-rounded-input);
         margin-bottom: 0.5rem;
-        padding: 0.6rem;
+        padding: 0.7rem 1rem 0.7rem 1rem;
         border: 1px solid var(--color-gray-light);
-        width: 100%;
+        width: 350px;
+        font-size: var(--size-md);
+        font-family: 'Poppins Medium';
+        letter-spacing: .5px;
         
         ::placeholder {
-            font-size: var(--size-md);
-            color: var(--color-gray-lighter);
+            color: var(--font-color-secondary);
         } 
     }
 `;
@@ -82,7 +82,10 @@ const SignInPage = () => {
                 placeholder="Password"
             />
 
-            <button disabled={isInvalid} type="submit">
+            <button
+                disabled={isInvalid}
+                type="submit"
+            >
                 Sign In
             </button>
 

@@ -124,6 +124,7 @@ const orderReducer = (state, action) => {
             }
 
         case ACTION_TYPE.ADD_TO_CART:
+            console.log(action.payload)
             return {
                 ...state,
                 cart: [

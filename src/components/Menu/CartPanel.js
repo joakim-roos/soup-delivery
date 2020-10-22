@@ -2,8 +2,6 @@ import React, { useMemo } from 'react'
 import styled from 'styled-components'
 import { ProceedButton } from '../Buttons'
 
-
-
 const Panel = styled.div`
     background-color: var(--background);
     display: flex;

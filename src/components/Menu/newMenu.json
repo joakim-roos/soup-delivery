@@ -2,9 +2,12 @@
   "products": {
     "soups": [
       {
-        "name": "Tomato Soup0",
+        "name": "Tomato Soup",
         "price": "129",
-        "imageUrl": "https://firebasestorage.googleapis.com/v0/b/soup-delivery-a8234.appspot.com/o/Tomato_Soup_Info.jpg?alt=media&token=bfbf5378-c6ec-4355-baac-8c38ee703bb1",
+        "images": {
+          "small": "https://firebasestorage.googleapis.com/v0/b/soup-delivery-a8234.appspot.com/o/Tomato_Soup_128x128.jpg?alt=media&token=7727c3ab-faec-4893-9ecd-9243dba0c4e0",
+          "medium": "https://firebasestorage.googleapis.com/v0/b/soup-delivery-a8234.appspot.com/o/Tomato_Soup_335x335.jpg?alt=media&token=265641ad-f523-42f4-bb5b-4118de377a87"
+        },
         "keywords": "Vegetarian, Cheese, Chili, Cilantro",
         "ingredients_customizable": [
           {
@@ -31,92 +34,104 @@
         "uid": "tomato-soup"
       },
       {
-        "name": "Tomato Soup1",
+        "name": "Butternut Soup",
         "price": "129",
-        "imageUrl": "https://firebasestorage.googleapis.com/v0/b/soup-delivery-a8234.appspot.com/o/Tomato_Soup_Info.jpg?alt=media&token=bfbf5378-c6ec-4355-baac-8c38ee703bb1",
-        "keywords": "Vegetarian, Cheese, Chili, Cilantro",
+        "images": {
+          "small": "https://firebasestorage.googleapis.com/v0/b/soup-delivery-a8234.appspot.com/o/Butternut_Soup_128x128.jpg?alt=media&token=c0613fd0-d87c-4991-ba07-cbf31be0f22b",
+          "medium": "https://firebasestorage.googleapis.com/v0/b/soup-delivery-a8234.appspot.com/o/Butternut_Soup_335x335.jpg?alt=media&token=0012c7f7-6f91-483d-8486-35230d397a55"
+        },
+        "keywords": "Vegetarian, Butternut, Parsley, Croutins",
         "ingredients_customizable": [
           {
             "id": "1",
-            "name": "Chili",
+            "name": "Butternut",
             "price": "29"
           },
           {
             "id": "2",
-            "name": "Cheese",
-            "price": "19"
+            "name": "Parsley",
+            "price": "10"
           },
           {
             "id": "3",
-            "name": "Cilantro",
+            "name": "Croutins",
             "price": "10"
           }
         ],
-        "description": "This tomato soup is infused with fermented chillies. A medium spicy soup served hot to keep you warm. Topped with homemade buratta cheese.. And some cilantro for freshness and color. (Vegetarian, Glutenfree)",
+        "description": "Gumbo beet greens corn soko endive gumbo gourd. Parsley shallot courgette tatsoi pea sprouts fava bean collard greens dandelion okra wakame tomato. Dandelion cucumber earthnut pea peanut soko zucchini. (Vegetarian, Glutenfree)",
         "id": "1",
-        "uid": "tomato-soup1"
+        "uid": "butternut-soup"
       },
       {
-        "name": "Tomato Soup2",
+        "name": "Ramen Egg Soup",
         "price": "129",
-        "imageUrl": "https://firebasestorage.googleapis.com/v0/b/soup-delivery-a8234.appspot.com/o/Tomato_Soup_Info.jpg?alt=media&token=bfbf5378-c6ec-4355-baac-8c38ee703bb1",
-        "keywords": "Vegetarian, Cheese, Chili, Cilantro",
+        "images": {
+          "small": "https://firebasestorage.googleapis.com/v0/b/soup-delivery-a8234.appspot.com/o/Ramen_Egg_Soup_128x128.jpg?alt=media&token=9ab222ce-ddfe-4e50-a54b-7c05c570cd38",
+          "medium": "https://firebasestorage.googleapis.com/v0/b/soup-delivery-a8234.appspot.com/o/Ramen_Egg_Soup_335x335.jpg?alt=media&token=e654004a-4d42-47c1-b071-85058f399726"
+        },
+        "keywords": "Vegetarian, Egg, Greens, Homemade Ramen",
         "ingredients_customizable": [
           {
             "id": "1",
-            "name": "Chili",
-            "price": "29"
+            "name": "Extra Egg",
+            "price": "10"
           },
           {
             "id": "2",
-            "name": "Cheese",
+            "name": "Greens",
             "price": "19"
           },
           {
             "id": "3",
-            "name": "Cilantro",
-            "price": "10"
+            "name": "Ramen",
+            "price": "29"
           }
         ],
-        "description": "This tomato soup is infused with fermented chillies. A medium spicy soup served hot to keep you warm. Topped with homemade buratta cheese.. And some cilantro for freshness and color. (Vegetarian, Glutenfree)",
+        "description": "Gumbo beet greens corn soko endive gumbo gourd. Parsley shallot courgette tatsoi pea sprouts fava bean collard greens dandelion okra wakame tomato. Dandelion cucumber earthnut pea peanut soko zucchini. (Vegetarian, Glutenfree)",
         "id": "2",
-        "uid": "tomato-soup2"
+        "uid": "ramen-egg-soup"
       },
       {
-        "name": "Tomato Soup3",
+        "name": "Ramen Tofu Soup",
         "price": "129",
-        "imageUrl": "https://firebasestorage.googleapis.com/v0/b/soup-delivery-a8234.appspot.com/o/Tomato_Soup_Info.jpg?alt=media&token=bfbf5378-c6ec-4355-baac-8c38ee703bb1",
-        "keywords": "Vegetarian, Cheese, Chili, Cilantro",
+        "images": {
+          "small": "https://firebasestorage.googleapis.com/v0/b/soup-delivery-a8234.appspot.com/o/Ramen_Tofu_soup_128x128.jpg?alt=media&token=49ed9664-511b-4bff-9755-4c95d27474a3",
+          "medium": "https://firebasestorage.googleapis.com/v0/b/soup-delivery-a8234.appspot.com/o/Ramen_Tofu_Soup_335x335.jpg?alt=media&token=11c422d3-5d1f-40a7-ad83-b13be920422c"
+        },
+        "keywords": "Vegetarian, Tofu, Greens, Homemade Ramen",
         "ingredients_customizable": [
           {
             "id": "1",
-            "name": "Chili",
+            "name": "Tofu",
             "price": "29"
           },
           {
             "id": "2",
-            "name": "Cheese",
-            "price": "19"
+            "name": "Ramen",
+            "price": "29"
           },
           {
             "id": "3",
-            "name": "Cilantro",
+            "name": "Greens",
             "price": "10"
           }
         ],
-        "description": "This tomato soup is infused with fermented chillies. A medium spicy soup served hot to keep you warm. Topped with homemade buratta cheese.. And some cilantro for freshness and color. (Vegetarian, Glutenfree)",
+        "description": "Gumbo beet greens corn soko endive gumbo gourd. Parsley shallot courgette tatsoi pea sprouts fava bean collard greens dandelion okra wakame tomato. Dandelion cucumber earthnut pea peanut soko zucchini. (Vegetarian, Glutenfree)",
         "id": "3",
-        "uid": "tomato-soup3"
+        "uid": "ramen-tofu-soup"
       },
       {
-        "name": "Tomato Soup4",
+        "name": "Green Potato Soup",
         "price": "129",
-        "imageUrl": "https://firebasestorage.googleapis.com/v0/b/soup-delivery-a8234.appspot.com/o/Tomato_Soup_Info.jpg?alt=media&token=bfbf5378-c6ec-4355-baac-8c38ee703bb1",
-        "keywords": "Vegetarian, Cheese, Chili, Cilantro",
+        "images": {
+          "small": "https://firebasestorage.googleapis.com/v0/b/soup-delivery-a8234.appspot.com/o/Green_potato_soup_128x128.jpg?alt=media&token=d44bb72e-7040-46a3-9aee-8afd0557ced0",
+          "medium": "https://firebasestorage.googleapis.com/v0/b/soup-delivery-a8234.appspot.com/o/Green_Potato_Soup_335x335.jpg?alt=media&token=18722b5b-51a3-4c19-afd6-c04190775101"
+        },
+        "keywords": "Vegetarian, Potato, Cheese, Parsley",
         "ingredients_customizable": [
           {
             "id": "1",
-            "name": "Chili",
+            "name": "Potatoes",
             "price": "29"
           },
           {
@@ -126,119 +141,70 @@
           },
           {
             "id": "3",
-            "name": "Cilantro",
+            "name": "Parsley",
             "price": "10"
           }
         ],
-        "description": "This tomato soup is infused with fermented chillies. A medium spicy soup served hot to keep you warm. Topped with homemade buratta cheese.. And some cilantro for freshness and color. (Vegetarian, Glutenfree)",
+        "description": "Gumbo beet greens corn soko endive gumbo gourd. Parsley shallot courgette tatsoi pea sprouts fava bean collard greens dandelion okra wakame tomato. Dandelion cucumber earthnut pea peanut soko zucchini. (Vegetarian, Glutenfree)",
         "id": "4",
-        "uid": "tomato-soup4"
+        "uid": "green-potato-soup"
       },
       {
-        "name": "Tomato Soup5",
+        "name": "Curry Soup",
         "price": "129",
-        "imageUrl": "https://firebasestorage.googleapis.com/v0/b/soup-delivery-a8234.appspot.com/o/Tomato_Soup_Info.jpg?alt=media&token=bfbf5378-c6ec-4355-baac-8c38ee703bb1",
-        "keywords": "Vegetarian, Cheese, Chili, Cilantro",
+        "images": {
+          "small": "https://firebasestorage.googleapis.com/v0/b/soup-delivery-a8234.appspot.com/o/Curry_Soup_128x128.jpg?alt=media&token=a731455e-2748-4349-908a-a06c21856cfa",
+          "medium": "https://firebasestorage.googleapis.com/v0/b/soup-delivery-a8234.appspot.com/o/Curry_Soup_335x335.jpg?alt=media&token=90c6da87-2588-4128-adde-318621ebe846"
+        },
+        "keywords": "Vegetarian, Spicy, Cashew, Greens",
         "ingredients_customizable": [
           {
             "id": "1",
-            "name": "Chili",
-            "price": "29"
+            "name": "Spice",
+            "price": "10"
           },
           {
             "id": "2",
-            "name": "Cheese",
+            "name": "Cashew",
             "price": "19"
           },
           {
             "id": "3",
-            "name": "Cilantro",
+            "name": "Greens",
             "price": "10"
           }
         ],
-        "description": "This tomato soup is infused with fermented chillies. A medium spicy soup served hot to keep you warm. Topped with homemade buratta cheese.. And some cilantro for freshness and color. (Vegetarian, Glutenfree)",
+        "description": "Gumbo beet greens corn soko endive gumbo gourd. Parsley shallot courgette tatsoi pea sprouts fava bean collard greens dandelion okra wakame tomato. Dandelion cucumber earthnut pea peanut soko zucchini. (Vegetarian, Glutenfree)",
         "id": "5",
-        "uid": "tomato-soup5"
-      },
-      {
-        "name": "Tomato Soup6",
-        "price": "129",
-        "imageUrl": "https://firebasestorage.googleapis.com/v0/b/soup-delivery-a8234.appspot.com/o/Tomato_Soup_Info.jpg?alt=media&token=bfbf5378-c6ec-4355-baac-8c38ee703bb1",
-        "keywords": "Vegetarian, Cheese, Chili, Cilantro",
-        "ingredients_customizable": [
-          {
-            "id": "1",
-            "name": "Chili",
-            "price": "29"
-          },
-          {
-            "id": "2",
-            "name": "Cheese",
-            "price": "19"
-          },
-          {
-            "id": "3",
-            "name": "Cilantro",
-            "price": "10"
-          }
-        ],
-        "description": "This tomato soup is infused with fermented chillies. A medium spicy soup served hot to keep you warm. Topped with homemade buratta cheese.. And some cilantro for freshness and color. (Vegetarian, Glutenfree)",
-        "id": "6",
-        "uid": "tomato-soup6"
-      },
-      {
-        "name": "Tomato Soup7",
-        "price": "129",
-        "imageUrl": "https://firebasestorage.googleapis.com/v0/b/soup-delivery-a8234.appspot.com/o/Tomato_Soup_Info.jpg?alt=media&token=bfbf5378-c6ec-4355-baac-8c38ee703bb1",
-        "keywords": "Vegetarian, Cheese, Chili, Cilantro",
-        "ingredients_customizable": [
-          {
-            "id": "1",
-            "name": "Chili",
-            "price": "29"
-          },
-          {
-            "id": "2",
-            "name": "Cheese",
-            "price": "19"
-          },
-          {
-            "id": "3",
-            "name": "Cilantro",
-            "price": "10"
-          }
-        ],
-        "description": "This tomato soup is infused with fermented chillies. A medium spicy soup served hot to keep you warm. Topped with homemade buratta cheese.. And some cilantro for freshness and color. (Vegetarian, Glutenfree)",
-        "id": "7",
-        "uid": "tomato-soup7"
+        "uid": "curry-soup"
       }
     ],
     "extras": [
       {
         "name": "Lemon Juice",
         "price": "39",
-        "imageUrl": "",
+        "image": "https://firebasestorage.googleapis.com/v0/b/soup-delivery-a8234.appspot.com/o/Lemon_Juice_80x80.jpg?alt=media&token=3e701d0a-cb5f-4133-b85a-3f9aa2c0b8a3",
         "description": "Our homemade Lemon Juice",
         "id": "1"
       },
       {
         "name": "Orange Juice",
         "price": "39",
-        "imageUrl": "",
+        "image": "https://firebasestorage.googleapis.com/v0/b/soup-delivery-a8234.appspot.com/o/Lemon_Juice_80x80.jpg?alt=media&token=3e701d0a-cb5f-4133-b85a-3f9aa2c0b8a3",
         "description": "Orange Juice from Orangeriet.",
         "id": "2"
       },
       {
         "name": "Sparkling Water",
         "price": "39",
-        "imageUrl": "",
+        "image": "https://firebasestorage.googleapis.com/v0/b/soup-delivery-a8234.appspot.com/o/Lemon_Juice_80x80.jpg?alt=media&token=3e701d0a-cb5f-4133-b85a-3f9aa2c0b8a3",
         "description": "Really sparkly water.",
         "id": "3"
       },
       {
         "name": "Bread",
         "price": "39",
-        "imageUrl": "",
+        "image": "https://firebasestorage.googleapis.com/v0/b/soup-delivery-a8234.appspot.com/o/Lemon_Juice_80x80.jpg?alt=media&token=3e701d0a-cb5f-4133-b85a-3f9aa2c0b8a3",
         "description": "Magnificent homemade bread.",
         "id": "4"
       }

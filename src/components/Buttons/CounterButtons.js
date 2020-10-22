@@ -13,6 +13,7 @@ const ButtonWrapper = styled.div`
         width: 15px;
         text-align: center;
         font-size: var(--size-xl);
+        margin: .5rem;
 
     }
 `;

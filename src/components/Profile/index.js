@@ -1,10 +1,13 @@
 import React, { useContext } from 'react'
+import { useHistory } from 'react-router-dom'
 import styled from 'styled-components'
 import BackgroundImage from '../Background'
 import SignOutButton from '../SignOut'
 
 import { NavigationContext } from '../../context'
 import { AuthUserContext } from '../../context'
+
+import * as ROUTES from '../../constants/routes'
 
 const Modal = styled.div`
     position: absolute;
@@ -36,11 +39,17 @@ const Wrapper = styled.div`
 `;
 
 const ProfileNonAuth = () => {
-
+    const history = useHistory()
+    const { toggleProfileNavigation } = useContext(NavigationContext)
+    const onClick = () => {
+        toggleProfileNavigation()
+        history.push(ROUTES.SIGN_IN)
+    }
     return (
         <Wrapper>
             <ul>
-                <li>
+                <li
+                    onClick={() => onClick()}>
                     Sign in
                 </li>
             </ul>

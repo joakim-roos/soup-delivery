@@ -12,7 +12,7 @@ const StyledRoundButton = styled.button`
     ${baseButton}
     
     border-radius: 50%;
-    margin: 0.5rem;
+    margin: 0.5rem 0;
 `;
 
 

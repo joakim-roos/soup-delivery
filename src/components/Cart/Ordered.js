@@ -2,6 +2,7 @@ import React, { useContext } from 'react'
 import styled from 'styled-components'
 import { baseCardWrapper, baseBackgroundOpacity } from '../../style'
 import { OrderContext } from '../../context'
+import LoadImage, { placeHolder } from '../LoadImage'
 
 const CardWrapper = styled.section`
 	${baseCardWrapper}
@@ -11,10 +12,7 @@ const CardWrapper = styled.section`
 		font-size: var(--size-xl);
 	}
 `
-const Img = styled.img`
-	border-radius: var(--border-rounded-card);
-    width: 80px;
-`
+
 const BackgroundOpacity = styled.div`
 	${baseBackgroundOpacity}
 `
@@ -50,6 +48,11 @@ const Card = styled.div`
 	}
 `
 
+const StyledLoadImage = styled(LoadImage)`
+        width: 80px;
+        height: 80px;
+`;
+
 const customToString = (custom, key) =>
     custom.amount === 0 ? (
         <span key={key}> No {custom.name}.{' '}</span>
@@ -63,14 +66,18 @@ const extrasToString = (extras) => <span key={extras.name}>{extras.name}.{' '}</
 
 const Ordered = () => {
     const { state } = useContext(OrderContext)
-
+    console.log(state)
     return (
         <CardWrapper>
             <BackgroundOpacity />
             <h2>Your Order</h2>
             {state.cart.map((product, index) => (
                 <Card key={product.name + index}>
-                    <Img src={product.image_url} alt='' />
+                    <LoadImage
+                        style={{ width: '80px', height: '80px' }}
+                        placeholder={placeHolder(80)}
+                        src={product.image_url}
+                    />
                     <div key={product.name + 1}>
                         <h3>{product.name}</h3>
                         <div>

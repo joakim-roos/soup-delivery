@@ -32,6 +32,7 @@ function App() {
                 const menu = snapshot.val()
                 localStorage.setItem('products', JSON.stringify(menu))
                 setMenu(menu)
+                console.log(menu)
 
             })
         return () => firebase.menu().off()

@@ -20,7 +20,7 @@ const Ingredient = styled.div`
 
     & p:nth-of-type(2) {
         color: var(--color-gray-light);
-        font-size: var(--size-xs);
+        font-size: var(--size-sm);
         margin-top: 2px;
         margin-right: 2rem;
     }

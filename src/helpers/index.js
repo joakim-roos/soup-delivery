@@ -30,3 +30,4 @@ export function filterOutByValue(arr, value) {
 export function findIndexInArray(arr, value) {
   return arr.findIndex(obj => value === obj.id)
 }
+

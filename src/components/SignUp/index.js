@@ -14,7 +14,7 @@ const Wrapper = styled.div`
         align-items: center;
     }
     & input[type=text], input[type=password] {
-        border-radius: var(--border-rounded-card);
+        border-radius: var(--border-rounded-input);
         margin-bottom: 0.5rem;
         padding: 0.6rem;
         border: 1px solid var(--color-gray-light);
