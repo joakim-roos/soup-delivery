@@ -16,9 +16,12 @@ const Wrapper = styled.div`
     & input[type=text], input[type=password] {
         border-radius: var(--border-rounded-input);
         margin-bottom: 0.5rem;
-        padding: 0.6rem;
+        padding: 0.7rem 1rem 0.7rem 1rem;
         border: 1px solid var(--color-gray-light);
-        width: 100%;
+        width: 350px;
+        font-size: var(--size-md);
+        font-family: 'Poppins Medium';
+        letter-spacing: .5px;
         
         ::placeholder {
             font-size: var(--size-md);
@@ -114,7 +117,7 @@ const SignUpForm = () => {
                     value={input.email}
                     onChange={(e) => onChange(e)}
                     type="text"
-                    placeholder="Email Address"
+                    placeholder="Email"
                 />
 
                 <input

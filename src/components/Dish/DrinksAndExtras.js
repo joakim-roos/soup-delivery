@@ -59,7 +59,6 @@ const DrinksAndExtras = ({ addOnProducts }) => {
 
             {addOnProducts.map(product => (
                 <Card key={product.id}>
-                    <Img src={Lemon_Juice} alt='' />
                     <LoadImage
                         placeholder={placeHolder(85)}
                         src={Lemon_Juice} />

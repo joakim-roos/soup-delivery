@@ -7,8 +7,7 @@ import * as ROUTES from '../../constants/routes'
 import { Right_Arrow } from '../../images'
 import { baseBackgroundOpacity, baseCardWrapper } from '../../style'
 import { OrderContext, AuthUserContext, ModalContext } from '../../context'
-import { placeHolder } from '../../helpers'
-import LoadImage from '../LoadImage'
+import LoadImage, { placeHolder } from '../LoadImage'
 
 const Article = styled.article`
     ${baseCardWrapper}

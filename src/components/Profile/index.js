@@ -10,7 +10,7 @@ import { AuthUserContext } from '../../context'
 import * as ROUTES from '../../constants/routes'
 
 const Modal = styled.div`
-    position: absolute;
+    position: fixed;
     background-color: var(--background);
     display: ${props => props.isHidden ? 'none' : 'block'};
     margin-top: 57px;
