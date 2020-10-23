@@ -4,7 +4,7 @@ import styled from 'styled-components'
 
 const Img = styled.img`
     border-radius: var(--border-rounded-card);
-    opacity: ${props => props.loading ? '0.5' : '1'};
+    opacity: ${props => props.isLoading ? '0.5' : '1'};
     transition: opacity .15s linear;
 `;
 
@@ -12,7 +12,7 @@ export function placeHolder(res) {
   return `data:image/svg+xml,%3Csvg xmlns="http://www.w3.org/2000/svg" width="${res}" height="${res}" viewBox="0 0 ${res} ${res}"%3E%3C/svg%3E`;
 }
 
-const LoadImage = ({ style, src, placeholder, alt = '' }) => {
+const LoadImage = React.memo(({ style, src, placeholder, alt = '' }) => {
   const [loading, setLoading] = useState(true)
   const [currentSrc, setSrc] = useState(placeholder)
 
@@ -25,14 +25,19 @@ const LoadImage = ({ style, src, placeholder, alt = '' }) => {
     }
   }, [src])
 
+
   return (
     <Img
       style={style}
-      loading={loading}
+      isLoading={loading}
       src={currentSrc}
       alt={alt}>
     </Img>
   )
-}
+})
+
+
+
+
 
 export default LoadImage

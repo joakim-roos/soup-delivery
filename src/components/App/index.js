@@ -25,6 +25,7 @@ function App() {
     const handleClosedModal = () => setIsModalOpen(true)
     const handleOpenModal = () => setIsModalOpen(false)
 
+
     useEffect(() => {
         firebase
             .menu()

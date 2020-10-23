@@ -5,18 +5,14 @@ import { Logo_Onboard } from '../../images';
 import BackgroundImage from '../Background'
 
 const Modal = styled.div`
-    position: absolute;
-    background-color: ${props => props.theme.color.background};
+    position: fixed;
+    background-color: var(--background);
     display: ${props => props.isHidden ? 'none' : 'block'};
-    width: 100vw; /* Full width (cover the whole page) */
-    height: 100vh; /* Full height (cover the whole page) */
-    top: 0;
-    left: 0;
-    right: 0;
-    bottom: 0;
+    width: 100%; /* Full width (cover the whole page) */
+    height: 100%; /* Full height (cover the whole page) */
     z-index: 1; /* Specify a stack order in case you're using a different order for other elements */
     cursor: pointer; /* Add a pointer on hover */
-  
+    
     & img {
         position: absolute;
         display: block;
@@ -42,7 +38,6 @@ const OnBoard = () => {
 
     const onClick = () => {
         setIsHidden(true)
-        //Sets sessionStorage so onBoard is only shown once. 
         sessionStorage.setItem('isHidden', JSON.stringify(true))
     }
 

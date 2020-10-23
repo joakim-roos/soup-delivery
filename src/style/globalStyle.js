@@ -31,6 +31,7 @@ html {
   font-size: 16px;
   -webkit-text-size-adjust: none;
   margin: auto;
+  scroll-behavior: smooth;
   
 }
 

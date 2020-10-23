@@ -9,7 +9,6 @@ import Modal from '../Modal'
 const MainWrapper = styled.main`
     background: transparent; 
     position: relative; 
-    /* height: calc(100vh - 57px); */
     height: 100vh;
     width: 100vw;
     overflow: scroll;
@@ -21,7 +20,6 @@ const Layout = (props) => {
         <MainWrapper>
             <Modal
                 handleModal={props.handleModal}
-                /* setIsModalOpen={setIsModalOpen} */
                 isModalOpen={props.isModalOpen}
                 wrapperRef={props.wrapperRef}
             />
