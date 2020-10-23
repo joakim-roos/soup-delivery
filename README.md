@@ -2,10 +2,10 @@
 
 SOUP is an online food-delivery web app. Frontend built with [React](https://reactjs.org/). User authentication and database built with [Firebase](https://firebase.google.com/).
 
-![screenshot](./screen1.png)
-![screenshot](./screen2.png)
-![screenshot](./screen3.png)
-![screenshot](./screen4.png)
+![screenshot](./Screen1.png)
+![screenshot](./Screen2.png)
+![screenshot](./Screen3.png)
+![screenshot](./Screen4.png)
 
 ## Heads Up
 
