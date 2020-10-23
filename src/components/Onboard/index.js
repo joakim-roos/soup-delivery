@@ -10,7 +10,7 @@ const Modal = styled.div`
     display: ${props => props.isHidden ? 'none' : 'block'};
     width: 100%; /* Full width (cover the whole page) */
     height: 100%; /* Full height (cover the whole page) */
-    z-index: 1; /* Specify a stack order in case you're using a different order for other elements */
+    z-index: 900; /* Specify a stack order in case you're using a different order for other elements */
     cursor: pointer; /* Add a pointer on hover */
     
     & img {
@@ -20,7 +20,7 @@ const Modal = styled.div`
         transform: translateY(-50%);
         left: 50%;
         transform: translateX(-50%);
-        z-index: 2;
+        z-index: 1000;
     }
 
     & h1 {
